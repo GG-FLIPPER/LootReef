@@ -1,0 +1,26 @@
+{
+  "name": "pricescoutsite",
+  "version": "1.0.0",
+  "description": "PriceScout — Compare digital game prices across marketplaces",
+  "main": "server/index.js",
+  "scripts": {
+    "server": "node server/index.js",
+    "client": "cd client && npm run dev",
+    "dev": "node server/index.js & cd client && npm run dev"
+  },
+  "keywords": [
+    "price-comparison",
+    "gaming",
+    "scraping"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.14.0",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "playwright-chromium": "^1.58.2"
+  }
+}

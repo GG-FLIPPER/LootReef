@@ -1,0 +1,48 @@
+=== Z2U AJAX ===
+✅ z2u-ajax-search: 200 [HTML]
+<!doctype html>
+<head>
+    <title>Search Results:  - Z2U.COM</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="web
+
+❌ z2u-ajax-search-post: 404
+
+❌ z2u-product-list: 404
+
+✅ z2u-game-search: 200 [HTML]
+
+
+
+=== ELDORADO ===
+❌ eldorado-html: 404
+
+❌ eldorado-next: 404
+
+❌ eldorado-search-page: 404
+
+
+=== PLAYERAUCTIONS ===
+❌ pa-valorant-page: 403
+
+❌ pa-search-page: 403
+
+
+=== GAMEFLIP ===
+✅ gameflip-search-page: 200 [HTML]
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1">
+    <title>Gameflip | Buy & Sell Games, Gift Cards & More - Gameflip</title>
+    <meta name="description" content="Your home for all things gaming, safely buy & sell games, digital collectibles
+
+❌ gameflip-api-listing: 404
+
+❌ gameflip-graphql: 404

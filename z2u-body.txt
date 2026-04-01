@@ -1,0 +1,85 @@
+<div id="jianchan" class="z2u en">
+    <div class="home">
+        <link rel="stylesheet" href="https://www.z2u.com/static/platform/css/newNav.css?v=261">
+
+<style>
+    .noResTips{
+        width: 100%;
+        background-color: #fff6ec;
+        border-radius: .3rem;
+        padding: 10px 10px;
+        text-align: center;
+        color: #f94032;
+        font-size: var(--zu-font-size-lg);
+        margin: 0 15px -10px 15px;
+    }
+    .noResTips a{
+        color: #f94032!important;
+        text-decoration: underline;
+    }
+    .noResTips a:hover{
+        text-decoration: none;
+    }
+
+    .linkMoreGameBtn{
+        border: 1px solid #ff3918;
+        padding: 2px 6px;
+        border-radius: 99rem;
+        line-height: 1;
+    }
+    .linkMoreGameBtn:hover, .linkMoreGameBtn:active, .linkMoreGameBtn:focus{
+        background-color: #ff3918;
+        color: #fff!important;
+    }
+
+    .menuInFlexStyle{
+        display: flex!important;
+        align-items: center!important;
+    }
+    .menuInFlexStyle .mLeftBox{
+        line-height: 1.2;
+    }
+    .menuInFlexStyle .mRightBox{
+        margin-left: auto;
+    }
+</style>
+
+<p id="back-to-top">
+    <a href="#top">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-back_top"></use>
+        </svg>
+    <span></span>
+    <!--<img width="50" src="https://www.z2u.com/static/platform/img/index/totop.png"/>-->
+</a>
+</p>
+<div class="header-bar-fix hidden">
+<header class="home_header en">
+    <input type="hidden" name="lang-prefix" value="">
+    <div class="container">
+        <div class="row ">
+                        <div class="col-md-12">
+                <div class="language_currency">
+                    <a href="javascript:void(0);" class="libox visible-xs kf-and-chat-phone-none">
+                        <img src="https://www.z2u.com/static/platform/img/index/livesupport.png" alt="">
+                    </a>
+                    <a href="javascript:void(0);" class="libox visible-xs kf-and-chat-phone-none">
+                        <img src="https://www.z2u.com/static/platform/img/index/contactus.png" alt="">
+                    </a>
+
+                                            <div class="libox" style="margin-top: 3px;">
+<!--                            <a class="ticket-just-web-show" href="https://www.z2u.com/support/contact">Commit Tickets</a>&nbsp;&nbsp;-->
+<!--                            <a href="https://www.z2u.com/faq/serviceList">My tickets</a>-->
+                        </div>
+
+
+                    <!-- Phone Search Button -->
+                    <button type="button" class="newPhoneSearchButton">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-sousuo"></use>
+                        </svg>
+                    </button>
+                    <!-- End -->
+
+                                        <a href="/register.html" class="libox">
+                        <!--<img src="https://www.z2u.com/static/platform/img/index/account.png"

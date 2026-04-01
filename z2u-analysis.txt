@@ -1,0 +1,136 @@
+=== SCRIPT 17 (17019 chars) ===
+
+                        $(document).ready(function() {
+                            var $selectOptions = $('.select-options');
+                            var $selectBtn = $('.select-btn');
+                            var isDropdownOpen = false;
+                            var body = $('body');
+
+                            $selectBtn.click(function(e) {
+                                e.stopPropagation();
+                                if (!isDropdownOpen) {
+                                    $selectOptions.slideDown(50);
+                                    isDropdownOpen = true;
+                                }else {
+                                    $selectOptions.slideUp(50);
+                                    isDropdownOpen = false;
+                                };
+
+           
+
+=== SCRIPT 19 (11684 chars) ===
+
+    function checkIsMobile() {
+        return IsPC() ? true : false;
+    }
+
+    //Close float
+    $(document).on('click', '.hover-picture .list-pic .close-this', function(){
+        $(this).parent().remove();
+        $.cookie('show_right_adver',2);
+    })
+
+    function ajaxload(data, state) {
+        $.ajax({
+            type: 'post',
+            url: "https://www.z2u.com/Platform/public/setinfo",
+            dataType: 'json',
+            data: data,
+            success: function (res) {
+                if (res.code == 1) {
+                    if (state == 1) {
+                        window.location.reload();
+                    } else {
+                        window.location.href = res.url;
+                    }
+                }
+            }
+        });
+    }
+
+    $(function () {
+   
+
+=== SCRIPT 22 (1769 chars) ===
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // 執行手機代碼
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 40) {
+                    $('.home_header_bottom').addClass('justShowOneRow');
+                    $('body').css('padding-top','45px');
+                } else {
+                    $('.home_header_bottom').removeClass('justShowOneRow');
+                    // $('body').css('padding-top','88px');
+                }
+            });
+        });
+    } else {
+        //PC
+        window.addEventListener('scroll', function(){
+            let t = $('body, html').scrollTop();   // BODY的滾動條距離
+            if(t>80){
+                $('.header-bar-fix').addClass(
+
+=== SCRIPT 24 (7800 chars) ===
+
+                        $(document).ready(function() {
+                            // 折叠面板
+                            // 初始时所有面板都是展开的
+                            $('.searchPageFilterSidebar .filterBox .boxHead').click(function() {
+                                var $filterBox = $(this).closest('.filterBox');
+                                var isCollapsed = $filterBox.hasClass('collapsed');
+
+                                // 切换collapsed类，并相应地调整.boxMain的高度
+                                $filterBox.toggleClass('collapsed');
+                                var $boxHead = $filterBox.find('.boxHead');
+                                var $boxMain = $filterBox.find('.boxMain');
+
+                                if (isCollapsed) {
+                                    // 如果之前是折叠的，则展开面板
+         
+
+=== SCRIPT 42 (15421 chars) ===
+
+    $(document).ready(function() {
+        // 手机筛选按钮
+        $('.ss-wrapper .phoneFilterBtn').on('click', function() {
+            var $slideItem = $('.searchPageFilterSidebar');
+            $slideItem.toggleClass('show');
+        });
+        $('.hideSidebarPanel').click(function (){
+            $('.searchPageFilterSidebar').removeClass('show');
+        })
+
+
+        // ----------------------- 搜索游戏 -----------------------
+
+        // 初始化Slick
+        function initSlick() {
+            $('.searchGameListWrapper').slick({
+                dots: true,
+                dotsClass: 'custom_paging',
+                infinite: false,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                customPaging: function (slider, i) {
+                    
+
+=== productContainer ===
+
+                                    <ul class="gameListUl search_result" style="border-bottom: 0;">
+                                    </ul>
+                                    <div class="viewMoreBtnBar hidden">
+                                        <a role="button" style="display: inline;" href="https://www.z2u.com/gamelist.html">View All</a>
+                                    </div>
+                                
+=== productListUl ===
+
+
+                                    
+=== search_product ===
+
+
+                                    

@@ -1,0 +1,33 @@
+✅ plati-search-api: 200 [HTML] - <?xml version="1.0" encoding="utf-8"?><search_result total="32" pagenum="1" pagesize="5" totalpages="7"><item id="2837390"><name><![CDATA[👊 VALORANT Аккаунт с ВОЙС ЧАТОМ + Полный доступ EU RU]]></nam
+
+✅ plati-search-json: 200 [HTML] - 
+<!doctype html>
+<html light-theme>
+<head>
+    <title>&#1055;&#1086;&#1080;&#1089;&#1082; &#1074; Plati.Market</title>
+    <meta name="robots" content="noindex">
+    <meta property="og:site_name
+
+❌ eldorado-api: 404
+
+❌ eldorado-api-v2: getaddrinfo ENOTFOUND api.eldorado.gg
+
+❌ eldorado-api-offers: 404
+
+❌ pa-search-api: 404
+
+❌ pa-ajax-search: 403
+
+❌ z2u-api-search: 404
+
+✅ z2u-search-html: 200 [HTML] - <!doctype html>
+<head>
+    <title>Search Results:  - Z2U.COM</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+<meta charset="
+
+❌ gameflip-api: 404
+
+❌ sellauth-html: 503
