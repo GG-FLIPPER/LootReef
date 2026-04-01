@@ -52,7 +52,7 @@ Type a query, hit search, and get thousands of results in ~20 seconds — all so
 
 <div align="center">
 
-[![Watch Demo](https://img.shields.io/badge/▶_Watch_Demo-Streamable-1DA1F2?style=for-the-badge&logo=streamable&logoColor=white)](https://streamable.com/dwtohv)
+[![Watch Demo](https://img.shields.io/badge/▶_Watch_Demo-Streamable-1DA1F2?style=for-the-badge&logo=streamable&logoColor=white)](https://jumpshare.com/share/C1C8Ov6G0Q6qj1LWaSYw)
 
 </div>
 
@@ -64,7 +64,7 @@ Type a query, hit search, and get thousands of results in ~20 seconds — all so
 
 ### Homepage
 
-[![Homepage](https://img.shields.io/badge/🏠_Homepage-Find_the_best_price_instantly-4285F4?style=for-the-badge)](docs/images/homepage.png)
+[![Homepage](https://img.shields.io/badge/🏠_Homepage-Find_the_best_price_instantly-4285F4?style=for-the-badge)](https://imgur.com/a/gtMRwil)
 
 > Clean landing page with search bar and list of supported platforms
 
@@ -72,7 +72,7 @@ Type a query, hit search, and get thousands of results in ~20 seconds — all so
 
 ### Search Results — "valorant account"
 
-[![Valorant Search](https://img.shields.io/badge/🎮_Valorant_Account-3,149_results_in_20s-7C3AED?style=for-the-badge)](docs/images/search-valorant.png)
+[![Valorant Search](https://img.shields.io/badge/🎮_Valorant_Account-3,149_results_in_20s-7C3AED?style=for-the-badge)](https://imgur.com/a/3wrw2sj)
 
 > Results across 8 platforms — sorted low → high — with Best Price badges
 
@@ -80,7 +80,7 @@ Type a query, hit search, and get thousands of results in ~20 seconds — all so
 
 ### Search Results — "wow gold"
 
-[![WoW Gold Search](https://img.shields.io/badge/⚔️_WoW_Gold-60_results_with_best_price-F59E0B?style=for-the-badge)](docs/images/search-wow-gold.png)
+[![WoW Gold Search](https://img.shields.io/badge/⚔️_WoW_Gold-60_results_with_best_price-F59E0B?style=for-the-badge)](https://imgur.com/a/RP9EXMR)
 
 > Platform-tagged cards with seller info and direct "View Deal" links
 
@@ -92,7 +92,7 @@ Type a query, hit search, and get thousands of results in ~20 seconds — all so
 
 <div align="center">
 
-[![Architecture](https://img.shields.io/badge/🏗_Architecture-View_Diagram-E34F26?style=for-the-badge)](docs/images/architecture.png)
+[![Architecture](https://img.shields.io/badge/🏗_Architecture-View_Diagram-E34F26?style=for-the-badge)](https://imgur.com/a/yfSgisi)
 
 </div>
 
@@ -134,10 +134,7 @@ React Frontend (:5173)
 | ![G2G](https://img.shields.io/badge/G2G-FF6600?style=flat-square) | Marketplace | [g2g.com](https://www.g2g.com) |
 | ![FunPay](https://img.shields.io/badge/FunPay-7B2BFC?style=flat-square) | Marketplace | [funpay.com](https://funpay.com) |
 | ![Eldorado.gg](https://img.shields.io/badge/Eldorado.gg-00C853?style=flat-square) | Marketplace | [eldorado.gg](https://www.eldorado.gg) |
-| ![PlayerAuctions](https://img.shields.io/badge/PlayerAuctions-1565C0?style=flat-square) | Marketplace | [playerauctions.com](https://www.playerauctions.com) |
-| ![Z2U](https://img.shields.io/badge/Z2U-FF4081?style=flat-square) | Marketplace | [z2u.com](https://www.z2u.com) |
 | ![Gameflip](https://img.shields.io/badge/Gameflip-00BCD4?style=flat-square) | Marketplace | [gameflip.com](https://gameflip.com) |
-| ![StewieShop](https://img.shields.io/badge/StewieShop-FF9800?style=flat-square) | Store | [stewieshop.com](https://stewieshop.com) |
 | ![Plati.market](https://img.shields.io/badge/Plati.market-4CAF50?style=flat-square) | Marketplace | [plati.market](https://plati.market) |
 
 ---
@@ -185,7 +182,7 @@ React Frontend (:5173)
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/pricescout.git
+git clone https://github.com/GG-FLIPPER/pricescout.git
 cd pricescout
 
 # Install backend dependencies
@@ -245,10 +242,7 @@ const results = await Promise.allSettled([
   scrapeG2G(query),
   scrapeFunPay(query),
   scrapeEldorado(query),
-  scrapePlayerAuctions(query),
-  scrapeZ2U(query),
   scrapeGameflip(query),
-  scrapeStewieShop(query),
   scrapePlatiMarket(query),
 ]);
 ```
@@ -433,7 +427,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 [![Star](https://img.shields.io/badge/⭐_Star_this_repo-if_it_helped_you-yellow?style=for-the-badge)](#)
 
-Made with ☕ and too many API calls.
+Made with 💖 and too many API calls.
 
 </div>
 ```
