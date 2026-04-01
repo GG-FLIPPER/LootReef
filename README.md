@@ -15,7 +15,7 @@ Compare prices for game keys, in-game currency, accounts & digital services acro
 
 <br />
 
-[![Homepage Screenshot](https://img.shields.io/badge/📸_Homepage-View_Screenshot-2ea44f?style=for-the-badge)](docs/images/homepage.png)
+[![Homepage Screenshot](https://img.shields.io/badge/📸_Homepage-View_Screenshot-2ea44f?style=for-the-badge)](https://imgur.com/a/gtMRwil)
 
 </div>
 
