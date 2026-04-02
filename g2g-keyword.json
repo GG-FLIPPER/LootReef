@@ -1,0 +1,230 @@
+{
+  "results": [
+    {
+      "brand_id": "lgc_game_39185",
+      "seo_term": "valorant-mobile",
+      "categories": [
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_path": "",
+          "service_id": "lgc_service_18",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "2948dd84-c78f-42cf-8e58-ef990c554902",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "90015a0f-3983-4953-8368-96ac181d9e92",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Valorant Mobile",
+      "score": 42
+    },
+    {
+      "brand_id": "lgc_game_27301",
+      "seo_term": "valorant",
+      "categories": [
+        {
+          "root_id": "63768a34-a4c6-4581-a570-547b08d5b795",
+          "cat_id": "63768a34-a4c6-4581-a570-547b08d5b795",
+          "cat_path": "",
+          "service_id": "651e2341-608b-4abb-9367-a522f76ff6fe",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "2948dd84-c78f-42cf-8e58-ef990c554902",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "90015a0f-3983-4953-8368-96ac181d9e92",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_path": "",
+          "service_id": "lgc_service_18",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "c508fb9f-a58e-4819-b815-c4684d8a2e70",
+          "cat_id": "c508fb9f-a58e-4819-b815-c4684d8a2e70",
+          "cat_path": "",
+          "service_id": "0765978e-3fdf-48b4-bed3-184823aa439e",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "ae26ef1b-7bb7-44f9-a065-7182d5f583b2",
+          "cat_id": "ae26ef1b-7bb7-44f9-a065-7182d5f583b2",
+          "cat_path": "",
+          "service_id": "a7daec99-0338-490f-ad91-ea70b317fefc",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "3e6f6590-9729-4f66-a8ff-2fbdbdb560de",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "8f88b6fd-93df-4a07-b8b0-7d90b152b81f",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Valorant",
+      "score": 32
+    },
+    {
+      "brand_id": "lgc_game_36366",
+      "seo_term": "valor-legends-idle-rpg",
+      "categories": [
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "2948dd84-c78f-42cf-8e58-ef990c554902",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "90015a0f-3983-4953-8368-96ac181d9e92",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Valor Legends: Idle RPG",
+      "score": 7
+    },
+    {
+      "brand_id": "lgc_game_6492",
+      "seo_term": "valor-global",
+      "categories": [
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Valor (Global)",
+      "score": 7
+    },
+    {
+      "brand_id": "f39bc614-c5dd-492b-9202-edbadd324df2",
+      "seo_term": "Star-Valor-PC-Steam",
+      "categories": [
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "3e6f6590-9729-4f66-a8ff-2fbdbdb560de",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "8f88b6fd-93df-4a07-b8b0-7d90b152b81f",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Star Valor PC - Steam",
+      "score": 6
+    },
+    {
+      "brand_id": "lgc_game_24498",
+      "seo_term": "garena-aov-arena-of-valor",
+      "categories": [
+        {
+          "root_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_path": "",
+          "service_id": "lgc_service_18",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Garena AOV - Arena of Valor",
+      "score": 6
+    },
+    {
+      "brand_id": "lgc_game_24473",
+      "seo_term": "arena-of-valor",
+      "categories": [
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "2948dd84-c78f-42cf-8e58-ef990c554902",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "90015a0f-3983-4953-8368-96ac181d9e92",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_id": "73f1f30c-e4a5-48de-929e-1c6232fbd66b",
+          "cat_path": "",
+          "service_id": "lgc_service_18",
+          "use_brand_seo_term": false
+        },
+        {
+          "root_id": "c508fb9f-a58e-4819-b815-c4684d8a2e70",
+          "cat_id": "c508fb9f-a58e-4819-b815-c4684d8a2e70",
+          "cat_path": "",
+          "service_id": "0765978e-3fdf-48b4-bed3-184823aa439e",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Arena of Valor",
+      "score": 5
+    },
+    {
+      "brand_id": "lgc_game_39026",
+      "seo_term": "valor-mortis",
+      "categories": [
+        {
+          "root_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_id": "5830014a-b974-45c6-9672-b51e83112fb7",
+          "cat_path": "",
+          "service_id": "f6a1aba5-473a-4044-836a-8968bbab16d7",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Valor Mortis",
+      "score": 5
+    },
+    {
+      "brand_id": "517719da-cf08-4b4c-b69c-7aa42dc1fd62",
+      "seo_term": "honor-of-kings-tokens",
+      "categories": [
+        {
+          "root_id": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "cat_id": "3e6f6590-9729-4f66-a8ff-2fbdbdb560de",
+          "cat_path": "d3cf5b03-b80b-4f7e-bf97-ed359903de0b",
+          "service_id": "8f88b6fd-93df-4a07-b8b0-7d90b152b81f",
+          "use_brand_seo_term": false
+        }
+      ],
+      "default_name": "Honor of Kings Tokens",
+      "score": 3
+    }
+  ]
+}

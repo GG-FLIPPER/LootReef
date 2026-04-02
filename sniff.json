@@ -1,0 +1,30 @@
+{
+  "eldorado": [
+    "https://www.eldorado.gg/api/appConstants",
+    "https://www.eldorado.gg/api/library?locale=en-US",
+    "https://www.eldorado.gg/api/loyalty/bonusDaysEventEndDate",
+    "https://www.eldorado.gg/api/flexibleOffers?pageSize=1&category=Account&gameId=16",
+    "https://www.eldorado.gg/api/flexibleOffers?pageSize=1&category=Account&gameId=32",
+    "https://www.eldorado.gg/api/flexibleOffers?pageSize=1&category=Account&gameId=25",
+    "https://www.eldorado.gg/api/predefinedOffers/game?pageSize=1&category=Currency&gameId=10",
+    "https://region1.analytics.google.com/g/collect?v=2&tid=G-NMQG6CG3T7&gtm=45je63p1h1v877227170za200zb9231369063zd9231369063&_p=1774883117103&_gaz=1&gcd=13l3lPl2l1l1&npa=1&dma_cps=a&dma=1&cid=1634875310.1774883117&ecid=2013873335&ul=en-us&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&ec_mode=a&_eu=AAAAAGA&_s=1&tag_exp=0~115938466~115938469~117484252~118128922&sid=1774883117&sct=1&seg=0&dl=https%3A%2F%2Fwww.eldorado.gg%2F404&dt=Safest%20Gold%20and%20Accounts%20Marketplace%20for%20Gamers%20%7C%20Eldorado.gg&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2468",
+    "https://region1.analytics.google.com/g/collect?v=2&tid=G-5FTLBY1CZ4&gtm=45je63p1v9235646684z89231369063za20gzb9231369063zd9231369063&_p=1774883117103&_gaz=1&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&cid=1634875310.1774883117&ul=en-us&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=0~115938466~115938468~116133313~117384406~117484252&sid=1774883117&sct=1&seg=0&dl=https%3A%2F%2Fwww.eldorado.gg%2F404&dt=Safest%20Gold%20and%20Accounts%20Marketplace%20for%20Gamers%20%7C%20Eldorado.gg&en=page_view&_fv=1&_ss=1&tfd=2565",
+    "https://www.google.com/ccm/form-data/743836695?gtm=45be63p1v9173605298za200zb9231369063zd9231369063xec&gcd=13l3l3l2l1l1&dma_cps=a&dma=1&tag_exp=0~115938466~115938469~116991817~117484252&npa=1&frm=0&pscdl=noapi&auid=878698860.1774883117&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&em=tv.1"
+  ],
+  "pa": [
+    "https://www.google.com/ccm/collect?frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.playerauctions.com%2Fsearch%2F&scrsrc=www.googletagmanager.com&rnd=380901820.1774883122&dt=404%20Error&auid=1054601266.1774883122&navt=n&npa=1&ep.ads_data_redaction=0&gtm=45He63p1v71915218za200zd71915218xea&gcd=13l3l3l2l1l1&dma_cps=a&dma=1&tag_exp=0~115616986~115938465~115938469~117484252&apve=1&apvf=f&apvc=1&tft=1774883122153&tfd=420",
+    "https://www.google.com/ccm/collect?frm=0&en=page_view&dl=https%3A%2F%2Fwww.playerauctions.com%2Fsearch%2F&scrsrc=www.googletagmanager.com&rnd=380901820.1774883122&dt=404%20Error&auid=1054601266.1774883122&navt=n&npa=1&gtm=45be63p1v9170669120z871915218za20gzb71915218zd71915218xec&gcd=13l3l3l2l1l1&dma_cps=a&dma=1&tag_exp=0~115616986~115938465~115938468~117484252&apve=1&apvf=f&apvc=0&tids=AW-1041233581&tid=AW-1041233581&tft=1774883122321&tfd=589",
+    "https://region1.analytics.google.com/g/collect?v=2&tid=G-V0RV18SNGD&gtm=45je63p1v883473735z871915218za20gzb71915218zd71915218&_p=1774883121932&_gaz=1&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&cid=1817197508.1774883122&ecid=1505121990&ul=en-us&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&ec_mode=a&_eu=AAAAAGA&gaf=2&_s=1&tag_exp=0~115616985~115938465~115938468~116991816~117266400~117484252&sid=1774883122&sct=1&seg=0&dl=https%3A%2F%2Fwww.playerauctions.com%2Fsearch%2F%3Fq%3Dvalorant%2Baccount&dt=404%20Error&en=page_view&_fv=1&_nsi=1&_ss=1&ep.content_group_hostname=www.playerauctions.com&ep.content_group_pagetype=Other&tfd=527"
+  ],
+  "gf": [
+    "https://production-gameflip.fingershock.com/api/v1/account/me/profile",
+    "https://gameflip.com/api/v1/track/match",
+    "https://production-gameflip.fingershock.com/api/v1/listing?limit=10&start=0&sort=_score%3Adesc%2Cseller_score%3Adesc%2Cseller_online_until%3Adesc&_collapse_on=owner&_collapse_more_size=4&cognitoidp_client=marketplace&v2=true",
+    "https://gameflip.com/api/v1/track/match",
+    "https://production-gameflip.fingershock.com/api/v1/listing?limit=8&tags=_seller_class%3A%20featured&status=onsale&cognitoidp_client=marketplace&v2=true",
+    "https://production-gameflip.fingershock.com/api/v1/rating_summary?ref_type=exchange&seller=us-east-1:8a0f6954-4a6b-47a7-8253-8c7161f01f9e",
+    "https://production-gameflip.fingershock.com/api/v1/rating_summary?ref_type=exchange&seller=us-east-1:70d51358-9d13-4510-8089-90e57045065c",
+    "https://production-gameflip.fingershock.com/api/v1/rating_summary?ref_type=exchange&seller=us-east-1:fb0f107c-54fe-490c-91d4-a33413085bee",
+    "https://production-gameflip.fingershock.com/api/v1/rating_summary?ref_type=exchange&seller=us-east-1:36f8ade6-21fd-4cd4-afd7-a0bb471c19dc"
+  ]
+}

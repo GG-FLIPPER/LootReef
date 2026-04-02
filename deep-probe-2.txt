@@ -1,0 +1,14 @@
+=== GAMEFLIP ===
+GF Script 1: 
+      var mmapiws = window.__mmapiws = window.__mmapiws || {};
+      mmapiws.accountId = "115108";
+    
+Gameflip item links: [{"text":"","href":"/item/rosetti-tualetti/b2ae7728-34e8-471c-831d-a3ab585ed982"},{"text":"Rosetti Tualetti","href":"/item/rosetti-tualetti/b2ae7728-34e8-471c-831d-a3ab585ed982"},{"text":"","href":"/item/hydra-dragon-cannelloni-2b-s/b46235b7-1fe2-41bb-91ac-ede00ac274cb"},{"text":"Hydra Dragon Cannelloni 2B/s","href":"/item/hydra-dragon-cannelloni-2b-s/b46235b7-1fe2-41bb-91ac-ede00ac274cb"},{"text":"","href":"/item/wood-brick-metal-100k-each/bde87782-d141-4404-92d4-df89c276cfb7"}]
+
+=== Z2U JS Source ===
+Z2U Script 17 AJAX URLs: url: "/searchlist.html", url: "https://www.z2u.com/searchProduct"
+Z2U Script 19 AJAX URLs: url: "https://www.z2u.com/Platform/public/setinfo", url: "https://www.z2u.com/Platform/public/setinfo", url: "/searchlist.html", url: "https://www.z2u.com/searchProduct"
+Z2U Script 42 AJAX URLs: url: 'https://www.z2u.com/searchGame', url: 'https://www.z2u.com/searchProductList'
+
+=== ELDORADO ===
+Eldorado valorant links: []
