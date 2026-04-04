@@ -48,7 +48,8 @@ async function scrapeFunPay(query) {
       const title = $(el).find('.tc-desc-text').text().trim() || $(el).attr('title') || '';
       const priceText = $(el).find('.tc-price').text().trim();
       const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
-      const link = $(el).attr('href') || '';
+      const rawLink = $(el).attr('href') || '';
+      const link = rawLink.replace(/[\n\r\t\s]+/g, '');
       const seller = $(el).find('.media-user-name').text().trim();
 
       if (title && link) {

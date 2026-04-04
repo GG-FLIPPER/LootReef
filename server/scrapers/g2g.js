@@ -37,22 +37,28 @@ async function scrapeG2G(query) {
     let finalSeoTerm = baseSeoTerm + serviceSuffix;
 
 
-    // 4. Fetch the listings
-    const sRes = await axios.get('https://sls.g2g.com/offer/search', {
-      params: { 
-        seo_term: finalSeoTerm, 
-        sort: 'lowest_price', 
-        page_size: 48, 
-        currency: 'USD',
-        country: 'US',
-        include_localization: 0,
-        v: 'v2' 
-      },
-      headers,
-      timeout: 15000
-    });
-    
-    const items = sRes.data?.payload?.results || [];
+    // 4. Fetch the listings - Try with suffix first, then without
+    let items = [];
+    try {
+      const sRes = await axios.get('https://sls.g2g.com/offer/search', {
+        params: { seo_term: finalSeoTerm, sort: 'lowest_price', page_size: 48, currency: 'USD', country: 'US', include_localization: 0, v: 'v2' },
+        headers,
+        timeout: 10000
+      });
+      items = sRes.data?.payload?.results || [];
+    } catch (e) {
+      if (e.response && e.response.status === 404) {
+        // Fallback to base term
+        const fbRes = await axios.get('https://sls.g2g.com/offer/search', {
+          params: { seo_term: baseSeoTerm, sort: 'lowest_price', page_size: 48, currency: 'USD', country: 'US', include_localization: 0, v: 'v2' },
+          headers,
+          timeout: 10000
+        });
+        items = fbRes.data?.payload?.results || [];
+      } else {
+        throw e;
+      }
+    }
     
     // 5. Map results
     return items.map(i => ({
@@ -61,7 +67,7 @@ async function scrapeG2G(query) {
       price: parseFloat(i.display_price) || null,
       currency: i.display_currency || 'USD',
       url: `https://www.g2g.com/offer/${i.offer_id}`,
-      seller_rating: i.seller_name || null // Seller name instead of raw rating value string
+      seller_rating: i.seller_name || null
     }));
 
   } catch (e) {

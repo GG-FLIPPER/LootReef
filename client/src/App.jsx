@@ -38,7 +38,7 @@ function App() {
 
     if (min !== null || max !== null || hideNullPrices) {
       items = items.filter((r) => {
-        if (r.price == null) return !hideNullPrices;
+        if (r.price == null || (hideNullPrices && r.price === 0)) return !hideNullPrices;
         if (min !== null && r.price < min) return false;
         if (max !== null && r.price > max) return false;
         return true;

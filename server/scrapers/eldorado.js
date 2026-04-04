@@ -50,12 +50,17 @@ async function scrapeEldorado(query) {
       
       const offer = item.offer;
       
+      let prefix = 'oi';
+      if (category === 'Account') prefix = 'oa';
+      else if (category === 'Currency') prefix = 'og';
+      else if (category === 'RequestedBoosting') prefix = 'ob';
+
       results.push({
         platform: 'Eldorado.gg',
         title: offer.offerTitle,
         price: offer.pricePerUnitInUSD ? offer.pricePerUnitInUSD.amount : (offer.pricePerUnit ? offer.pricePerUnit.amount : null),
         currency: 'USD',
-        url: offer.gameSeoAlias ? `https://www.eldorado.gg/${offer.gameSeoAlias}/o/${offer.id}` : `https://www.eldorado.gg/`,
+        url: offer.gameSeoAlias ? `https://www.eldorado.gg/${offer.gameSeoAlias}/${prefix}/${offer.id}` : `https://www.eldorado.gg/`,
         seller_rating: item.userOrderInfo?.feedbackScore ? `${Math.round(item.userOrderInfo.feedbackScore)}%` : null
       });
     }
