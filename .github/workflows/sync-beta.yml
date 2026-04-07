@@ -1,0 +1,21 @@
+name: Sync beta with main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Reset beta to main
+        run: |
+          git checkout beta
+          git reset --hard origin/main
+          git push --force origin beta
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
