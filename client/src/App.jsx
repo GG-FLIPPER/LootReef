@@ -141,7 +141,7 @@ function App() {
               </svg>
             </div>
             <h1 className="text-xl font-bold text-text">
-              Price<span className="text-primary">Scout</span>
+              Loot<span className="text-primary">Reef</span>
             </h1>
           </div>
           <div className="hidden sm:flex items-center gap-1 text-xs text-text-secondary">
@@ -235,7 +235,7 @@ function App() {
       {/* Footer */}
       <footer className="border-t border-border mt-16">
         <div className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-text-secondary">
-          PriceScout compares prices across third-party marketplaces. We are not affiliated with any platform listed.
+          LootReef compares prices across third-party marketplaces. We are not affiliated with any platform listed.
         </div>
       </footer>
     </div>

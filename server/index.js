@@ -14,14 +14,14 @@ app.get('/api/search', async (req, res) => {
   const query = parseItemName(raw);
   if (!query) return res.json({ results: [] });
 
-  console.log(`[PriceScout] Searching: "${query}"`);
+  console.log(`[LootReef] Searching: "${query}"`);
   const startTime = Date.now();
 
   const results = await scrapeAll(query);
   results.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log(`[PriceScout] Found ${results.length} results in ${elapsed}s`);
+  console.log(`[LootReef] Found ${results.length} results in ${elapsed}s`);
 
   res.json({ results, elapsed: parseFloat(elapsed) });
 });
@@ -43,4 +43,4 @@ app.get('/api/shorten', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`PriceScout API running on port ${PORT}`));
+app.listen(PORT, () => console.log(`LootReef API running on port ${PORT}`));

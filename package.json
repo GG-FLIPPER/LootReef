@@ -1,7 +1,7 @@
 {
-  "name": "pricescoutsite",
+  "name": "lootreefsite",
   "version": "1.0.0",
-  "description": "PriceScout — Compare digital game prices across marketplaces",
+  "description": "LootReef — Compare digital game prices across marketplaces",
   "main": "server/index.js",
   "scripts": {
     "server": "node server/index.js",

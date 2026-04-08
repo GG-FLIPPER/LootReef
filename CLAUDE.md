@@ -1,7 +1,7 @@
-# PriceScout — Master Build Prompt
+# LootReef — Master Build Prompt
 
 ## What You Are Building
-PriceScout is a web app that compares prices for digital goods (game keys, in-game currency, game accounts, digital services) across grey market gaming marketplaces in real time.
+LootReef is a web app that compares prices for digital goods (game keys, in-game currency, game accounts, digital services) across grey market gaming marketplaces in real time.
 
 ## Tech Stack
 - **Frontend:** React + Tailwind CSS (clean, minimal, white/blue design)
@@ -185,7 +185,7 @@ app.get('/api/search', async (req, res) => {
   res.json({ results });
 });
 
-app.listen(3001, () => console.log('PriceScout API running on port 3001'));
+app.listen(3001, () => console.log('LootReef API running on port 3001'));
 ```
 
 ```javascript
@@ -240,7 +240,7 @@ module.exports = { scrapeAll };
 
 ## File Structure
 ```
-/pricescout
+/lootreef
   /client
     src/
       App.jsx

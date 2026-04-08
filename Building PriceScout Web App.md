@@ -4,7 +4,7 @@ Note: _This is purely the output of the chat conversation and does not contain a
 
 ### User Input
 
-Read CLAUDE.md and build the full PriceScout web app. Start with server/utils/fetchHtml.js, then scrapers one by one, then the API, then the React frontend.
+Read CLAUDE.md and build the full LootReef web app. Start with server/utils/fetchHtml.js, then scrapers one by one, then the API, then the React frontend.
 
 ### User Input
 
@@ -18,9 +18,9 @@ Continue
 
 Let me start by reading the CLAUDE.md file and understanding the project structure.
 
-*Viewed [CLAUDE.md](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/CLAUDE.md) *
+*Viewed [CLAUDE.md](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/CLAUDE.md) *
 
-*Listed directory [pricescoutsite](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite) *
+*Listed directory [lootreefsite](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite) *
 
 ### Planner Response
 
@@ -138,9 +138,9 @@ Good. Now let me install Tailwind CSS v4 in the client directory and set up the 
 
 Let me check the current vite config and client structure:
 
-*Listed directory [client](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/client) *
+*Listed directory [client](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/client) *
 
-*Viewed [vite.config.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/client/vite.config.js) *
+*Viewed [vite.config.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/client/vite.config.js) *
 
 ### Planner Response
 
@@ -170,13 +170,13 @@ Now let me update the HTML and create all React components:
 
 All files created. Now let me update the root `package.json` with convenience scripts, clean up the default Vite files, and then start both servers:
 
-*Viewed [package.json](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/package.json) *
+*Viewed [package.json](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/package.json) *
 
-*Listed directory [src](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/client/src) *
+*Listed directory [src](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/client/src) *
 
 *Edited relevant file*
 
-*User accepted the command `Remove-Item "c:\Users\GG FLIPPER\Desktop\Everything\PriceScout\pricescoutsite\client\src\App.css" -Force`*
+*User accepted the command `Remove-Item "c:\Users\GG FLIPPER\Desktop\Everything\LootReef\lootreefsite\client\src\App.css" -Force`*
 
 ### User Input
 
@@ -244,7 +244,7 @@ The subagent reported success but I don't see any screenshot files listed in its
 
 Let me verify the screenshot to confirm the app looks correct:
 
-*Viewed [pricescout_home_page_1774722985618.png](file:///C:/Users/GG%20FLIPPER/.gemini/antigravity/brain/251f3b2e-f120-445e-b9b2-addb728ef4a4/pricescout_home_page_1774722985618.png) *
+*Viewed [lootreef_home_page_1774722985618.png](file:///C:/Users/GG%20FLIPPER/.gemini/antigravity/brain/251f3b2e-f120-445e-b9b2-addb728ef4a4/lootreef_home_page_1774722985618.png) *
 
 ### Planner Response
 
@@ -254,7 +254,7 @@ The app is working perfectly. Now let me create a walkthrough artifact summarizi
 
 ### Planner Response
 
-**PriceScout is fully built and running.** Here's the summary:
+**LootReef is fully built and running.** Here's the summary:
 
 ### ✅ What's done
 
@@ -307,7 +307,7 @@ This skips any result where title is purely numeric like "99999".
 
 Fix all four issues in plati.js only, don't touch other files.
 
-*Viewed [plati.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/scrapers/plati.js) *
+*Viewed [plati.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/scrapers/plati.js) *
 
 *Edited relevant file*
 
@@ -315,7 +315,7 @@ Fix all four issues in plati.js only, don't touch other files.
 
 Continue
 
-*Viewed [plati.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/scrapers/plati.js) *
+*Viewed [plati.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/scrapers/plati.js) *
 
 ### Planner Response
 
@@ -351,7 +351,7 @@ theres definetely a bug somewhere sicne i searched for valorant account and no r
 
 Continue
 
-*Viewed [parser.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/utils/parser.js) *
+*Viewed [parser.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/utils/parser.js) *
 
 *Checked command status*
 
@@ -361,9 +361,9 @@ Continue
 
 *Checked command status*
 
-*Viewed [fetchHtml.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/utils/fetchHtml.js) *
+*Viewed [fetchHtml.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/utils/fetchHtml.js) *
 
-*Viewed [index.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/scrapers/index.js) *
+*Viewed [index.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/scrapers/index.js) *
 
 *Edited relevant file*
 
@@ -437,7 +437,7 @@ continue
 
 *Checked command status*
 
-*Listed directory [pricescoutsite](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite) *
+*Listed directory [lootreefsite](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite) *
 
 *Grep searched codebase*
 
@@ -479,7 +479,7 @@ We have two options:
 1. **The Specific URL Route:** Instead of trying to brute-force a global `?query=` string, we can update the backend to map specific keywords to their exact marketplace URL routes (e.g., if query is "valorant account", route FunPay to `funpay.com/lots/114/`, G2G to `g2g.com/categories/valorant-accounts`, etc.).
 2. **Reverse Engineer Internal APIs:** Instead of grabbing the HTML and using Cheerio selectors, we could rewrite the scrapers to ping the undocumented JSON APIs that these platforms use in their network tabs, entirely bypassing HTML parsing. 
 
-Which path makes the most sense to you for the scope of PriceScout?
+Which path makes the most sense to you for the scope of LootReef?
 
 ### User Input
 
@@ -557,7 +557,7 @@ Continue
 
 *Checked command status*
 
-*Viewed [g2g-keyword.json](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/g2g-keyword.json) *
+*Viewed [g2g-keyword.json](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/g2g-keyword.json) *
 
 *Edited relevant file*
 
@@ -649,7 +649,7 @@ Proceed with G2G first. Go.
 
 *Edited relevant file*
 
-*Viewed [g2g.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/scrapers/g2g.js) *
+*Viewed [g2g.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/scrapers/g2g.js) *
 
 *Edited relevant file*
 
@@ -701,7 +701,7 @@ Continue
 
 *Edited relevant file*
 
-*Viewed [funpay.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/PriceScout/pricescoutsite/server/scrapers/funpay.js) *
+*Viewed [funpay.js](file:///c:/Users/GG%20FLIPPER/Desktop/Everything/LootReef/lootreefsite/server/scrapers/funpay.js) *
 
 ### User Input
 

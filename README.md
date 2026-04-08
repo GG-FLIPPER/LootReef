@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔍 PriceScout
+# 🔍 LootReef
 
 **Find the best price instantly.**
 
@@ -42,7 +42,7 @@ Compare prices for game keys, in-game currency, accounts & digital services acro
 
 ## 💡 About
 
-**PriceScout** is a real-time price comparison engine for digital gaming goods. Instead of manually checking multiple marketplaces for the cheapest Valorant account, WoW gold, CS2 skins, or game keys — PriceScout searches **8 platforms simultaneously** and presents results sorted by price in a clean, unified interface.
+**LootReef** is a real-time price comparison engine for digital gaming goods. Instead of manually checking multiple marketplaces for the cheapest Valorant account, WoW gold, CS2 skins, or game keys — LootReef searches **8 platforms simultaneously** and presents results sorted by price in a clean, unified interface.
 
 Type a query, hit search, and get thousands of results in ~20 seconds — all sorted from cheapest to most expensive, with direct links to each deal.
 
@@ -182,8 +182,8 @@ React Frontend (:5173)
 
 ```bash
 # Clone the repository
-git clone https://github.com/GG-FLIPPER/pricescout.git
-cd pricescout
+git clone https://github.com/GG-FLIPPER/lootreef.git
+cd lootreef
 
 # Install backend dependencies
 cd server
@@ -277,7 +277,7 @@ The React frontend renders results as responsive cards with platform badges, pri
 ## 📁 Project Structure
 
 ```
-pricescout/
+lootreef/
 ├── client/                  # React frontend (Vite)
 │   ├── src/
 │   │   ├── components/      # SearchBar, ResultCard, Header, etc.
@@ -413,7 +413,7 @@ module.exports = { scrapeNewPlatform };
 
 ## ⚠️ Disclaimer
 
-> **PriceScout is a price comparison tool.** It aggregates publicly available listing data from third-party marketplaces. We are **not affiliated with any platform listed**. All trademarks, product names, and logos belong to their respective owners. Use responsibly and in accordance with each platform's Terms of Service.
+> **LootReef is a price comparison tool.** It aggregates publicly available listing data from third-party marketplaces. We are **not affiliated with any platform listed**. All trademarks, product names, and logos belong to their respective owners. Use responsibly and in accordance with each platform's Terms of Service.
 
 ---
 
