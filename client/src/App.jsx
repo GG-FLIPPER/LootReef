@@ -258,8 +258,8 @@ function App() {
             </div>
           )}
           <SearchBar onSearch={handleSearch} loading={loading} compact={searched} />
-          <RecentSearches key={homeKey} onSearch={handleChipSearch} refreshRef={recentSearchesRef} hide={searched} />
-          <BookmarksSection key={`bm-${homeKey}`} hide={searched} />
+          <RecentSearches onSearch={handleChipSearch} refreshRef={recentSearchesRef} hide={searched} />
+          <BookmarksSection hide={searched} />
         </div>
 
 

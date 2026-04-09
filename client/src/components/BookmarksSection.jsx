@@ -14,6 +14,67 @@ const PLATFORM_COLORS = {
   'Plati.market': 'badge-plati',
 };
 
+function BookmarkCard({ offer, convert, currency, handleDelete }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleViewDeal = async (e) => {
+    e.preventDefault();
+    if (isLoading || !offer.url) return;
+    setIsLoading(true);
+
+    try {
+      const res = await fetch(`http://localhost:3001/api/shorten?url=${encodeURIComponent(offer.url)}`);
+      const data = await res.json();
+      window.open(data.short, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      window.open(offer.url, '_blank', 'noopener,noreferrer');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const badgeClass = PLATFORM_COLORS[offer.platform] || 'bg-gray-500 text-white';
+
+  return (
+    <div className="relative bg-white border border-border rounded-xl p-3 flex flex-col hover:border-primary/30 transition-colors shadow-sm group">
+      <button 
+        onClick={() => handleDelete(offer.url)}
+        className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
+        title="Remove saved deal"
+      >
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <div className="flex items-center gap-2 mb-2 pr-6">
+        <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${badgeClass}`}>
+          {offer.platform}
+        </span>
+        <span className="text-xs font-semibold text-text truncate">
+          {offer.price != null ? convert(offer.price) : 'N/A'} {offer.price != null ? currency : ''}
+        </span>
+      </div>
+      
+      <h4 className="text-xs text-text-secondary leading-snug line-clamp-2 mb-3">
+        {offer.title}
+      </h4>
+      
+      <a 
+        href={offer.url || '#'}
+        onClick={handleViewDeal}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`mt-auto inline-flex items-center justify-center w-full py-1.5 text-xs font-medium rounded-lg transition-colors border border-border ${
+          isLoading ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-surface-alt hover:bg-border text-text'
+        }`}
+      >
+        {isLoading ? '...' : 'View Deal'}
+      </a>
+    </div>
+  );
+}
+
 function BookmarksSection({ hide }) {
   const { user } = useAuth();
   const { convert, currency } = useCurrency();
@@ -58,44 +119,15 @@ function BookmarksSection({ hide }) {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {bookmarks.map((b) => {
-          const offer = b.offer;
-          if (!offer) return null;
-          const badgeClass = PLATFORM_COLORS[offer.platform] || 'bg-gray-500 text-white';
-
+          if (!b.offer) return null;
           return (
-            <div key={offer.url} className="relative bg-white border border-border rounded-xl p-3 flex flex-col hover:border-primary/30 transition-colors shadow-sm group">
-              <button 
-                onClick={() => handleDelete(offer.url)}
-                className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
-                title="Remove saved deal"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              
-              <div className="flex items-center gap-2 mb-2 pr-6">
-                <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${badgeClass}`}>
-                  {offer.platform}
-                </span>
-                <span className="text-xs font-semibold text-text truncate">
-                  {offer.price != null ? convert(offer.price) : 'N/A'} {offer.price != null ? currency : ''}
-                </span>
-              </div>
-              
-              <h4 className="text-xs text-text-secondary leading-snug line-clamp-2 mb-3">
-                {offer.title}
-              </h4>
-              
-              <a 
-                href={offer.url || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center justify-center w-full py-1.5 bg-surface-alt hover:bg-border text-text text-xs font-medium rounded-lg transition-colors border border-border"
-              >
-                View Deal
-              </a>
-            </div>
+            <BookmarkCard 
+              key={b.offer.url} 
+              offer={b.offer} 
+              convert={convert} 
+              currency={currency} 
+              handleDelete={handleDelete} 
+            />
           );
         })}
       </div>
