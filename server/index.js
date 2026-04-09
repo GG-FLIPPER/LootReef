@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -29,16 +30,16 @@ app.get('/api/search', async (req, res) => {
 // ouo.io link shortening endpoint
 app.get('/api/shorten', async (req, res) => {
   const destination = req.query.url;
-  if (!destination) return res.json({ short: null });
+  if (!destination) return res.status(400).send('URL is required');
 
   try {
-    const response = await axios.get(`https://ouo.io/api/DqcUwvlx?s=${encodeURIComponent(destination)}`, {
+    const apiKey = process.env.OUO_API_KEY;
+    const response = await axios.get(`https://ouo.io/api/${apiKey}?s=${encodeURIComponent(destination)}`, {
       timeout: 3000
     });
-    res.json({ short: response.data || null });
+    res.json({ short: response.data.trim() });
   } catch {
-    // Fall back to direct link if ouo.io fails or times out
-    res.json({ short: null });
+    res.json({ short: destination });
   }
 });
 

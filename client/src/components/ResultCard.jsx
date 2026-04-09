@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useCurrency } from '../CurrencyContext';
+import { useAuth } from '../AuthContext';
+import { saveBookmark, removeBookmark, isBookmarked } from '../bookmarks';
 
 const PLATFORM_COLORS = {
   'G2G': 'badge-g2g',
@@ -14,35 +16,50 @@ const PLATFORM_COLORS = {
 
 function ResultCard({ result, index, isCheapest }) {
   const { convert, currency } = useCurrency();
-  const [shortUrl, setShortUrl] = useState(null);
-  const [linkReady, setLinkReady] = useState(false);
+  const { user } = useAuth();
 
-  // Asynchronously shorten the URL via ouo.io
+  const [isLoading, setIsLoading] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
+
   useEffect(() => {
-    if (!result.url) return;
-    setLinkReady(false);
+    let mounted = true;
+    if (result.url) {
+      isBookmarked(result.url, user).then((status) => {
+        if (mounted) setBookmarked(status);
+      });
+    }
+    return () => { mounted = false; };
+  }, [result.url, user]);
 
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 3000);
+  const handleBookmarkToggle = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (bookmarked) {
+      setBookmarked(false);
+      await removeBookmark(result.url, user);
+    } else {
+      setBookmarked(true);
+      await saveBookmark(result, user);
+    }
+    window.dispatchEvent(new Event('bookmarksUpdated'));
+  };
 
-    fetch(`/api/shorten?url=${encodeURIComponent(result.url)}`, { signal: controller.signal })
-      .then(res => res.json())
-      .then(data => {
-        if (data.short) setShortUrl(data.short);
-        setLinkReady(true);
-      })
-      .catch(() => {
-        setLinkReady(true); // fall back to direct link
-      })
-      .finally(() => clearTimeout(timer));
+  const handleViewDeal = async (e) => {
+    e.preventDefault();
+    if (isLoading || !result.url) return;
+    setIsLoading(true);
 
-    return () => {
-      controller.abort();
-      clearTimeout(timer);
-    };
-  }, [result.url]);
+    try {
+      const res = await fetch(`http://localhost:3001/api/shorten?url=${encodeURIComponent(result.url)}`);
+      const data = await res.json();
+      window.open(data.short, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      window.open(result.url, '_blank', 'noopener,noreferrer');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  const href = shortUrl || result.url;
   const badgeClass = PLATFORM_COLORS[result.platform] || 'bg-gray-500 text-white';
   const delay = Math.min(index * 60, 600);
 
@@ -60,8 +77,24 @@ function ResultCard({ result, index, isCheapest }) {
         </div>
       )}
 
+      {/* Bookmark Button */}
+      <button 
+        onClick={handleBookmarkToggle}
+        className="absolute top-4 right-4 text-gray-300 hover:text-red-500 transition-colors z-10 focus:outline-none"
+        title={bookmarked ? "Remove bookmark" : "Save deal"}
+      >
+        <svg 
+          className={`w-5 h-5 transition-transform ${bookmarked ? 'text-red-500 scale-110' : ''}`} 
+          fill={bookmarked ? "currentColor" : "none"} 
+          stroke={bookmarked ? "none" : "currentColor"} 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </button>
+
       {/* Top row: platform badge + rating */}
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3 pr-6">
         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${badgeClass}`}>
           {result.platform}
         </span>
@@ -97,19 +130,19 @@ function ResultCard({ result, index, isCheapest }) {
 
         <a
           id={`view-deal-${index}`}
-          href={linkReady ? href : '#'}
-          onClick={e => { if (!linkReady) e.preventDefault(); }}
+          href={result.url || '#'}
+          onClick={handleViewDeal}
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-            !linkReady ? 'bg-gray-400 text-white cursor-not-allowed opacity-70' :
+            isLoading ? 'bg-gray-400 text-white cursor-not-allowed opacity-70' :
             isCheapest
               ? 'bg-accent-green text-white hover:bg-green-700 active:scale-95'
               : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
           }`}
         >
-          {linkReady ? 'View Deal' : 'Wait...'}
-          {linkReady && (
+          {isLoading ? '...' : 'View Deal'}
+          {!isLoading && (
             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>

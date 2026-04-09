@@ -1,17 +1,42 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import ResultsGrid from './components/ResultsGrid';
 import FilterBar from './components/FilterBar';
 import FilterDrawer from './components/FilterDrawer';
 import CurrencySelector from './components/CurrencySelector';
+import AuthModal from './components/AuthModal';
+import RecentSearches from './components/RecentSearches';
+import BookmarksSection from './components/BookmarksSection';
+import { useAuth } from './AuthContext';
+import { saveSearch } from './searchHistory';
+
 
 function App() {
+  const { user, profile, signOut } = useAuth();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
   const [elapsed, setElapsed] = useState(null);
   const [query, setQuery] = useState('');
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [homeKey, setHomeKey] = useState(0);
+
+  // Logo nav reset
+  const goHome = useCallback(() => {
+    setSearched(false);
+    setQuery('');
+    setResults([]);
+    setElapsed(null);
+    setSortMode('price-asc');
+    setPlatformFilters({});
+    setPriceMin('');
+    setPriceMax('');
+    setHomeKey(prev => prev + 1);
+  }, []);
+
+  // Ref to refresh recent searches after a search is saved
+  const recentSearchesRef = useRef(null);
 
   // Filter & sort state
   const [sortMode, setSortMode] = useState('price-asc');
@@ -20,6 +45,7 @@ function App() {
   const [priceMax, setPriceMax] = useState('');
   const [hideNullPrices, setHideNullPrices] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
+
 
   // Derive unique platforms from actual results
   const platforms = useMemo(() => {
@@ -72,7 +98,45 @@ function App() {
 
   const handleSearch = useCallback(async (searchQuery) => {
     if (!searchQuery.trim()) return;
-    setQuery(searchQuery.trim());
+    const trimmed = searchQuery.trim();
+    setQuery(trimmed);
+    setLoading(true);
+    setSearched(true);
+    setResults([]);
+    setElapsed(null);
+
+    // Reset filters on new search
+    setSortMode('price-asc');
+    setPlatformFilters({});
+    setPriceMin('');
+    setPriceMax('');
+    setHideNullPrices(false);
+    setFiltersOpen(false);
+
+    // Save search to history (manual search bar submission only)
+    saveSearch(trimmed, user).then(() => {
+      // Trigger refresh of recent searches chips
+      if (recentSearchesRef.current) recentSearchesRef.current();
+    });
+
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(trimmed)}`);
+      const data = await res.json();
+      setResults(data.results || []);
+      setElapsed(data.elapsed || null);
+    } catch (err) {
+      console.error('Search failed:', err);
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [user]);
+
+  // Search triggered by clicking a recent-search chip — skips saveSearch()
+  const handleChipSearch = useCallback(async (searchQuery) => {
+    if (!searchQuery.trim()) return;
+    const trimmed = searchQuery.trim();
+    setQuery(trimmed);
     setLoading(true);
     setSearched(true);
     setResults([]);
@@ -87,7 +151,7 @@ function App() {
     setFiltersOpen(false);
 
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      const res = await fetch(`/api/search?q=${encodeURIComponent(trimmed)}`);
       const data = await res.json();
       setResults(data.results || []);
       setElapsed(data.elapsed || null);
@@ -98,6 +162,7 @@ function App() {
       setLoading(false);
     }
   }, []);
+
 
   const handlePlatformToggle = useCallback((platform) => {
     setPlatformFilters((prev) => ({
@@ -136,7 +201,7 @@ function App() {
       {/* Header */}
       <header className="border-b border-border sticky top-0 bg-white/80 backdrop-blur-lg z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/">
+          <Link to="/" onClick={goHome}>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +219,28 @@ function App() {
               <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
               {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
             </div>
+            {user ? (
+              <div className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5">
+                <div className="w-6 h-6 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <span className="text-sm font-medium text-text">
+                  {profile?.username}
+                </span>
+                <div className="w-px h-4 bg-border mx-1"></div>
+                <button onClick={() => signOut()} className="text-xs font-medium text-text-secondary hover:text-text transition-colors">
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <button onClick={() => setAuthModalOpen(true)} className="auth-nav-btn sign-in-btn">
+                Sign in
+              </button>
+            )}
           </div>
+
         </div>
       </header>
 
@@ -172,7 +258,10 @@ function App() {
             </div>
           )}
           <SearchBar onSearch={handleSearch} loading={loading} compact={searched} />
+          <RecentSearches key={homeKey} onSearch={handleChipSearch} refreshRef={recentSearchesRef} hide={searched} />
+          <BookmarksSection key={`bm-${homeKey}`} hide={searched} />
         </div>
+
 
         {/* Filter controls (desktop) */}
         {searched && !loading && results.length > 0 && (
@@ -245,7 +334,11 @@ function App() {
           LootReef compares prices across third-party marketplaces. We are not affiliated with any platform listed.
         </div>
       </footer>
+
+      {/* Auth modal */}
+      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </div>
+
   );
 }
 
