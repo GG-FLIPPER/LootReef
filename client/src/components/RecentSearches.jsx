@@ -38,7 +38,8 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
         {history.map((entry, i) => (
           <button
             key={entry.id || `${entry.query}-${entry.timestamp}-${i}`}
-            className="search-chip"
+            className="search-chip animate-spring-pop"
+            style={{ animationDelay: `${i * 50}ms` }}
             onClick={() => onSearch(entry.query)}
             title={entry.query}
           >

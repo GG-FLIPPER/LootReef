@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ResultCard from './ResultCard';
 
 function SkeletonCard() {
@@ -20,7 +21,7 @@ function SkeletonCard() {
   );
 }
 
-function ResultsGrid({ results, loading, searched }) {
+function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-12">
@@ -60,10 +61,11 @@ function ResultsGrid({ results, loading, searched }) {
           result={result}
           index={i}
           isCheapest={result.price != null && result.price === cheapestPrice}
+          initialBookmarked={bookmarkedUrls?.has(result.url) || false}
         />
       ))}
     </div>
   );
 }
 
-export default ResultsGrid;
+export default memo(ResultsGrid);

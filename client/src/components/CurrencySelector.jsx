@@ -50,7 +50,7 @@ function CurrencySelector() {
       </button>
 
       {open && (
-        <div className="currency-dropdown" role="listbox" aria-label="Select currency">
+        <div className="currency-dropdown animate-fade-scale-down" role="listbox" aria-label="Select currency">
           {currencies.map((c) => (
             <button
               key={c.code}

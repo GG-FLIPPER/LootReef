@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useMemo, useRef, useDeferredValue, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import ResultsGrid from './components/ResultsGrid';
@@ -10,6 +10,7 @@ import RecentSearches from './components/RecentSearches';
 import BookmarksSection from './components/BookmarksSection';
 import { useAuth } from './AuthContext';
 import { saveSearch } from './searchHistory';
+import { loadBookmarks } from './bookmarks';
 
 
 function App() {
@@ -46,6 +47,21 @@ function App() {
   const [hideNullPrices, setHideNullPrices] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  // Global bookmarks state for search results
+  const [bookmarkedUrls, setBookmarkedUrls] = useState(new Set());
+
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      const items = await loadBookmarks(user);
+      setBookmarkedUrls(new Set(items.map(b => b.offer.url)));
+    };
+    fetchBookmarks();
+
+    const handler = () => fetchBookmarks();
+    window.addEventListener('bookmarksUpdated', handler);
+    return () => window.removeEventListener('bookmarksUpdated', handler);
+  }, [user]);
+
 
   // Derive unique platforms from actual results
   const platforms = useMemo(() => {
@@ -53,20 +69,27 @@ function App() {
     return [...set].sort();
   }, [results]);
 
+  // Defer filters to prevent typing lag
+  const deferredPlatformFilters = useDeferredValue(platformFilters);
+  const deferredPriceMin = useDeferredValue(priceMin);
+  const deferredPriceMax = useDeferredValue(priceMax);
+  const deferredHideNullPrices = useDeferredValue(hideNullPrices);
+  const deferredSortMode = useDeferredValue(sortMode);
+
   // Apply filtering + sorting
   const filteredResults = useMemo(() => {
     let items = [...results];
 
     // Filter by platform
-    items = items.filter((r) => platformFilters[r.platform] !== false);
+    items = items.filter((r) => deferredPlatformFilters[r.platform] !== false);
 
     // Filter by price range
-    const min = priceMin !== '' ? parseFloat(priceMin) : null;
-    const max = priceMax !== '' ? parseFloat(priceMax) : null;
+    const min = deferredPriceMin !== '' ? parseFloat(deferredPriceMin) : null;
+    const max = deferredPriceMax !== '' ? parseFloat(deferredPriceMax) : null;
 
-    if (min !== null || max !== null || hideNullPrices) {
+    if (min !== null || max !== null || deferredHideNullPrices) {
       items = items.filter((r) => {
-        if (r.price == null || (hideNullPrices && r.price === 0)) return !hideNullPrices;
+        if (r.price == null || (deferredHideNullPrices && r.price === 0)) return !deferredHideNullPrices;
         if (min !== null && r.price < min) return false;
         if (max !== null && r.price > max) return false;
         return true;
@@ -74,27 +97,27 @@ function App() {
     }
 
     // Sort
-    if (sortMode === 'price-asc') {
+    if (deferredSortMode === 'price-asc') {
       items.sort((a, b) => {
         if (a.price == null && b.price == null) return 0;
         if (a.price == null) return 1;
         if (b.price == null) return -1;
         return a.price - b.price;
       });
-    } else if (sortMode === 'price-desc') {
+    } else if (deferredSortMode === 'price-desc') {
       items.sort((a, b) => {
         if (a.price == null && b.price == null) return 0;
         if (a.price == null) return 1;
         if (b.price == null) return -1;
         return b.price - a.price;
       });
-    } else if (sortMode === 'platform-az') {
+    } else if (deferredSortMode === 'platform-az') {
       items.sort((a, b) => a.platform.localeCompare(b.platform));
     }
     // 'relevant' = original order, no sort needed
 
     return items;
-  }, [results, sortMode, platformFilters, priceMin, priceMax, hideNullPrices]);
+  }, [results, deferredSortMode, deferredPlatformFilters, deferredPriceMin, deferredPriceMax, deferredHideNullPrices]);
 
   const handleSearch = useCallback(async (searchQuery) => {
     if (!searchQuery.trim()) return;
@@ -201,15 +224,15 @@ function App() {
       {/* Header */}
       <header className="border-b border-border sticky top-0 bg-white/80 backdrop-blur-lg z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" onClick={goHome}>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <Link to="/" onClick={goHome} className="group">
+            <div className="flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.03]">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:rotate-[10deg]">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
               <h1 className="text-xl font-bold text-text">
-                Loot<span className="text-primary">Reef</span>
+                Loot<span className="text-primary transition-all duration-300 group-hover:brightness-125">Reef</span>
               </h1>
             </div>
           </Link>
@@ -220,8 +243,8 @@ function App() {
               {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
             </div>
             {user ? (
-              <div className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5">
-                <div className="w-6 h-6 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary">
+              <div className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5 animate-fade-in transition-all duration-300 hover:brightness-105 hover:scale-[1.02] group">
+                <div className="w-6 h-6 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary transition-transform duration-300 group-hover:-translate-y-[2px]">
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
@@ -230,7 +253,7 @@ function App() {
                   {profile?.username}
                 </span>
                 <div className="w-px h-4 bg-border mx-1"></div>
-                <button onClick={() => signOut()} className="text-xs font-medium text-text-secondary hover:text-text transition-colors">
+                <button onClick={() => signOut()} className="text-xs font-medium text-text-secondary hover:text-red-500 transition-colors">
                   Sign out
                 </button>
               </div>
@@ -248,16 +271,18 @@ function App() {
       <main className="max-w-6xl mx-auto px-4">
         <div className={`transition-all duration-500 ease-out ${searched ? 'pt-6 pb-4' : 'pt-24 pb-16'}`}>
           {!searched && (
-            <div className="text-center mb-8 fade-in-up">
-              <h2 className="text-4xl sm:text-5xl font-extrabold text-text mb-3 tracking-tight">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-text mb-3 tracking-tight animate-hero-slide-up delay-100">
                 Find the <span className="text-primary">best price</span> instantly
               </h2>
-              <p className="text-text-secondary text-lg max-w-xl mx-auto">
+              <p className="text-text-secondary text-lg max-w-xl mx-auto animate-hero-slide-up delay-200">
                 Compare prices for game keys, in-game currency, accounts & digital services across 7 marketplaces in real time.
               </p>
             </div>
           )}
-          <SearchBar onSearch={handleSearch} loading={loading} compact={searched} />
+          <div className={`${!searched ? 'animate-hero-slide-up delay-300' : ''}`}>
+            <SearchBar onSearch={handleSearch} loading={loading} compact={searched} />
+          </div>
           <RecentSearches onSearch={handleChipSearch} refreshRef={recentSearchesRef} hide={searched} />
           <BookmarksSection hide={searched} />
         </div>
@@ -308,15 +333,19 @@ function App() {
         )}
 
         {/* Results */}
-        <ResultsGrid results={filteredResults} loading={loading} searched={searched} />
+        <ResultsGrid results={filteredResults} loading={loading} searched={searched} bookmarkedUrls={bookmarkedUrls} />
 
         {/* Platform badges when idle */}
         {!searched && (
-          <div className="text-center mt-8 fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="text-center mt-8 animate-hero-slide-up delay-400">
             <p className="text-xs text-text-secondary mb-3 uppercase tracking-wider font-medium">Searching across</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['G2G', 'FunPay', 'Eldorado.gg', 'PlayerAuctions', 'Z2U', 'Gameflip', 'Plati.market'].map(p => (
-                <span key={p} className="px-3 py-1.5 bg-surface-alt border border-border rounded-full text-xs font-medium text-text-secondary hover:border-primary hover:text-primary transition-colors cursor-default">
+              {['G2G', 'FunPay', 'Eldorado.gg', 'PlayerAuctions', 'Z2U', 'Gameflip', 'Plati.market'].map((p, i) => (
+                <span 
+                  key={p} 
+                  className="px-3 py-1.5 bg-surface-alt border border-border rounded-full text-xs font-medium text-text-secondary hover:border-primary hover:text-primary transition-colors cursor-default animate-hero-slide-up"
+                  style={{ animationDelay: `${500 + i * 50}ms` }}
+                >
                   {p}
                 </span>
               ))}

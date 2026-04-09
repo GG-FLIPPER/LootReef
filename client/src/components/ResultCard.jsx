@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { useCurrency } from '../CurrencyContext';
 import { useAuth } from '../AuthContext';
-import { saveBookmark, removeBookmark, isBookmarked } from '../bookmarks';
+import { saveBookmark, removeBookmark } from '../bookmarks';
 
 const PLATFORM_COLORS = {
   'G2G': 'badge-g2g',
@@ -14,24 +14,20 @@ const PLATFORM_COLORS = {
   'Plati.market': 'badge-plati',
 };
 
-function ResultCard({ result, index, isCheapest }) {
+function ResultCard({ result, index, isCheapest, initialBookmarked }) {
   const { convert, currency } = useCurrency();
   const { user } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(initialBookmarked || false);
   const [copied, setCopied] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
 
   useEffect(() => {
-    let mounted = true;
-    if (result.url) {
-      isBookmarked(result.url, user).then((status) => {
-        if (mounted) setBookmarked(status);
-      });
-    }
-    return () => { mounted = false; };
-  }, [result.url, user]);
+    setBookmarked(initialBookmarked || false);
+  }, [initialBookmarked]);
+
+
 
   const handleBookmarkToggle = async (e) => {
     e.stopPropagation();
@@ -216,4 +212,4 @@ function ResultCard({ result, index, isCheapest }) {
   );
 }
 
-export default ResultCard;
+export default memo(ResultCard);
