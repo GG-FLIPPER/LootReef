@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useCurrency } from '../CurrencyContext';
 
 const PLATFORM_COLORS = {
   'G2G': 'badge-g2g',
@@ -12,6 +13,7 @@ const PLATFORM_COLORS = {
 };
 
 function ResultCard({ result, index, isCheapest }) {
+  const { convert, currency } = useCurrency();
   const [shortUrl, setShortUrl] = useState(null);
   const [linkReady, setLinkReady] = useState(false);
 
@@ -84,9 +86,9 @@ function ResultCard({ result, index, isCheapest }) {
           {result.price != null ? (
             <>
               <p className={`text-2xl font-extrabold tracking-tight ${isCheapest ? 'text-accent-green' : 'text-text'}`}>
-                ${result.price.toFixed(2)}
+                {convert(result.price)}
               </p>
-              <p className="text-[10px] text-text-secondary uppercase tracking-wider">{result.currency}</p>
+              <p className="text-[10px] text-text-secondary uppercase tracking-wider">{currency}</p>
             </>
           ) : (
             <p className="text-sm text-text-secondary italic">Price not available</p>

@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar';
 import ResultsGrid from './components/ResultsGrid';
 import FilterBar from './components/FilterBar';
 import FilterDrawer from './components/FilterDrawer';
+import CurrencySelector from './components/CurrencySelector';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -147,9 +148,12 @@ function App() {
               </h1>
             </div>
           </Link>
-          <div className="hidden sm:flex items-center gap-1 text-xs text-text-secondary">
-            <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
-            {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
+          <div className="flex items-center gap-3">
+            <CurrencySelector />
+            <div className="hidden sm:flex items-center gap-1 text-xs text-text-secondary">
+              <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
+              {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
+            </div>
           </div>
         </div>
       </header>
