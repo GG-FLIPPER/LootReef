@@ -20,6 +20,8 @@ function ResultCard({ result, index, isCheapest }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -42,6 +44,40 @@ function ResultCard({ result, index, isCheapest }) {
       await saveBookmark(result, user);
     }
     window.dispatchEvent(new Event('bookmarksUpdated'));
+  };
+
+  const handleShare = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isSharing || !result.url) return;
+    setIsSharing(true);
+    
+    let shortUrl = result.url;
+    try {
+      const res = await fetch(`http://localhost:3001/api/shorten?url=${encodeURIComponent(result.url)}`);
+      const data = await res.json();
+      if (data.short) {
+        shortUrl = data.short;
+      }
+    } catch (err) {
+      console.error("Shortening failed, using original url", err);
+    }
+    
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+         await navigator.clipboard.writeText(shortUrl);
+      } else {
+         throw new Error("Clipboard API not available");
+      }
+    } catch (err) {
+      prompt("Copy the shortened link:", shortUrl);
+    }
+
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+    setIsSharing(false);
   };
 
   const handleViewDeal = async (e) => {
@@ -77,35 +113,62 @@ function ResultCard({ result, index, isCheapest }) {
         </div>
       )}
 
-      {/* Bookmark Button */}
-      <button 
-        onClick={handleBookmarkToggle}
-        className="absolute top-4 right-4 text-gray-300 hover:text-red-500 transition-colors z-10 focus:outline-none"
-        title={bookmarked ? "Remove bookmark" : "Save deal"}
-      >
-        <svg 
-          className={`w-5 h-5 transition-transform ${bookmarked ? 'text-red-500 scale-110' : ''}`} 
-          fill={bookmarked ? "currentColor" : "none"} 
-          stroke={bookmarked ? "none" : "currentColor"} 
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      </button>
-
-      {/* Top row: platform badge + rating */}
-      <div className="flex items-center justify-between mb-3 pr-6">
-        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${badgeClass}`}>
-          {result.platform}
-        </span>
-        {result.seller_rating && (
-          <span className="text-xs text-text-secondary flex items-center gap-1">
-            <svg className="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            {result.seller_rating}
+      {/* Header: Platform, Seller, Actions */}
+      <div className="flex items-center justify-between mb-3">
+        {/* Left side: platform badge + seller name (flex row, gap-2, items-center) */}
+        <div className="flex items-center gap-2 max-w-[70%]">
+          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md shrink-0 ${badgeClass}`}>
+            {result.platform}
           </span>
-        )}
+          {result.seller_rating && (
+            <span className="text-xs text-text-secondary flex items-center gap-1 truncate">
+              <svg className="w-3.5 h-3.5 text-yellow-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="truncate">{result.seller_rating}</span>
+            </span>
+          )}
+        </div>
+
+        {/* Right side: share icon + bookmark icon */}
+        <div className="flex items-center gap-1 shrink-0">
+          <button
+            onClick={handleShare}
+            className="text-gray-300 hover:text-primary transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-gray-50 relative"
+            disabled={isSharing}
+          >
+            {isSharing ? (
+              <svg className="w-4 h-4 animate-spin text-primary" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+            )}
+            {copied && (
+              <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-medium rounded shadow-sm whitespace-nowrap pointer-events-none z-20">
+                Copied!
+                <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></span>
+              </span>
+            )}
+          </button>
+          
+          <button 
+            onClick={handleBookmarkToggle}
+            className="text-gray-300 hover:text-red-500 transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-gray-50 relative"
+          >
+            <svg 
+              className={`w-4 h-4 transition-transform ${bookmarked ? 'text-red-500 scale-110' : 'hover:scale-110'}`} 
+              fill={bookmarked ? "currentColor" : "none"} 
+              stroke={bookmarked ? "none" : "currentColor"} 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Title */}
