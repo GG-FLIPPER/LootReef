@@ -1679,14 +1679,16 @@
 }
 
 /* Fix for WebKit nested backdrop-filter bug: 
-   Move header's filter to a pseudo-element so child dropdowns can still blur the page body */
-[data-theme="glass"] header {
+   Move parent filters to pseudo-elements so child dropdowns can still blur the page body */
+[data-theme="glass"] header,
+[data-theme="glass"] .mobile-nav-menu {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: transparent !important;
 }
 
-[data-theme="glass"] header::before {
+[data-theme="glass"] header::before,
+[data-theme="glass"] .mobile-nav-menu::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1808,6 +1810,68 @@
 }
 
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   Glass Theme — Mobile Optimization (max-width: 768px)
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* 1. Performance Optimization - Slow down background meshes to ease GPU */
+  [data-theme="glass"] body::before, 
+  [data-theme="glass"] body::after {
+    animation-duration: 30s !important;
+  }
+
+  /* 2. Backdrop Blurs - Reduce heavy blurs & increase opacity for contrast */
+  /* Result Cards */
+  [data-theme="glass"] .fade-in-up.group {
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15)) !important;
+  }
+
+  /* Header & Mobile Nav Blur Layers */
+  [data-theme="glass"] header::before,
+  [data-theme="glass"] .mobile-nav-menu::before {
+    backdrop-filter: blur(12px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Currency Dropdown */
+  [data-theme="glass"] .currency-dropdown {
+    backdrop-filter: blur(20px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    padding: 12px !important;
+  }
+
+  /* Auth Modal */
+  [data-theme="glass"] .auth-modal {
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2)) !important;
+  }
+
+  /* 3. Layout & Touch Targets */
+  /* Dropdown Options */
+  [data-theme="glass"] .currency-option {
+    min-height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+  }
+
+  /* Mobile Drawer Bottom padding */
+  [data-theme="glass"] .mobile-nav-menu,
+  [data-theme="glass"] .fixed.inset-y-0.right-0 {
+    padding-bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Result Cards Padding and Buttons */
+  [data-theme="glass"] .fade-in-up.group {
+    padding: 16px !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    Global smooth transitions between themes

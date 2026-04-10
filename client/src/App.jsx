@@ -287,16 +287,8 @@ function App() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full border-b border-border bg-surface/95 backdrop-blur-lg px-4 py-4 space-y-4 shadow-lg z-50">
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-text-secondary font-medium">Currency</span>
-              <CurrencySelector />
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-text-secondary font-medium">Theme</span>
-              <ThemeToggle />
-            </div>
-            <div className="pt-2 border-t border-border flex justify-end">
+          <div className="mobile-nav-menu md:hidden absolute top-full left-0 w-full border-b border-border bg-surface/95 backdrop-blur-lg px-4 py-4 space-y-4 shadow-lg z-50">
+            <div className="pb-2 border-b border-border flex justify-between">
               {user ? (
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center gap-2">
@@ -318,6 +310,14 @@ function App() {
                   Sign in
                 </button>
               )}
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-text-secondary font-medium">Theme</span>
+              <ThemeToggle />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-text-secondary font-medium">Currency</span>
+              <CurrencySelector />
             </div>
           </div>
         )}
