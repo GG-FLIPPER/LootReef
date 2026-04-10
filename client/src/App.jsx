@@ -262,7 +262,7 @@ function App() {
               </div>
             ) : (
               <button onClick={() => setAuthModalOpen(true)} className="auth-nav-btn sign-in-btn">
-                Sign in
+                Sign in / Register
               </button>
             )}
           </div>
@@ -307,7 +307,7 @@ function App() {
                 </div>
               ) : (
                 <button onClick={() => { setAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="auth-nav-btn sign-in-btn w-full flex justify-center py-2.5">
-                  Sign in
+                  Sign in / Register
                 </button>
               )}
             </div>
