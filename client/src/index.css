@@ -1824,32 +1824,32 @@
   /* 2. Backdrop Blurs - Reduce heavy blurs & increase opacity for contrast */
   /* Result Cards */
   [data-theme="glass"] .fade-in-up.group {
-    backdrop-filter: blur(16px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15)) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.25)) !important;
   }
 
   /* Header & Mobile Nav Blur Layers */
   [data-theme="glass"] header::before,
   [data-theme="glass"] .mobile-nav-menu::before {
-    backdrop-filter: blur(12px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
-    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
   }
 
   /* Currency Dropdown */
   [data-theme="glass"] .currency-dropdown {
-    backdrop-filter: blur(20px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(40px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+    background: rgba(255, 255, 255, 0.75) !important;
     padding: 12px !important;
   }
 
   /* Auth Modal */
   [data-theme="glass"] .auth-modal {
-    backdrop-filter: blur(16px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2)) !important;
+    backdrop-filter: blur(30px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.3)) !important;
   }
 
   /* 3. Layout & Touch Targets */
