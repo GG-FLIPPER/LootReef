@@ -5,6 +5,7 @@ import ResultsGrid from './components/ResultsGrid';
 import FilterBar from './components/FilterBar';
 import FilterDrawer from './components/FilterDrawer';
 import CurrencySelector from './components/CurrencySelector';
+import ThemeToggle from './components/ThemeToggle';
 import AuthModal from './components/AuthModal';
 import RecentSearches from './components/RecentSearches';
 import BookmarksSection from './components/BookmarksSection';
@@ -220,9 +221,9 @@ function App() {
     || Object.values(platformFilters).some((v) => v === false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-surface">
       {/* Header */}
-      <header className="border-b border-border sticky top-0 bg-white/80 backdrop-blur-lg z-50">
+      <header className="border-b border-border sticky top-0 bg-surface/80 backdrop-blur-lg z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" onClick={goHome} className="group">
             <div className="flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.03]">
@@ -238,6 +239,7 @@ function App() {
           </Link>
           <div className="flex items-center gap-3">
             <CurrencySelector />
+            <ThemeToggle />
             <div className="hidden sm:flex items-center gap-1 text-xs text-text-secondary">
               <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
               {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}

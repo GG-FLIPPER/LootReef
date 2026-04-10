@@ -36,10 +36,10 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
   const badgeClass = PLATFORM_COLORS[offer.platform] || 'bg-gray-500 text-white';
 
   return (
-    <div className="relative bg-white border border-border rounded-xl p-3 flex flex-col hover:border-primary/30 transition-colors shadow-sm group">
+    <div className="relative bg-surface border border-border rounded-xl p-3 flex flex-col hover:border-primary/30 transition-colors shadow-sm group">
       <button 
         onClick={() => handleDelete(offer.url)}
-        className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-2 right-2 p-1 text-text-secondary hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
         title="Remove saved deal"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

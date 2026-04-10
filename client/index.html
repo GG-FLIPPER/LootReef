@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="legacy">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Apply saved theme immediately to prevent flash of wrong theme
+      (function() {
+        var t = localStorage.getItem('pricescout_theme');
+        if (t === 'light' || t === 'dark' || t === 'legacy') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="LootReef — Compare prices for game keys, in-game currency, accounts and digital services across grey market gaming marketplaces in real time." />

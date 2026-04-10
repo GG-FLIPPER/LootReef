@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
 const PLATFORM_CHIP_COLORS = {
-  'G2G': { on: 'bg-[#ff6b00] text-white border-[#ff6b00]', off: 'bg-white text-[#ff6b00] border-[#ff6b00]/40' },
-  'FunPay': { on: 'bg-[#7c3aed] text-white border-[#7c3aed]', off: 'bg-white text-[#7c3aed] border-[#7c3aed]/40' },
-  'Eldorado.gg': { on: 'bg-[#d97706] text-white border-[#d97706]', off: 'bg-white text-[#d97706] border-[#d97706]/40' },
-  'PlayerAuctions': { on: 'bg-[#2563eb] text-white border-[#2563eb]', off: 'bg-white text-[#2563eb] border-[#2563eb]/40' },
-  'Z2U': { on: 'bg-[#dc2626] text-white border-[#dc2626]', off: 'bg-white text-[#dc2626] border-[#dc2626]/40' },
-  'Gameflip': { on: 'bg-[#059669] text-white border-[#059669]', off: 'bg-white text-[#059669] border-[#059669]/40' },
-  'Plati.market': { on: 'bg-[#0891b2] text-white border-[#0891b2]', off: 'bg-white text-[#0891b2] border-[#0891b2]/40' },
+  'G2G': { on: 'bg-[#ff6b00] text-white border-[#ff6b00]', off: 'bg-surface text-[#ff6b00] border-[#ff6b00]/40' },
+  'FunPay': { on: 'bg-[#7c3aed] text-white border-[#7c3aed]', off: 'bg-surface text-[#7c3aed] border-[#7c3aed]/40' },
+  'Eldorado.gg': { on: 'bg-[#d97706] text-white border-[#d97706]', off: 'bg-surface text-[#d97706] border-[#d97706]/40' },
+  'PlayerAuctions': { on: 'bg-[#2563eb] text-white border-[#2563eb]', off: 'bg-surface text-[#2563eb] border-[#2563eb]/40' },
+  'Z2U': { on: 'bg-[#dc2626] text-white border-[#dc2626]', off: 'bg-surface text-[#dc2626] border-[#dc2626]/40' },
+  'Gameflip': { on: 'bg-[#059669] text-white border-[#059669]', off: 'bg-surface text-[#059669] border-[#059669]/40' },
+  'Plati.market': { on: 'bg-[#0891b2] text-white border-[#0891b2]', off: 'bg-surface text-[#0891b2] border-[#0891b2]/40' },
 };
 
-const FALLBACK_CHIP = { on: 'bg-gray-500 text-white border-gray-500', off: 'bg-white text-gray-500 border-gray-500/40' };
+const FALLBACK_CHIP = { on: 'bg-gray-500 text-white border-gray-500', off: 'bg-surface text-gray-500 border-gray-500/40' };
 
 const SORT_OPTIONS = [
   { value: 'price-asc', label: 'Price: Low → High' },
@@ -55,7 +55,7 @@ function FilterDrawer({
       />
 
       {/* Drawer panel */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl drawer-slide-up max-h-[80vh] overflow-y-auto">
+      <div className="absolute bottom-0 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl drawer-slide-up max-h-[80vh] overflow-y-auto">
         {/* Handle bar */}
         <div className="flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-border" />
@@ -84,7 +84,7 @@ function FilterDrawer({
               id="mobile-sort-select"
               value={sortMode}
               onChange={(e) => onSortChange(e.target.value)}
-              className="w-full text-sm border border-border rounded-lg px-3 py-2.5 bg-white text-text outline-none focus:border-primary transition-colors"
+              className="w-full text-sm border border-border rounded-lg px-3 py-2.5 bg-surface text-text outline-none focus:border-primary transition-colors"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>

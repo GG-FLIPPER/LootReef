@@ -97,7 +97,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
 
   return (
     <div
-      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-white ${
+      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-surface ${
         isCheapest ? 'border-l-4 border-l-accent-green border-t border-r border-b border-border' : 'border-border'
       }`}
       style={{ animationDelay: `${delay}ms` }}
@@ -130,7 +130,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
         <div className="flex items-center gap-1 shrink-0">
           <button
             onClick={handleShare}
-            className="text-gray-300 hover:text-primary transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-gray-50 relative"
+            className="text-border hover:text-primary transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-surface-alt relative"
             disabled={isSharing}
           >
             {isSharing ? (
@@ -153,7 +153,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
           
           <button 
             onClick={handleBookmarkToggle}
-            className="text-gray-300 hover:text-red-500 transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-gray-50 relative"
+            className="text-border hover:text-red-500 transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-surface-alt relative"
           >
             <svg 
               className={`w-4 h-4 transition-transform ${bookmarked ? 'text-red-500 scale-110' : 'hover:scale-110'}`} 
