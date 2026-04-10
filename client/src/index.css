@@ -1678,17 +1678,14 @@
   color: #0077b6;
 }
 
-/* Fix for WebKit nested backdrop-filter bug: 
-   Move parent filters to pseudo-elements so child dropdowns can still blur the page body */
-[data-theme="glass"] header,
-[data-theme="glass"] .mobile-nav-menu {
+/* Glass header — desktop frosted glass via pseudo-element */
+[data-theme="glass"] header {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
-[data-theme="glass"] header::before,
-[data-theme="glass"] .mobile-nav-menu::before {
+[data-theme="glass"] header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1699,11 +1696,22 @@
   pointer-events: none;
 }
 
-/* Currency dropdown */
+/* Mobile menu — solid on mobile only */
+@media (max-width: 768px) {
+  [data-theme="glass"] .mobile-nav-menu {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    z-index: 9999;
+  }
+}
+
+/* Currency dropdown - solid fallback so it's always readable on mobile */
 [data-theme="glass"] .currency-dropdown {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 12px 48px rgba(0, 50, 100, 0.15), inset 0 2px 4px rgba(255,255,255,1);
   color: #003a5c;
@@ -1837,9 +1845,20 @@
     background: rgba(255, 255, 255, 0.4) !important;
   }
 
-  /* Currency Dropdown */
+  /* Currency Dropdown — fully solid on mobile, no transparency */
+  .currency-dropdown {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
+  }
+  [data-theme="dark"] .currency-dropdown {
+    background: #001219 !important;
+  }
+  [data-theme="light"] .currency-dropdown {
+    background: #E9D8A6 !important;
+  }
   [data-theme="glass"] .currency-dropdown {
-    padding: 12px !important;
+    background: #ffffff !important;
   }
 
   /* Auth Modal */
@@ -1867,6 +1886,35 @@
   /* Result Cards Padding and Buttons */
   [data-theme="glass"] .fade-in-up.group {
     padding: 16px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Mobile menu — fully solid backgrounds per theme (mobile only)
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  [data-theme="legacy"] .mobile-nav-menu {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    z-index: 9999;
+  }
+
+  [data-theme="dark"] .mobile-nav-menu {
+    background: #001219 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    z-index: 9999;
+  }
+
+  [data-theme="light"] .mobile-nav-menu {
+    background: #E9D8A6 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    z-index: 9999;
   }
 }
 

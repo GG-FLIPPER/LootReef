@@ -287,7 +287,7 @@ function App() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="mobile-nav-menu md:hidden absolute top-full left-0 w-full border-b border-border bg-surface/95 backdrop-blur-lg px-4 py-4 space-y-4 shadow-lg z-50">
+          <div className="mobile-nav-menu md:hidden absolute top-full left-0 w-full border-b border-border bg-surface px-4 py-4 space-y-4 shadow-lg z-[9999]">
             <div className="pb-2 border-b border-border flex justify-between">
               {user ? (
                 <div className="flex items-center justify-between w-full">
