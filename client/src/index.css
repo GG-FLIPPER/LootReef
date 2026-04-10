@@ -638,6 +638,21 @@
   --color-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+/* ─── Glass Theme Tokens ─── */
+[data-theme="glass"] {
+  --color-primary: #0096c7;
+  --color-primary-dark: #0077b6;
+  --color-primary-light: #48cae4;
+  --color-accent-green: #2dc653;
+  --color-surface: rgba(255, 255, 255, 0.45);
+  --color-surface-alt: rgba(255, 255, 255, 0.65);
+  --color-text: #003a5c;
+  --color-text-secondary: #00628f;
+  --color-border: rgba(255, 255, 255, 0.5);
+  --color-border-light: rgba(255, 255, 255, 0.7);
+  --color-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 
 /* ═══════════════════════════════════════════════════════════════════
    LIGHT THEME — Component Overrides
@@ -1517,6 +1532,252 @@
   color: #001219 !important;
   box-shadow: 0 1px 8px rgba(238, 155, 0, 0.35);
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLASS THEME — Component Overrides (Liquid iOS 26 / Frutiger Aero)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Body */
+[data-theme="glass"] body {
+  background: linear-gradient(135deg, #d4f0ff 0%, #a8e0ff 40%, #c4f5cd 100%) fixed !important;
+  color: #003a5c;
+}
+
+/* Navbar — deep blur and gloss */
+[data-theme="glass"] header {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  border-bottom-width: 1px !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Hero heading */
+[data-theme="glass"] h2 {
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: #003a5c;
+}
+
+[data-theme="glass"] h2 .text-primary {
+  color: #0096c7;
+  text-shadow: 0 2px 10px rgba(0, 150, 199, 0.3);
+}
+
+/* Subtext under hero */
+[data-theme="glass"] .text-text-secondary.text-lg {
+  color: #00628f;
+}
+
+/* Search bar — thick glass pill */
+[data-theme="glass"] form > div {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(120%);
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  border-width: 1.5px;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.7), 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="glass"] form > div:hover {
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+[data-theme="glass"] form > div:focus-within {
+  border-color: #48cae4 !important;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(72, 202, 228, 0.3), 0 0 20px rgba(72, 202, 228, 0.15), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Search input text */
+[data-theme="glass"] input::placeholder {
+  color: #0077b6 !important;
+}
+
+/* Search button — liquid pill */
+[data-theme="glass"] button.bg-primary {
+  background: linear-gradient(180deg, #48cae4 0%, #0096c7 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5), 0 4px 10px rgba(0, 150, 199, 0.3) !important;
+}
+
+[data-theme="glass"] button.bg-primary:hover,
+[data-theme="glass"] button.hover\:bg-primary-dark:hover {
+  background: linear-gradient(180deg, #90e0ef 0%, #0077b6 100%) !important;
+  color: white !important;
+}
+
+/* Search button disabled */
+[data-theme="glass"] .bg-border-light {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: #00628f !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Result cards — liquid glass panels */
+[data-theme="glass"] .fade-in-up.group {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(20px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 40, 80, 0.05), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -1px 2px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+[data-theme="glass"] .fade-in-up.group:hover {
+  background: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 12px 40px rgba(0, 40, 80, 0.08), inset 0 2px 6px rgba(255, 255, 255, 0.8), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Card title hover */
+[data-theme="glass"] .fade-in-up.group:hover h3 {
+  color: #0077b6;
+}
+
+/* Cheapest card left border */
+[data-theme="glass"] .fade-in-up.group.border-l-4 {
+  border-left-color: #2dc653 !important;
+}
+
+/* Skeleton cards */
+[data-theme="glass"] .skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 75%);
+  background-size: 200% 100%;
+}
+
+/* Skeleton card container */
+[data-theme="glass"] .border.border-border.rounded-xl.p-5 {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.5);
+}
+
+/* Platform badges idle — liquid tint */
+[data-theme="glass"] span.bg-surface-alt {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #003a5c;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.5);
+}
+
+[data-theme="glass"] span.bg-surface-alt:hover {
+  border-color: #48cae4;
+  color: #0077b6;
+}
+
+/* Currency dropdown */
+[data-theme="glass"] .currency-dropdown {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(24px) saturate(150%);
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 4px 24px rgba(0, 40, 80, 0.1), inset 0 2px 4px rgba(255,255,255,0.6);
+  color: #003a5c;
+}
+
+/* Currency dropdown options */
+[data-theme="glass"] .currency-dropdown button:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Currency pill in navbar */
+[data-theme="glass"] .currency-pill {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #003a5c;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+[data-theme="glass"] .currency-pill:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Desktop filter bar */
+[data-theme="glass"] .shadow-sm.group {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 2px 12px rgba(0, 40, 80, 0.05), inset 0 1px 2px rgba(255,255,255,0.7);
+}
+
+/* Filter bar buttons/labels inside the container */
+[data-theme="glass"] .shadow-sm.group button {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Bookmarks toggle button */
+[data-theme="glass"] button[class*="text-text-secondary"]:hover {
+  color: #0077b6 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Auth modal overlay */
+[data-theme="glass"] .auth-modal-overlay {
+  background: rgba(0, 58, 92, 0.4) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Auth modal */
+[data-theme="glass"] .auth-modal {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(30px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 20px 60px rgba(0, 40, 80, 0.15), inset 0 2px 6px rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+}
+
+/* Filter controls inputs/dropdowns */
+[data-theme="glass"] select, 
+[data-theme="glass"] input[type="number"] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  color: #003a5c !important;
+}
+
+/* Checkbox */
+[data-theme="glass"] input[type="checkbox"] {
+  accent-color: #0096c7;
+}
+
+/* Filter drawer (mobile) */
+[data-theme="glass"] .fixed.inset-y-0.right-0 {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(30px) saturate(150%);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Footer */
+[data-theme="glass"] footer,
+[data-theme="glass"] footer > div {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: transparent !important;
+  color: #00628f;
+}
+
+/* Theme toggle */
+[data-theme="glass"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="glass"] .theme-toggle-active {
+  background: linear-gradient(180deg, #48cae4 0%, #0096c7 100%);
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 150, 199, 0.3), inset 0 1px 2px rgba(255,255,255,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 
 
 /* ═══════════════════════════════════════════════════════════════════

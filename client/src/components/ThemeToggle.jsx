@@ -4,6 +4,7 @@ const THEMES = [
   { key: 'legacy', label: 'Legacy', icon: null },
   { key: 'dark', label: 'Dark', icon: '🌙' },
   { key: 'light', label: 'Light', icon: '☀️' },
+  { key: 'glass', label: 'Glass', icon: '💧' },
 ];
 
 function ThemeToggle() {

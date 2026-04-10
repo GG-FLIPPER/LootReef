@@ -6,7 +6,7 @@
       // Apply saved theme immediately to prevent flash of wrong theme
       (function() {
         var t = localStorage.getItem('pricescout_theme');
-        if (t === 'light' || t === 'dark' || t === 'legacy') {
+        if (t === 'light' || t === 'dark' || t === 'legacy' || t === 'glass') {
           document.documentElement.setAttribute('data-theme', t);
         }
       })();
