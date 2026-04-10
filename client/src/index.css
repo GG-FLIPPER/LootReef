@@ -1701,25 +1701,12 @@
 
 /* Currency dropdown */
 [data-theme="glass"] .currency-dropdown {
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 12px 48px rgba(0, 50, 100, 0.15), inset 0 2px 4px rgba(255,255,255,0.9);
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 12px 48px rgba(0, 50, 100, 0.15), inset 0 2px 4px rgba(255,255,255,1);
   color: #003a5c;
-  border-radius: 12px;
-}
-
-[data-theme="glass"] .currency-dropdown::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: blur(40px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: inherit;
 }
 
 /* Currency dropdown options */
