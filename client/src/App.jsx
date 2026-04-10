@@ -22,6 +22,7 @@ function App() {
   const [elapsed, setElapsed] = useState(null);
   const [query, setQuery] = useState('');
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [homeKey, setHomeKey] = useState(0);
 
   // Logo nav reset
@@ -236,11 +237,11 @@ function App() {
                 Loot<span className="text-primary transition-all duration-300 group-hover:brightness-125">Reef</span>
               </h1>
             </div>
-          </Link>
-          <div className="flex items-center gap-3">
+          </Link>          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-3">
             <CurrencySelector />
             <ThemeToggle />
-            <div className="hidden sm:flex items-center gap-1 text-xs text-text-secondary">
+            <div className="hidden lg:flex items-center gap-1 text-xs text-text-secondary">
               <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
               {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
             </div>
@@ -266,7 +267,60 @@ function App() {
             )}
           </div>
 
+          {/* Mobile Nav Hamburger */}
+          <div className="md:hidden flex items-center">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-text-secondary hover:text-text hover:bg-surface-alt rounded-lg transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full border-b border-border bg-surface/95 backdrop-blur-lg px-4 py-4 space-y-4 shadow-lg z-50">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-text-secondary font-medium">Currency</span>
+              <CurrencySelector />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-text-secondary font-medium">Theme</span>
+              <ThemeToggle />
+            </div>
+            <div className="pt-2 border-t border-border flex justify-end">
+              {user ? (
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium text-text">
+                      {profile?.username}
+                    </span>
+                  </div>
+                  <button onClick={() => { signOut(); setIsMobileMenuOpen(false); }} className="text-sm font-medium text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition-colors">
+                    Sign out
+                  </button>
+                </div>
+              ) : (
+                <button onClick={() => { setAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="auth-nav-btn sign-in-btn w-full flex justify-center py-2.5">
+                  Sign in
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero / Search Section */}
