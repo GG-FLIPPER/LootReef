@@ -130,6 +130,16 @@ export function AuthProvider({ children }) {
     });
     if (error) throw error;
     if (data.user) {
+      const { data: prof } = await supabase
+        .from('profiles')
+        .select('is_deleted')
+        .eq('id', data.user.id)
+        .single();
+        
+      if (prof?.is_deleted) {
+        await supabase.auth.signOut();
+        throw new Error('This account has been deactivated.');
+      }
       await fetchProfile(data.user.id);
     }
     return data;
@@ -155,7 +165,6 @@ export function AuthProvider({ children }) {
     } finally {
       setUser(null);
       setProfile(null);
-      localStorage.clear();
       navigate('/');
     }
   }

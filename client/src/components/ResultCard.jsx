@@ -1,5 +1,6 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useRef } from 'react';
 import { useCurrency } from '../CurrencyContext';
+import { useLanguage } from '../LanguageContext';
 import { useAuth } from '../AuthContext';
 import { saveBookmark, removeBookmark } from '../bookmarks';
 
@@ -16,16 +17,55 @@ const PLATFORM_COLORS = {
 
 function ResultCard({ result, index, isCheapest, initialBookmarked }) {
   const { convert, currency } = useCurrency();
+  const { targetLanguage, translate } = useLanguage();
   const { user } = useAuth();
+  const cardRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [bookmarked, setBookmarked] = useState(initialBookmarked || false);
   const [copied, setCopied] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
+  
+  // Translation state
+  const [displayTitle, setDisplayTitle] = useState(result.title);
+  const [hasTranslated, setHasTranslated] = useState(false);
 
   useEffect(() => {
     setBookmarked(initialBookmarked || false);
   }, [initialBookmarked]);
+
+  // Lazy translate on viewport entry
+  useEffect(() => {
+    if (!cardRef.current || hasTranslated) return;
+    
+    // Only translate if target language is not english/default (or translate handles it)
+    if (targetLanguage === 'en') {
+      setDisplayTitle(result.title);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          
+          translate(result.title).then(translated => {
+             setDisplayTitle(translated);
+             setHasTranslated(true);
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [result.title, targetLanguage, translate, hasTranslated]);
+
+  // If user changes target language globally, reset translation state
+  useEffect(() => {
+    setHasTranslated(false);
+  }, [targetLanguage]);
 
 
 
@@ -50,7 +90,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
     
     let shortUrl = result.url;
     try {
-      const res = await fetch(`http://localhost:3001/api/shorten?url=${encodeURIComponent(result.url)}`);
+      const res = await fetch(`/api/shorten?url=${encodeURIComponent(result.url)}`);
       const data = await res.json();
       if (data.short) {
         shortUrl = data.short;
@@ -81,12 +121,19 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
     if (isLoading || !result.url) return;
     setIsLoading(true);
 
+    const newWindow = window.open('', '_blank');
+    if (newWindow) {
+      newWindow.opener = null;
+    }
+
     try {
-      const res = await fetch(`http://localhost:3001/api/shorten?url=${encodeURIComponent(result.url)}`);
+      const res = await fetch(`/api/shorten?url=${encodeURIComponent(result.url)}`);
       const data = await res.json();
-      window.open(data.short, '_blank', 'noopener,noreferrer');
+      if (newWindow) newWindow.location.href = data.short || result.url;
+      else window.open(data.short || result.url, '_blank', 'noopener,noreferrer');
     } catch (err) {
-      window.open(result.url, '_blank', 'noopener,noreferrer');
+      if (newWindow) newWindow.location.href = result.url;
+      else window.open(result.url, '_blank', 'noopener,noreferrer');
     } finally {
       setIsLoading(false);
     }
@@ -97,6 +144,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
 
   return (
     <div
+      ref={cardRef}
       className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-surface ${
         isCheapest ? 'border-l-4 border-l-accent-green border-t border-r border-b border-border' : 'border-border'
       }`}
@@ -169,7 +217,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
 
       {/* Title */}
       <h3 className="text-sm font-semibold text-text leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-        {result.title}
+        {displayTitle}
       </h3>
 
       {/* Price + CTA */}

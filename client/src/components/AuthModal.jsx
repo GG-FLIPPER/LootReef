@@ -3,7 +3,7 @@ import { useAuth } from '../AuthContext';
 
 function AuthModal({ isOpen, onClose }) {
   const { signIn, signUp } = useAuth();
-  const [tab, setTab] = useState('signin'); // 'signin' | 'signup'
+  const [tab, setTab] = useState('signin'); // 'signin' | 'signup' | 'forgot'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -36,6 +36,24 @@ function AuthModal({ isOpen, onClose }) {
       onClose();
     } catch (err) {
       setError(err.message || 'Sign in failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleForgot = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      const { supabase } = await import('../supabase');
+      const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/reset-password',
+      });
+      if (resetError) throw resetError;
+      setSuccessMsg('Password reset link sent! Check your email.');
+    } catch (err) {
+      setError(err.message || 'Failed to send reset link');
     } finally {
       setLoading(false);
     }
@@ -141,6 +159,15 @@ function AuthModal({ isOpen, onClose }) {
                   autoComplete="current-password"
                 />
               </div>
+              <div className="flex justify-end mb-4">
+                <button 
+                  type="button" 
+                  onClick={() => switchTab('forgot')} 
+                  className="text-xs text-primary hover:text-primary-dark font-medium transition-colors"
+                >
+                  Forgot password?
+                </button>
+              </div>
               <button
                 type="submit"
                 disabled={loading}
@@ -148,6 +175,40 @@ function AuthModal({ isOpen, onClose }) {
               >
                 {loading ? 'Signing in…' : 'Sign In'}
               </button>
+            </form>
+          )}
+
+          {/* Forgot Password Form */}
+          {tab === 'forgot' && (
+            <form onSubmit={handleForgot} className="auth-form">
+              <div className="auth-field">
+                <label htmlFor="auth-forgot-email" className="auth-label">Email</label>
+                <input
+                  id="auth-forgot-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="auth-input"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="auth-submit"
+              >
+                {loading ? 'Sending…' : 'Send reset link'}
+              </button>
+              <div className="text-center mt-4">
+                <button 
+                  type="button" 
+                  onClick={() => switchTab('signin')} 
+                  className="text-xs text-text-secondary hover:text-text font-medium"
+                >
+                  Back to Sign In
+                </button>
+              </div>
             </form>
           )}
 

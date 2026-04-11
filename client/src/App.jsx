@@ -1,12 +1,16 @@
 import { useState, useCallback, useMemo, useRef, useDeferredValue, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import ResultsGrid from './components/ResultsGrid';
 import FilterBar from './components/FilterBar';
 import FilterDrawer from './components/FilterDrawer';
 import CurrencySelector from './components/CurrencySelector';
+import LanguageSelector from './components/LanguageSelector';
 import ThemeToggle from './components/ThemeToggle';
 import AuthModal from './components/AuthModal';
+import OnboardingModal from './components/OnboardingModal';
+import AccountSettingsModal from './components/AccountSettingsModal';
+import ResetPassword from './components/ResetPassword';
 import RecentSearches from './components/RecentSearches';
 import BookmarksSection from './components/BookmarksSection';
 import { useAuth } from './AuthContext';
@@ -15,6 +19,7 @@ import { loadBookmarks } from './bookmarks';
 
 
 function App() {
+  const location = useLocation();
   const { user, profile, signOut } = useAuth();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +27,9 @@ function App() {
   const [elapsed, setElapsed] = useState(null);
   const [query, setQuery] = useState('');
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [accountSettingsModalOpen, setAccountSettingsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const [homeKey, setHomeKey] = useState(0);
 
   // Logo nav reset
@@ -221,6 +228,10 @@ function App() {
     || sortMode !== 'price-asc'
     || Object.values(platformFilters).some((v) => v === false);
 
+  if (location.pathname === '/reset-password') {
+    return <ResetPassword />;
+  }
+
   return (
     <div className="min-h-screen bg-surface">
       {/* Header */}
@@ -239,6 +250,7 @@ function App() {
             </div>
           </Link>          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSelector />
             <CurrencySelector />
             <ThemeToggle />
             <div className="hidden lg:flex items-center gap-1 text-xs text-text-secondary">
@@ -246,19 +258,43 @@ function App() {
               {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
             </div>
             {user ? (
-              <div className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5 animate-fade-in transition-all duration-300 hover:brightness-105 hover:scale-[1.02] group">
-                <div className="w-6 h-6 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary transition-transform duration-300 group-hover:-translate-y-[2px]">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              <div className="relative">
+                <button 
+                  onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
+                  className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5 transition-all duration-300 hover:brightness-105 hover:scale-[1.02]"
+                >
+                  <div className="w-6 h-6 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm font-medium text-text">
+                    {profile?.username}
+                  </span>
+                  <svg className={`w-4 h-4 text-text-secondary transition-transform ${isAccountMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                </div>
-                <span className="text-sm font-medium text-text">
-                  {profile?.username}
-                </span>
-                <div className="w-px h-4 bg-border mx-1"></div>
-                <button onClick={() => signOut()} className="text-xs font-medium text-text-secondary hover:text-red-500 transition-colors">
-                  Sign out
                 </button>
+
+                {isAccountMenuOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsAccountMenuOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-48 bg-surface-alt border border-border rounded-xl shadow-lg z-50 overflow-hidden animate-fade-scale-down">
+                      <button 
+                        onClick={() => { setIsAccountMenuOpen(false); setAccountSettingsModalOpen(true); }}
+                        className="w-full text-left px-4 py-2 text-sm text-text hover:bg-border transition-colors font-medium border-b border-border/50"
+                      >
+                        Account Settings
+                      </button>
+                      <button 
+                        onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); setIsAccountMenuOpen(false); signOut(); }}
+                        className="w-full text-left px-4 py-2 text-sm text-text hover:bg-border transition-colors hover:text-red-500 font-medium"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ) : (
               <button onClick={() => setAuthModalOpen(true)} className="auth-nav-btn sign-in-btn">
@@ -288,32 +324,49 @@ function App() {
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
           <div className="mobile-nav-menu md:hidden absolute top-full left-0 w-full border-b border-border bg-surface px-4 py-4 space-y-4 shadow-lg z-[9999]">
-            <div className="pb-2 border-b border-border flex justify-between">
-              {user ? (
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center text-text-secondary">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <span className="text-sm font-medium text-text">
-                      {profile?.username}
-                    </span>
+            {user ? (
+              <div className="pb-3 border-b border-border flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2 bg-surface-alt border border-border rounded-full px-3 py-1.5">
+                  <div className="w-6 h-6 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                   </div>
-                  <button onClick={() => { signOut(); setIsMobileMenuOpen(false); }} className="text-sm font-medium text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition-colors">
+                  <span className="text-sm font-medium text-text max-w-[120px] truncate">
+                    {profile?.username}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={() => { setIsMobileMenuOpen(false); setAccountSettingsModalOpen(true); }}
+                    className="text-sm font-medium text-text-secondary hover:text-text transition-colors"
+                  >
+                    Settings
+                  </button>
+                  <div className="w-px h-4 bg-border"></div>
+                  <button 
+                    onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); signOut(); setIsMobileMenuOpen(false); }} 
+                    className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors"
+                  >
                     Sign out
                   </button>
                 </div>
-              ) : (
+              </div>
+            ) : (
+              <div className="pb-2 border-b border-border">
                 <button onClick={() => { setAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="auth-nav-btn sign-in-btn w-full flex justify-center py-2.5">
                   Sign in / Register
                 </button>
-              )}
-            </div>
+              </div>
+            )}
+            
             <div className="flex items-center justify-between">
               <span className="text-sm text-text-secondary font-medium">Theme</span>
               <ThemeToggle />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-text-secondary font-medium">Language</span>
+              <LanguageSelector />
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-text-secondary font-medium">Currency</span>
@@ -420,8 +473,10 @@ function App() {
         </div>
       </footer>
 
-      {/* Auth modal */}
+      {/* Auth & Setup modals */}
       <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
+      <OnboardingModal />
+      <AccountSettingsModal isOpen={accountSettingsModalOpen} onClose={() => setAccountSettingsModalOpen(false)} />
     </div>
 
   );
