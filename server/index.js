@@ -35,10 +35,22 @@ app.get('/api/shorten', async (req, res) => {
   try {
     const apiKey = process.env.OUO_API_KEY;
     const response = await axios.get(`https://ouo.io/api/${apiKey}?s=${encodeURIComponent(destination)}`, {
-      timeout: 3000
+      timeout: 5000
     });
-    res.json({ short: response.data.trim() });
-  } catch {
+    
+    const shortUrl = response.data.trim();
+    if (!shortUrl.startsWith('http')) {
+      console.error(`[ouo.io error] Invalid response (non-URL):`, shortUrl);
+      return res.json({ short: destination });
+    }
+    
+    res.json({ short: shortUrl });
+  } catch (err) {
+    if (err.response) {
+      console.error(`[ouo.io error] Status: ${err.response.status}, Body:`, err.response.data);
+    } else {
+      console.error(`[ouo.io error] Request failed:`, err.message);
+    }
     res.json({ short: destination });
   }
 });

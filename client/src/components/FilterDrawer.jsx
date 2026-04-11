@@ -50,12 +50,12 @@ function FilterDrawer({
     <div className="sm:hidden fixed inset-0 z-[100]">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/40 backdrop-fade-in"
+        className="absolute inset-0 bg-black/40 backdrop-fade-in backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Drawer panel */}
-      <div className="absolute bottom-0 left-0 right-0 bg-surface rounded-t-2xl shadow-2xl drawer-slide-up max-h-[80vh] overflow-y-auto">
+      <div className="absolute bottom-0 left-0 right-0 bg-surface backdrop-blur-3xl rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] drawer-slide-up max-h-[80vh] overflow-y-auto">
         {/* Handle bar */}
         <div className="flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 rounded-full bg-border" />
