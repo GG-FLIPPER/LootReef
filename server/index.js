@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -27,29 +28,29 @@ app.get('/api/search', async (req, res) => {
   res.json({ results, elapsed: parseFloat(elapsed) });
 });
 
-// ouo.io link shortening endpoint
+// Link shortening endpoint (shrinkme.io)
 app.get('/api/shorten', async (req, res) => {
   const destination = req.query.url;
   if (!destination) return res.status(400).send('URL is required');
 
   try {
-    const apiKey = process.env.OUO_API_KEY;
-    const response = await axios.get(`https://ouo.io/api/${apiKey}?s=${encodeURIComponent(destination)}`, {
+    const apiKey = process.env.SHRINKME_API_KEY;
+    const response = await axios.get(`https://shrinkme.io/api?api=${apiKey}&url=${encodeURIComponent(destination)}`, {
       timeout: 5000
     });
     
-    const shortUrl = response.data.trim();
-    if (!shortUrl.startsWith('http')) {
-      console.error(`[ouo.io error] Invalid response (non-URL):`, shortUrl);
+    const data = response.data;
+    if (data.status !== 'success' || !data.shortenedUrl) {
+      console.error(`[shrinkme.io error] API returned non-success:`, data);
       return res.json({ short: destination });
     }
     
-    res.json({ short: shortUrl });
+    res.json({ short: data.shortenedUrl });
   } catch (err) {
     if (err.response) {
-      console.error(`[ouo.io error] Status: ${err.response.status}, Body:`, err.response.data);
+      console.error(`[shrinkme.io error] Status: ${err.response.status}, Body:`, err.response.data);
     } else {
-      console.error(`[ouo.io error] Request failed:`, err.message);
+      console.error(`[shrinkme.io error] Request failed:`, err.message);
     }
     res.json({ short: destination });
   }
