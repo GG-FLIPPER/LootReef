@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 
 function AuthModal({ isOpen, onClose }) {
+  const { t } = useTranslation();
   const { signIn, signUp } = useAuth();
   const [tab, setTab] = useState('signin'); // 'signin' | 'signup' | 'forgot'
   const [email, setEmail] = useState('');
@@ -35,7 +37,7 @@ function AuthModal({ isOpen, onClose }) {
       reset();
       onClose();
     } catch (err) {
-      setError(err.message || 'Sign in failed');
+      setError(err.message || t('auth.signInFailed'));
     } finally {
       setLoading(false);
     }
@@ -51,9 +53,9 @@ function AuthModal({ isOpen, onClose }) {
         redirectTo: window.location.origin + '/reset-password',
       });
       if (resetError) throw resetError;
-      setSuccessMsg('Password reset link sent! Check your email.');
+      setSuccessMsg(t('auth.resetLinkSent'));
     } catch (err) {
-      setError(err.message || 'Failed to send reset link');
+      setError(err.message || t('auth.failedResetLink'));
     } finally {
       setLoading(false);
     }
@@ -63,19 +65,19 @@ function AuthModal({ isOpen, onClose }) {
     e.preventDefault();
     setError('');
     if (!username.trim()) {
-      setError('Username is required');
+      setError(t('auth.usernameRequired'));
       return;
     }
     setLoading(true);
     try {
       await signUp(email, password, username.trim());
-      setSuccessMsg('Account created! Check your email to confirm, then sign in.');
+      setSuccessMsg(t('auth.accountCreated'));
       setTab('signin');
       setEmail('');
       setPassword('');
       setUsername('');
     } catch (err) {
-      setError(err.message || 'Sign up failed');
+      setError(err.message || t('auth.signUpFailed'));
     } finally {
       setLoading(false);
     }
@@ -112,13 +114,13 @@ function AuthModal({ isOpen, onClose }) {
               className={`auth-tab ${tab === 'signin' ? 'auth-tab-active' : ''}`}
               onClick={() => switchTab('signin')}
             >
-              Sign In
+              {t('auth.signIn')}
             </button>
             <button
               className={`auth-tab ${tab === 'signup' ? 'auth-tab-active' : ''}`}
               onClick={() => switchTab('signup')}
             >
-              Sign Up
+              {t('auth.signUp')}
             </button>
           </div>
 
@@ -134,27 +136,27 @@ function AuthModal({ isOpen, onClose }) {
           {tab === 'signin' && (
             <form onSubmit={handleSignIn} className="auth-form">
               <div className="auth-field">
-                <label htmlFor="auth-email" className="auth-label">Email</label>
+                <label htmlFor="auth-email" className="auth-label">{t('auth.email')}</label>
                 <input
                   id="auth-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="auth-input"
-                  placeholder="you@example.com"
+                  placeholder={t('auth.emailPlaceholder')}
                   required
                   autoComplete="email"
                 />
               </div>
               <div className="auth-field">
-                <label htmlFor="auth-password" className="auth-label">Password</label>
+                <label htmlFor="auth-password" className="auth-label">{t('auth.password')}</label>
                 <input
                   id="auth-password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="auth-input"
-                  placeholder="••••••••"
+                  placeholder={t('auth.passwordPlaceholder')}
                   required
                   autoComplete="current-password"
                 />
@@ -165,7 +167,7 @@ function AuthModal({ isOpen, onClose }) {
                   onClick={() => switchTab('forgot')} 
                   className="text-xs text-primary hover:text-primary-dark font-medium transition-colors"
                 >
-                  Forgot password?
+                  {t('auth.forgotPassword')}
                 </button>
               </div>
               <button
@@ -173,7 +175,7 @@ function AuthModal({ isOpen, onClose }) {
                 disabled={loading}
                 className="auth-submit"
               >
-                {loading ? 'Signing in…' : 'Sign In'}
+                {loading ? t('auth.signingIn') : t('auth.signIn')}
               </button>
             </form>
           )}
@@ -182,14 +184,14 @@ function AuthModal({ isOpen, onClose }) {
           {tab === 'forgot' && (
             <form onSubmit={handleForgot} className="auth-form">
               <div className="auth-field">
-                <label htmlFor="auth-forgot-email" className="auth-label">Email</label>
+                <label htmlFor="auth-forgot-email" className="auth-label">{t('auth.email')}</label>
                 <input
                   id="auth-forgot-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="auth-input"
-                  placeholder="you@example.com"
+                  placeholder={t('auth.emailPlaceholder')}
                   required
                 />
               </div>
@@ -198,7 +200,7 @@ function AuthModal({ isOpen, onClose }) {
                 disabled={loading}
                 className="auth-submit"
               >
-                {loading ? 'Sending…' : 'Send reset link'}
+                {loading ? t('auth.sending') : t('auth.sendResetLink')}
               </button>
               <div className="text-center mt-4">
                 <button 
@@ -206,7 +208,7 @@ function AuthModal({ isOpen, onClose }) {
                   onClick={() => switchTab('signin')} 
                   className="text-xs text-text-secondary hover:text-text font-medium"
                 >
-                  Back to Sign In
+                  {t('auth.backToSignIn')}
                 </button>
               </div>
             </form>
@@ -216,40 +218,40 @@ function AuthModal({ isOpen, onClose }) {
           {tab === 'signup' && (
             <form onSubmit={handleSignUp} className="auth-form">
               <div className="auth-field">
-                <label htmlFor="auth-username" className="auth-label">Username</label>
+                <label htmlFor="auth-username" className="auth-label">{t('auth.username')}</label>
                 <input
                   id="auth-username"
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className="auth-input"
-                  placeholder="cooluser123"
+                  placeholder={t('auth.usernamePlaceholder')}
                   required
                   autoComplete="username"
                 />
               </div>
               <div className="auth-field">
-                <label htmlFor="auth-signup-email" className="auth-label">Email</label>
+                <label htmlFor="auth-signup-email" className="auth-label">{t('auth.email')}</label>
                 <input
                   id="auth-signup-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="auth-input"
-                  placeholder="you@example.com"
+                  placeholder={t('auth.emailPlaceholder')}
                   required
                   autoComplete="email"
                 />
               </div>
               <div className="auth-field">
-                <label htmlFor="auth-signup-password" className="auth-label">Password</label>
+                <label htmlFor="auth-signup-password" className="auth-label">{t('auth.password')}</label>
                 <input
                   id="auth-signup-password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="auth-input"
-                  placeholder="At least 6 characters"
+                  placeholder={t('auth.passwordHint')}
                   required
                   minLength={6}
                   autoComplete="new-password"
@@ -260,7 +262,7 @@ function AuthModal({ isOpen, onClose }) {
                 disabled={loading}
                 className="auth-submit"
               >
-                {loading ? 'Creating account…' : 'Create Account'}
+                {loading ? t('auth.creatingAccount') : t('auth.createAccount')}
               </button>
             </form>
           )}

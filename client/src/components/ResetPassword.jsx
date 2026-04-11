@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../supabase';
 
 function ResetPassword() {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,7 +18,7 @@ function ResetPassword() {
     setSuccess('');
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('account.passwordsDoNotMatch', 'Passwords do not match'));
       return;
     }
 
@@ -30,7 +32,7 @@ function ResetPassword() {
         navigate('/');
       }, 3000);
     } catch (err) {
-      setError(err.message || 'Failed to reset password');
+      setError(err.message || t('account.passwordChangeFailed', 'Failed to reset password'));
     } finally {
       setLoading(false);
     }
@@ -58,7 +60,7 @@ function ResetPassword() {
 
         <form onSubmit={handleReset} className="auth-form">
           <div className="auth-field">
-            <label className="auth-label">New Password</label>
+            <label className="auth-label">{t('account.newPassword', 'New Password')}</label>
             <input
               type="password"
               value={password}
@@ -69,7 +71,7 @@ function ResetPassword() {
             />
           </div>
           <div className="auth-field">
-            <label className="auth-label">Confirm New Password</label>
+            <label className="auth-label">{t('account.confirmNewPassword', 'Confirm New Password')}</label>
             <input
               type="password"
               value={confirmPassword}

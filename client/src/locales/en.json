@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "platformsActive": "{{count}} platforms active",
+    "platformsLive": "7 platforms live",
+    "accountSettings": "Account Settings",
+    "signOut": "Sign out",
+    "signInRegister": "Sign in / Register",
+    "theme": "Theme",
+    "language": "Language",
+    "currency": "Currency",
+    "settings": "Settings"
+  },
+  "hero": {
+    "title": "Find the <1>best price</1> instantly",
+    "subtitle": "Compare prices for game keys, in-game currency, accounts & digital services across 7 marketplaces in real time.",
+    "searchingAcross": "Searching across"
+  },
+  "search": {
+    "placeholder": "Search \"wow gold eu\", \"valorant account\", \"game key\"...",
+    "button": "Search",
+    "searching": "Searching...",
+    "tip": "Try: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Showing",
+    "of": "of",
+    "resultsFor": "results for",
+    "in": "in",
+    "noResults": "No results found",
+    "noResultsHint": "Try a different search term or check if the product exists on supported platforms.",
+    "sortedPriceAsc": "Sorted by price: low → high",
+    "sortedPriceDesc": "Sorted by price: high → low",
+    "sortedPlatformAz": "Sorted by platform: A → Z",
+    "sortedRelevant": "Sorted by relevance"
+  },
+  "sort": {
+    "priceAsc": "Price: Low → High",
+    "priceDesc": "Price: High → Low",
+    "platformAz": "Platform: A → Z",
+    "relevant": "Most Relevant"
+  },
+  "filter": {
+    "sortBy": "Sort by",
+    "price": "Price",
+    "min": "Min",
+    "max": "Max",
+    "platforms": "Platforms",
+    "hideNoPrice": "Hide no-price",
+    "filters": "Filters",
+    "active": "active",
+    "filtersAndSort": "Filters & Sort",
+    "priceRange": "Price Range",
+    "hideWithoutPrice": "Hide results without price",
+    "applyFilters": "Apply Filters"
+  },
+  "card": {
+    "bestPrice": "Best Price",
+    "priceNotAvailable": "Price not available",
+    "viewDeal": "View Deal",
+    "copied": "Copied!"
+  },
+  "bookmarks": {
+    "savedDeals": "Saved deals",
+    "removeSavedDeal": "Remove saved deal",
+    "viewDeal": "View Deal"
+  },
+  "recent": {
+    "recentSearches": "Recent searches"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "forgotPassword": "Forgot password?",
+    "backToSignIn": "Back to Sign In",
+    "signingIn": "Signing in…",
+    "sendResetLink": "Send reset link",
+    "sending": "Sending…",
+    "createAccount": "Create Account",
+    "creatingAccount": "Creating account…",
+    "signInFailed": "Sign in failed",
+    "signUpFailed": "Sign up failed",
+    "resetLinkSent": "Password reset link sent! Check your email.",
+    "failedResetLink": "Failed to send reset link",
+    "usernameRequired": "Username is required",
+    "accountCreated": "Account created! Check your email to confirm, then sign in.",
+    "emailPlaceholder": "you@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "At least 6 characters"
+  },
+  "onboarding": {
+    "welcome": "Welcome to LootReef",
+    "skip": "Skip",
+    "description": "Compare prices across the top gaming marketplaces instantly. Let's set up your preferences for the best experience.",
+    "getStarted": "Get Started",
+    "selectLanguage": "Select your Language",
+    "languageHint": "We'll automatically translate deal titles to match.",
+    "selectCurrency": "Select your Currency",
+    "currencyHint": "We'll convert all prices using live exchange rates.",
+    "back": "Back",
+    "next": "Next",
+    "finishSetup": "Finish Setup"
+  },
+  "account": {
+    "password": "Password",
+    "dangerZone": "Danger Zone",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "updating": "Updating…",
+    "updatePassword": "Update Password",
+    "passwordChanged": "Password changed successfully",
+    "passwordsNoMatch": "New passwords do not match",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "failedChangePassword": "Failed to change password",
+    "deleteWarning": "Your account will be deactivated immediately and permanently deleted after 30 days. You will be signed out.",
+    "warning": "Warning:",
+    "deactivating": "Deactivating…",
+    "deactivateAccount": "I understand, deactivate my account"
+  },
+  "reset": {
+    "title": "Reset Your Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "resetting": "Resetting…",
+    "resetPassword": "Reset Password",
+    "passwordsNoMatch": "Passwords do not match",
+    "resetSuccess": "Password reset successfully. You will be redirected shortly.",
+    "resetFailed": "Failed to reset password"
+  },
+  "footer": {
+    "disclaimer": "LootReef compares prices across third-party marketplaces. We are not affiliated with any platform listed."
+  },
+  "theme": {
+    "legacy": "Legacy",
+    "dark": "Dark",
+    "light": "Light",
+    "glass": "Glass"
+  }
+}

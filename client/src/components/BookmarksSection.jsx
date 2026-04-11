@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 import { useCurrency } from '../CurrencyContext';
 import { loadBookmarks, removeBookmark } from '../bookmarks';
@@ -15,6 +16,7 @@ const PLATFORM_COLORS = {
 };
 
 function BookmarkCard({ offer, convert, currency, handleDelete }) {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleViewDeal = async (e) => {
@@ -40,7 +42,7 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
       <button 
         onClick={() => handleDelete(offer.url)}
         className="absolute top-2 right-2 p-1 text-text-secondary hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
-        title="Remove saved deal"
+        title={t('bookmarks.remove', 'Remove saved deal')}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -52,7 +54,7 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
           {offer.platform}
         </span>
         <span className="text-xs font-semibold text-text truncate">
-          {offer.price != null ? convert(offer.price) : 'N/A'} {offer.price != null ? currency : ''}
+          {offer.price != null ? convert(offer.price) : t('card.priceNotAvailable', 'N/A')} {offer.price != null ? currency : ''}
         </span>
       </div>
       
@@ -69,13 +71,14 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
           isLoading ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-surface-alt hover:bg-border text-text'
         }`}
       >
-        {isLoading ? '...' : 'View Deal'}
+        {isLoading ? '...' : t('card.viewDeal')}
       </a>
     </div>
   );
 }
 
 function BookmarksSection({ hide }) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { convert, currency } = useCurrency();
   const [bookmarks, setBookmarks] = useState([]);
@@ -114,7 +117,7 @@ function BookmarksSection({ hide }) {
         <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
-        Saved deals
+        {t('bookmarks.savedDeals')}
       </p>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

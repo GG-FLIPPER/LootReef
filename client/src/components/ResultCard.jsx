@@ -1,4 +1,5 @@
 import { useState, useEffect, memo, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCurrency } from '../CurrencyContext';
 import { useLanguage } from '../LanguageContext';
 import { useAuth } from '../AuthContext';
@@ -16,6 +17,7 @@ const PLATFORM_COLORS = {
 };
 
 function ResultCard({ result, index, isCheapest, initialBookmarked }) {
+  const { t } = useTranslation();
   const { convert, currency } = useCurrency();
   const { targetLanguage, translate } = useLanguage();
   const { user } = useAuth();
@@ -164,7 +166,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
       {/* Cheapest badge */}
       {isCheapest && (
         <div className="absolute -top-2.5 left-3 px-2 py-0.5 bg-accent-green text-white text-[10px] font-bold uppercase rounded-full tracking-wider">
-          Best Price
+          {t('card.bestPrice')}
         </div>
       )}
 
@@ -204,7 +206,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
             )}
             {copied && (
               <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-medium rounded shadow-sm whitespace-nowrap pointer-events-none z-20">
-                Copied!
+                {t('card.copied')}
                 <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></span>
               </span>
             )}
@@ -242,7 +244,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
               <p className="text-[10px] text-text-secondary uppercase tracking-wider">{currency}</p>
             </>
           ) : (
-            <p className="text-sm text-text-secondary italic">Price not available</p>
+            <p className="text-sm text-text-secondary italic">{t('card.priceNotAvailable')}</p>
           )}
         </div>
 
@@ -259,7 +261,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
               : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
           }`}
         >
-          {isLoading ? '...' : 'View Deal'}
+          {isLoading ? '...' : t('card.viewDeal')}
           {!isLoading && (
             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

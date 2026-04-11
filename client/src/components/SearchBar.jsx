@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function SearchBar({ onSearch, loading, compact }) {
+  const { t } = useTranslation();
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
 
@@ -42,7 +44,7 @@ function SearchBar({ onSearch, loading, compact }) {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder='Search "wow gold eu", "valorant account", "game key"...'
+          placeholder={t('search.placeholder')}
           className="flex-1 h-full bg-transparent outline-none text-text placeholder:text-text-secondary/60 text-sm sm:text-base"
           disabled={loading}
         />
@@ -57,14 +59,14 @@ function SearchBar({ onSearch, loading, compact }) {
               : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
           }`}
         >
-          {loading ? 'Searching...' : 'Search'}
+          {loading ? t('search.searching') : t('search.button')}
         </button>
       </div>
 
       {/* Tip text */}
       {!compact && (
         <p className="text-center text-xs text-text-secondary mt-3 opacity-60">
-          Try: "csgo skins", "fifa coins", "steam wallet code", "roblox robux"
+          {t('search.tip')}
         </p>
       )}
     </form>

@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "platformsActive": "{{count}} платформ активно",
+    "platformsLive": "7 платформ онлайн",
+    "accountSettings": "Настройки аккаунта",
+    "signOut": "Выйти",
+    "signInRegister": "Войти / Регистрация",
+    "theme": "Тема",
+    "language": "Язык",
+    "currency": "Валюта",
+    "settings": "Настройки"
+  },
+  "hero": {
+    "title": "Найдите <1>лучшую цену</1> мгновенно",
+    "subtitle": "Сравнивайте цены на игровые ключи, внутриигровую валюту, аккаунты и цифровые услуги на 7 маркетплейсах в реальном времени.",
+    "searchingAcross": "Поиск по"
+  },
+  "search": {
+    "placeholder": "Поиск: \"wow gold eu\", \"valorant аккаунт\", \"game key\"...",
+    "button": "Поиск",
+    "searching": "Ищем...",
+    "tip": "Попробуйте: \"csgo скины\", \"fifa монеты\", \"steam кошелёк\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Показано",
+    "of": "из",
+    "resultsFor": "результатов по запросу",
+    "in": "за",
+    "noResults": "Ничего не найдено",
+    "noResultsHint": "Попробуйте другой поисковый запрос или проверьте, есть ли продукт на поддерживаемых платформах.",
+    "sortedPriceAsc": "По цене: от низкой к высокой",
+    "sortedPriceDesc": "По цене: от высокой к низкой",
+    "sortedPlatformAz": "По платформе: А → Я",
+    "sortedRelevant": "По релевантности"
+  },
+  "sort": {
+    "priceAsc": "Цена: ↑",
+    "priceDesc": "Цена: ↓",
+    "platformAz": "Платформа: А → Я",
+    "relevant": "По релевантности"
+  },
+  "filter": {
+    "sortBy": "Сортировка",
+    "price": "Цена",
+    "min": "Мин",
+    "max": "Макс",
+    "platforms": "Платформы",
+    "hideNoPrice": "Скрыть без цены",
+    "filters": "Фильтры",
+    "active": "активно",
+    "filtersAndSort": "Фильтры и сортировка",
+    "priceRange": "Диапазон цен",
+    "hideWithoutPrice": "Скрыть результаты без цены",
+    "applyFilters": "Применить фильтры"
+  },
+  "card": {
+    "bestPrice": "Лучшая цена",
+    "priceNotAvailable": "Цена недоступна",
+    "viewDeal": "Посмотреть",
+    "copied": "Скопировано!"
+  },
+  "bookmarks": {
+    "savedDeals": "Сохранённые предложения",
+    "removeSavedDeal": "Удалить сохранённое",
+    "viewDeal": "Посмотреть"
+  },
+  "recent": {
+    "recentSearches": "Недавние поиски"
+  },
+  "auth": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "username": "Имя пользователя",
+    "forgotPassword": "Забыли пароль?",
+    "backToSignIn": "Назад к входу",
+    "signingIn": "Входим…",
+    "sendResetLink": "Отправить ссылку для сброса",
+    "sending": "Отправка…",
+    "createAccount": "Создать аккаунт",
+    "creatingAccount": "Создаём аккаунт…",
+    "signInFailed": "Ошибка входа",
+    "signUpFailed": "Ошибка регистрации",
+    "resetLinkSent": "Ссылка для сброса пароля отправлена! Проверьте почту.",
+    "failedResetLink": "Не удалось отправить ссылку",
+    "usernameRequired": "Имя пользователя обязательно",
+    "accountCreated": "Аккаунт создан! Проверьте почту для подтверждения, затем войдите.",
+    "emailPlaceholder": "вы@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Минимум 6 символов"
+  },
+  "onboarding": {
+    "welcome": "Добро пожаловать в LootReef",
+    "skip": "Пропустить",
+    "description": "Сравнивайте цены на лучших игровых маркетплейсах мгновенно. Давайте настроим ваши предпочтения.",
+    "getStarted": "Начать",
+    "selectLanguage": "Выберите язык",
+    "languageHint": "Мы автоматически переведём названия предложений.",
+    "selectCurrency": "Выберите валюту",
+    "currencyHint": "Мы конвертируем все цены по актуальным курсам.",
+    "back": "Назад",
+    "next": "Далее",
+    "finishSetup": "Завершить настройку"
+  },
+  "account": {
+    "password": "Пароль",
+    "dangerZone": "Опасная зона",
+    "currentPassword": "Текущий пароль",
+    "newPassword": "Новый пароль",
+    "confirmNewPassword": "Подтвердите новый пароль",
+    "updating": "Обновляем…",
+    "updatePassword": "Обновить пароль",
+    "passwordChanged": "Пароль успешно изменён",
+    "passwordsNoMatch": "Пароли не совпадают",
+    "passwordTooShort": "Пароль должен быть не менее 6 символов",
+    "failedChangePassword": "Не удалось изменить пароль",
+    "deleteWarning": "Ваш аккаунт будет немедленно деактивирован и окончательно удалён через 30 дней. Вы будете разлогинены.",
+    "warning": "Внимание:",
+    "deactivating": "Деактивация…",
+    "deactivateAccount": "Понимаю, деактивировать мой аккаунт"
+  },
+  "reset": {
+    "title": "Сбросить пароль",
+    "newPassword": "Новый пароль",
+    "confirmNewPassword": "Подтвердите новый пароль",
+    "resetting": "Сброс…",
+    "resetPassword": "Сбросить пароль",
+    "passwordsNoMatch": "Пароли не совпадают",
+    "resetSuccess": "Пароль успешно сброшен. Вы будете перенаправлены.",
+    "resetFailed": "Не удалось сбросить пароль"
+  },
+  "footer": {
+    "disclaimer": "LootReef сравнивает цены на сторонних маркетплейсах. Мы не связаны ни с одной из перечисленных платформ."
+  },
+  "theme": {
+    "legacy": "Классика",
+    "dark": "Тёмная",
+    "light": "Светлая",
+    "glass": "Стекло"
+  }
+}

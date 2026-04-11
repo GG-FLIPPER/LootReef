@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 
 function AccountSettingsModal({ isOpen, onClose }) {
+  const { t } = useTranslation();
   const { user, signOut } = useAuth();
   
   const [tab, setTab] = useState('password'); // 'password' | 'delete'
@@ -36,30 +38,27 @@ function AccountSettingsModal({ isOpen, onClose }) {
     setSuccessMsg('');
 
     if (newPassword !== confirmPassword) {
-      setError('New passwords do not match');
+      setError(t('account.passwordsDoNotMatch', 'New passwords do not match'));
       return;
     }
 
     if (newPassword.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('account.passwordTooShort', 'Password must be at least 6 characters'));
       return;
     }
 
     setLoading(true);
     try {
       const { supabase } = await import('../supabase');
-      // Supabase's updateUser function only requires the new password if the user is already signed in.
-      // However, if we need to enforce old password, we might need a custom edge function. 
-      // Based on typical Supabase flow, just passing new password works for authenticated users.
       const { error: updateError } = await supabase.auth.updateUser({ password: newPassword });
       if (updateError) throw updateError;
       
-      setSuccessMsg('Password changed successfully');
+      setSuccessMsg(t('account.passwordChanged', 'Password changed successfully'));
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
     } catch (err) {
-      setError(err.message || 'Failed to change password');
+      setError(err.message || t('account.passwordChangeFailed', 'Failed to change password'));
     } finally {
       setLoading(false);
     }
@@ -70,7 +69,6 @@ function AccountSettingsModal({ isOpen, onClose }) {
     setLoading(true);
     try {
       const { supabase } = await import('../supabase');
-      // Soft delete: update profiles table
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ 
@@ -84,7 +82,7 @@ function AccountSettingsModal({ isOpen, onClose }) {
       onClose();
       await signOut();
     } catch (err) {
-      setError(err.message || 'Failed to delete account');
+      setError(err.message || t('account.deactivateFailed', 'Failed to delete account'));
       setLoading(false);
     }
   };
@@ -102,10 +100,10 @@ function AccountSettingsModal({ isOpen, onClose }) {
           
           <div className="auth-tabs">
             <button className={`auth-tab ${tab === 'password' ? 'auth-tab-active' : ''}`} onClick={() => switchTab('password')}>
-              Password
+              {t('account.passwordTab')}
             </button>
             <button className={`auth-tab ${tab === 'delete' ? 'auth-tab-active !text-red-500' : ''}`} onClick={() => switchTab('delete')}>
-              Danger Zone
+              {t('account.dangerZoneTab')}
             </button>
           </div>
 
@@ -114,10 +112,8 @@ function AccountSettingsModal({ isOpen, onClose }) {
 
           {tab === 'password' && (
             <form onSubmit={handlePasswordChange} className="auth-form mt-4">
-               {/* Note: Supabase defaults to not requiring the old password unless specifically configured, 
-                   but we include the field for good UX and future compatibility */}
               <div className="auth-field">
-                <label className="auth-label">Current Password</label>
+                <label className="auth-label">{t('account.currentPassword')}</label>
                 <input
                   type="password"
                   value={currentPassword}
@@ -128,7 +124,7 @@ function AccountSettingsModal({ isOpen, onClose }) {
                 />
               </div>
               <div className="auth-field">
-                <label className="auth-label">New Password</label>
+                <label className="auth-label">{t('account.newPassword')}</label>
                 <input
                   type="password"
                   value={newPassword}
@@ -140,7 +136,7 @@ function AccountSettingsModal({ isOpen, onClose }) {
                 />
               </div>
               <div className="auth-field">
-                <label className="auth-label">Confirm New Password</label>
+                <label className="auth-label">{t('account.confirmNewPassword')}</label>
                 <input
                   type="password"
                   value={confirmPassword}
@@ -152,7 +148,7 @@ function AccountSettingsModal({ isOpen, onClose }) {
                 />
               </div>
               <button type="submit" disabled={loading} className="auth-submit">
-                {loading ? 'Updating…' : 'Update Password'}
+                {loading ? t('account.updating') : t('account.updatePassword')}
               </button>
             </form>
           )}
@@ -160,14 +156,14 @@ function AccountSettingsModal({ isOpen, onClose }) {
           {tab === 'delete' && (
             <div className="auth-form mt-4">
               <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl mb-4 text-sm text-red-500">
-                <strong>Warning:</strong> Your account will be deactivated immediately and permanently deleted after 30 days. You will be signed out.
+                <strong>{t('account.warning', 'Warning')}:</strong> {t('account.warningDelete')}
               </div>
               <button 
                 onClick={handleDeleteAccount} 
                 disabled={loading} 
                 className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-2.5 px-4 rounded-xl transition-all"
               >
-                {loading ? 'Deactivating…' : 'I understand, deactivate my account'}
+                {loading ? t('account.deactivating') : t('account.deactivateBtn')}
               </button>
             </div>
           )}

@@ -1,0 +1,17 @@
+{
+  "nav": { "platformsActive": "{{count}} 个平台活跃", "platformsLive": "7 个平台在线", "accountSettings": "账户设置", "signOut": "退出登录", "signInRegister": "登录 / 注册", "theme": "主题", "language": "语言", "currency": "货币", "settings": "设置" },
+  "hero": { "title": "即刻找到<1>最优价格</1>", "subtitle": "实时比较7个交易平台上的游戏密钥、游戏币、账号和数字服务价格。", "searchingAcross": "正在搜索" },
+  "search": { "placeholder": "搜索 \"wow gold eu\"、\"valorant 账号\"、\"game key\"...", "button": "搜索", "searching": "搜索中...", "tip": "试试：\"csgo 皮肤\"、\"fifa 金币\"、\"steam 充值卡\"、\"roblox robux\"" },
+  "results": { "showing": "显示", "of": "/", "resultsFor": "条结果，搜索词：", "in": "用时", "noResults": "未找到结果", "noResultsHint": "尝试不同的搜索词，或检查产品是否存在于支持的平台上。", "sortedPriceAsc": "按价格排序：从低到高", "sortedPriceDesc": "按价格排序：从高到低", "sortedPlatformAz": "按平台排序：A → Z", "sortedRelevant": "按相关性排序" },
+  "sort": { "priceAsc": "价格：从低到高", "priceDesc": "价格：从高到低", "platformAz": "平台：A → Z", "relevant": "最相关" },
+  "filter": { "sortBy": "排序", "price": "价格", "min": "最低", "max": "最高", "platforms": "平台", "hideNoPrice": "隐藏无价格", "filters": "筛选", "active": "已激活", "filtersAndSort": "筛选与排序", "priceRange": "价格范围", "hideWithoutPrice": "隐藏无价格的结果", "applyFilters": "应用筛选" },
+  "card": { "bestPrice": "最优价格", "priceNotAvailable": "价格不可用", "viewDeal": "查看交易", "copied": "已复制！" },
+  "bookmarks": { "savedDeals": "已保存的交易", "removeSavedDeal": "移除已保存的交易", "viewDeal": "查看交易" },
+  "recent": { "recentSearches": "最近搜索" },
+  "auth": { "signIn": "登录", "signUp": "注册", "email": "邮箱", "password": "密码", "username": "用户名", "forgotPassword": "忘记密码？", "backToSignIn": "返回登录", "signingIn": "登录中…", "sendResetLink": "发送重置链接", "sending": "发送中…", "createAccount": "创建账户", "creatingAccount": "创建中…", "signInFailed": "登录失败", "signUpFailed": "注册失败", "resetLinkSent": "重置链接已发送！请检查邮箱。", "failedResetLink": "发送链接失败", "usernameRequired": "用户名为必填项", "accountCreated": "账户已创建！请查看邮箱确认，然后登录。", "emailPlaceholder": "你@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "至少6个字符" },
+  "onboarding": { "welcome": "欢迎来到 LootReef", "skip": "跳过", "description": "即刻比较顶级游戏交易市场的价格。让我们设置您的偏好。", "getStarted": "开始使用", "selectLanguage": "选择您的语言", "languageHint": "我们将自动翻译交易标题。", "selectCurrency": "选择您的货币", "currencyHint": "我们将使用实时汇率转换所有价格。", "back": "返回", "next": "下一步", "finishSetup": "完成设置" },
+  "account": { "password": "密码", "dangerZone": "危险区域", "currentPassword": "当前密码", "newPassword": "新密码", "confirmNewPassword": "确认新密码", "updating": "更新中…", "updatePassword": "更新密码", "passwordChanged": "密码修改成功", "passwordsNoMatch": "密码不匹配", "passwordTooShort": "密码至少需要6个字符", "failedChangePassword": "密码修改失败", "deleteWarning": "您的账户将立即停用，并在30天后永久删除。您将被退出登录。", "warning": "警告：", "deactivating": "停用中…", "deactivateAccount": "我了解，停用我的账户" },
+  "reset": { "title": "重置密码", "newPassword": "新密码", "confirmNewPassword": "确认新密码", "resetting": "重置中…", "resetPassword": "重置密码", "passwordsNoMatch": "密码不匹配", "resetSuccess": "密码重置成功。即将跳转。", "resetFailed": "密码重置失败" },
+  "footer": { "disclaimer": "LootReef 比较第三方交易平台上的价格。我们与所列任何平台均无关联。" },
+  "theme": { "legacy": "经典", "dark": "深色", "light": "浅色", "glass": "玻璃" }
+}

@@ -1,0 +1,17 @@
+{
+  "nav": { "platformsActive": "{{count}}つのプラットフォームが稼働中", "platformsLive": "7つのプラットフォームが稼働中", "accountSettings": "アカウント設定", "signOut": "ログアウト", "signInRegister": "ログイン / 登録", "theme": "テーマ", "language": "言語", "currency": "通貨", "settings": "設定" },
+  "hero": { "title": "<1>最安値</1>を即座に見つける", "subtitle": "7つのマーケットプレイスでゲームキー、ゲーム内通貨、アカウント、デジタルサービスの価格をリアルタイムで比較。", "searchingAcross": "検索対象" },
+  "search": { "placeholder": "\"wow gold eu\"、\"valorant アカウント\"、\"game key\" を検索...", "button": "検索", "searching": "検索中...", "tip": "試してみて：\"csgo skins\"、\"fifa coins\"、\"steam wallet code\"、\"roblox robux\"" },
+  "results": { "showing": "表示中", "of": "/", "resultsFor": "件の結果：", "in": "所要時間", "noResults": "結果が見つかりません", "noResultsHint": "別の検索ワードを試すか、サポート対象プラットフォームに製品があるか確認してください。", "sortedPriceAsc": "価格順：安い → 高い", "sortedPriceDesc": "価格順：高い → 安い", "sortedPlatformAz": "プラットフォーム順：A → Z", "sortedRelevant": "関連性順" },
+  "sort": { "priceAsc": "価格：安い → 高い", "priceDesc": "価格：高い → 安い", "platformAz": "プラットフォーム：A → Z", "relevant": "最も関連性が高い" },
+  "filter": { "sortBy": "並び替え", "price": "価格", "min": "最低", "max": "最高", "platforms": "プラットフォーム", "hideNoPrice": "価格なしを非表示", "filters": "フィルター", "active": "有効", "filtersAndSort": "フィルターと並び替え", "priceRange": "価格帯", "hideWithoutPrice": "価格なしの結果を非表示", "applyFilters": "フィルターを適用" },
+  "card": { "bestPrice": "最安値", "priceNotAvailable": "価格非公開", "viewDeal": "取引を見る", "copied": "コピー済み！" },
+  "bookmarks": { "savedDeals": "保存した取引", "removeSavedDeal": "保存した取引を削除", "viewDeal": "取引を見る" },
+  "recent": { "recentSearches": "最近の検索" },
+  "auth": { "signIn": "ログイン", "signUp": "登録", "email": "メールアドレス", "password": "パスワード", "username": "ユーザー名", "forgotPassword": "パスワードを忘れた？", "backToSignIn": "ログインに戻る", "signingIn": "ログイン中…", "sendResetLink": "リセットリンクを送信", "sending": "送信中…", "createAccount": "アカウント作成", "creatingAccount": "アカウント作成中…", "signInFailed": "ログイン失敗", "signUpFailed": "登録失敗", "resetLinkSent": "リセットリンクを送信しました！メールを確認してください。", "failedResetLink": "リンクの送信に失敗", "usernameRequired": "ユーザー名は必須です", "accountCreated": "アカウント作成完了！メールで確認後、ログインしてください。", "emailPlaceholder": "you@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "6文字以上" },
+  "onboarding": { "welcome": "LootReefへようこそ", "skip": "スキップ", "description": "トップゲーミングマーケットプレイスの価格を即座に比較。設定を行いましょう。", "getStarted": "始める", "selectLanguage": "言語を選択", "languageHint": "取引タイトルを自動翻訳します。", "selectCurrency": "通貨を選択", "currencyHint": "リアルタイム為替レートで全価格を換算します。", "back": "戻る", "next": "次へ", "finishSetup": "設定完了" },
+  "account": { "password": "パスワード", "dangerZone": "危険ゾーン", "currentPassword": "現在のパスワード", "newPassword": "新しいパスワード", "confirmNewPassword": "新しいパスワード確認", "updating": "更新中…", "updatePassword": "パスワードを更新", "passwordChanged": "パスワードが変更されました", "passwordsNoMatch": "パスワードが一致しません", "passwordTooShort": "パスワードは6文字以上必要です", "failedChangePassword": "パスワード変更に失敗", "deleteWarning": "アカウントは即座に無効化され、30日後に完全に削除されます。ログアウトされます。", "warning": "警告：", "deactivating": "無効化中…", "deactivateAccount": "理解しました、アカウントを無効化" },
+  "reset": { "title": "パスワードをリセット", "newPassword": "新しいパスワード", "confirmNewPassword": "新しいパスワード確認", "resetting": "リセット中…", "resetPassword": "パスワードリセット", "passwordsNoMatch": "パスワードが一致しません", "resetSuccess": "パスワードがリセットされました。リダイレクトします。", "resetFailed": "パスワードリセットに失敗" },
+  "footer": { "disclaimer": "LootReefはサードパーティのマーケットプレイスの価格を比較します。掲載されたプラットフォームとは提携関係にありません。" },
+  "theme": { "legacy": "クラシック", "dark": "ダーク", "light": "ライト", "glass": "グラス" }
+}

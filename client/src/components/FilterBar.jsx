@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 const PLATFORM_CHIP_COLORS = {
   'G2G': { on: 'bg-[#ff6b00] text-white border-[#ff6b00]', off: 'bg-surface text-[#ff6b00] border-[#ff6b00]/40' },
   'FunPay': { on: 'bg-[#7c3aed] text-white border-[#7c3aed]', off: 'bg-surface text-[#7c3aed] border-[#7c3aed]/40' },
@@ -9,13 +11,6 @@ const PLATFORM_CHIP_COLORS = {
 };
 
 const FALLBACK_CHIP = { on: 'bg-gray-500 text-white border-gray-500', off: 'bg-surface text-gray-500 border-gray-500/40' };
-
-const SORT_OPTIONS = [
-  { value: 'price-asc', label: 'Price: Low → High' },
-  { value: 'price-desc', label: 'Price: High → Low' },
-  { value: 'platform-az', label: 'Platform: A → Z' },
-  { value: 'relevant', label: 'Most Relevant' },
-];
 
 function FilterBar({
   sortMode,
@@ -30,13 +25,22 @@ function FilterBar({
   hideNullPrices,
   onHideNullToggle,
 }) {
+  const { t } = useTranslation();
+
+  const SORT_OPTIONS = [
+    { value: 'price-asc', label: t('sort.priceAsc') },
+    { value: 'price-desc', label: t('sort.priceDesc') },
+    { value: 'platform-az', label: t('sort.platformAz') },
+    { value: 'relevant', label: t('sort.relevant') },
+  ];
+
   return (
     <div className="hidden sm:block mb-4 fade-in-up">
       {/* Row 1: Sort + Hide null prices */}
       <div className="flex items-center gap-4 mb-3">
         <div className="flex items-center gap-2">
           <label htmlFor="sort-select" className="text-xs font-medium text-text-secondary uppercase tracking-wider whitespace-nowrap">
-            Sort by
+            {t('filter.sortBy')}
           </label>
           <select
             id="sort-select"
@@ -54,7 +58,7 @@ function FilterBar({
 
         {/* Price range */}
         <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">Price</span>
+          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">{t('filter.price')}</span>
           <div className="flex items-center gap-1">
             <span className="text-xs text-text-secondary">$</span>
             <input
@@ -62,7 +66,7 @@ function FilterBar({
               type="number"
               min="0"
               step="0.01"
-              placeholder="Min"
+              placeholder={t('filter.min')}
               value={priceMin}
               onChange={(e) => onPriceMinChange(e.target.value)}
               className="w-20 text-sm border border-border rounded-lg px-2 py-1.5 bg-surface text-text outline-none focus:border-primary transition-colors"
@@ -76,7 +80,7 @@ function FilterBar({
               type="number"
               min="0"
               step="0.01"
-              placeholder="Max"
+              placeholder={t('filter.max')}
               value={priceMax}
               onChange={(e) => onPriceMaxChange(e.target.value)}
               className="w-20 text-sm border border-border rounded-lg px-2 py-1.5 bg-surface text-text outline-none focus:border-primary transition-colors"
@@ -91,13 +95,13 @@ function FilterBar({
           <div className={`toggle-switch ${hideNullPrices ? 'active' : ''}`} onClick={onHideNullToggle}>
             <div className="toggle-knob" />
           </div>
-          <span className="text-xs text-text-secondary whitespace-nowrap">Hide no-price</span>
+          <span className="text-xs text-text-secondary whitespace-nowrap">{t('filter.hideNoPrice')}</span>
         </label>
       </div>
 
       {/* Row 2: Platform chips */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mr-1">Platforms</span>
+        <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mr-1">{t('filter.platforms')}</span>
         {platforms.map((p) => {
           const colors = PLATFORM_CHIP_COLORS[p] || FALLBACK_CHIP;
           const isOn = platformFilters[p] !== false;

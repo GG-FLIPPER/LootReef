@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 import { loadHistory, deleteSearch } from '../searchHistory';
 
 function RecentSearches({ onSearch, refreshRef, hide }) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [history, setHistory] = useState([]);
 
@@ -33,7 +35,7 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
 
   return (
     <div className="recent-searches fade-in-up">
-      <p className="recent-searches-label">Recent searches</p>
+      <p className="recent-searches-label">{t('search.recentSearches')}</p>
       <div className="recent-searches-chips">
         {history.map((entry, i) => (
           <button

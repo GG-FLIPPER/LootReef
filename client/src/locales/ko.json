@@ -1,0 +1,17 @@
+{
+  "nav": { "platformsActive": "{{count}}개 플랫폼 활성", "platformsLive": "7개 플랫폼 라이브", "accountSettings": "계정 설정", "signOut": "로그아웃", "signInRegister": "로그인 / 회원가입", "theme": "테마", "language": "언어", "currency": "통화", "settings": "설정" },
+  "hero": { "title": "<1>최저가</1>를 즉시 찾아보세요", "subtitle": "7개 마켓플레이스에서 게임 키, 게임 내 화폐, 계정 및 디지털 서비스 가격을 실시간으로 비교하세요.", "searchingAcross": "검색 중" },
+  "search": { "placeholder": "\"wow gold eu\", \"발로란트 계정\", \"game key\" 검색...", "button": "검색", "searching": "검색 중...", "tip": "검색해보세요: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
+  "results": { "showing": "표시", "of": "/", "resultsFor": "개 결과:", "in": "소요 시간", "noResults": "결과 없음", "noResultsHint": "다른 검색어를 시도하거나 지원 플랫폼에 제품이 있는지 확인하세요.", "sortedPriceAsc": "가격순: 낮은 → 높은", "sortedPriceDesc": "가격순: 높은 → 낮은", "sortedPlatformAz": "플랫폼순: A → Z", "sortedRelevant": "관련성순" },
+  "sort": { "priceAsc": "가격: 낮은 → 높은", "priceDesc": "가격: 높은 → 낮은", "platformAz": "플랫폼: A → Z", "relevant": "가장 관련성 높은" },
+  "filter": { "sortBy": "정렬", "price": "가격", "min": "최소", "max": "최대", "platforms": "플랫폼", "hideNoPrice": "가격 없음 숨기기", "filters": "필터", "active": "활성", "filtersAndSort": "필터 및 정렬", "priceRange": "가격 범위", "hideWithoutPrice": "가격 없는 결과 숨기기", "applyFilters": "필터 적용" },
+  "card": { "bestPrice": "최저가", "priceNotAvailable": "가격 미제공", "viewDeal": "거래 보기", "copied": "복사됨!" },
+  "bookmarks": { "savedDeals": "저장한 거래", "removeSavedDeal": "저장한 거래 삭제", "viewDeal": "거래 보기" },
+  "recent": { "recentSearches": "최근 검색" },
+  "auth": { "signIn": "로그인", "signUp": "회원가입", "email": "이메일", "password": "비밀번호", "username": "사용자 이름", "forgotPassword": "비밀번호를 잊으셨나요?", "backToSignIn": "로그인으로 돌아가기", "signingIn": "로그인 중…", "sendResetLink": "재설정 링크 보내기", "sending": "전송 중…", "createAccount": "계정 만들기", "creatingAccount": "계정 생성 중…", "signInFailed": "로그인 실패", "signUpFailed": "회원가입 실패", "resetLinkSent": "재설정 링크가 전송되었습니다! 이메일을 확인하세요.", "failedResetLink": "링크 전송 실패", "usernameRequired": "사용자 이름은 필수입니다", "accountCreated": "계정이 생성되었습니다! 이메일을 확인한 후 로그인하세요.", "emailPlaceholder": "you@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "최소 6자" },
+  "onboarding": { "welcome": "LootReef에 오신 것을 환영합니다", "skip": "건너뛰기", "description": "최고의 게이밍 마켓플레이스에서 즉시 가격을 비교하세요. 설정을 진행합니다.", "getStarted": "시작하기", "selectLanguage": "언어 선택", "languageHint": "거래 제목을 자동으로 번역합니다.", "selectCurrency": "통화 선택", "currencyHint": "실시간 환율로 모든 가격을 변환합니다.", "back": "뒤로", "next": "다음", "finishSetup": "설정 완료" },
+  "account": { "password": "비밀번호", "dangerZone": "위험 구역", "currentPassword": "현재 비밀번호", "newPassword": "새 비밀번호", "confirmNewPassword": "새 비밀번호 확인", "updating": "업데이트 중…", "updatePassword": "비밀번호 업데이트", "passwordChanged": "비밀번호가 변경되었습니다", "passwordsNoMatch": "비밀번호가 일치하지 않습니다", "passwordTooShort": "비밀번호는 최소 6자 이상이어야 합니다", "failedChangePassword": "비밀번호 변경 실패", "deleteWarning": "계정이 즉시 비활성화되고 30일 후 영구 삭제됩니다. 로그아웃됩니다.", "warning": "경고:", "deactivating": "비활성화 중…", "deactivateAccount": "이해합니다. 계정을 비활성화합니다" },
+  "reset": { "title": "비밀번호 재설정", "newPassword": "새 비밀번호", "confirmNewPassword": "새 비밀번호 확인", "resetting": "재설정 중…", "resetPassword": "비밀번호 재설정", "passwordsNoMatch": "비밀번호가 일치하지 않습니다", "resetSuccess": "비밀번호가 재설정되었습니다. 곧 리디렉션됩니다.", "resetFailed": "비밀번호 재설정 실패" },
+  "footer": { "disclaimer": "LootReef는 제3자 마켓플레이스의 가격을 비교합니다. 나열된 플랫폼과는 관련이 없습니다." },
+  "theme": { "legacy": "클래식", "dark": "다크", "light": "라이트", "glass": "글래스" }
+}

@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo, useRef, useDeferredValue, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import SearchBar from './components/SearchBar';
 import ResultsGrid from './components/ResultsGrid';
 import FilterBar from './components/FilterBar';
@@ -20,6 +21,7 @@ import { loadBookmarks } from './bookmarks';
 
 function App() {
   const location = useLocation();
+  const { t } = useTranslation();
   const { user, profile, signOut } = useAuth();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -255,7 +257,7 @@ function App() {
             <ThemeToggle />
             <div className="hidden lg:flex items-center gap-1 text-xs text-text-secondary">
               <span className="inline-block w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
-              {platforms.length > 0 ? `${platforms.length} platforms active` : '7 platforms live'}
+              {platforms.length > 0 ? t('nav.platformsActive', { count: platforms.length }) : t('nav.platformsLive')}
             </div>
             {user ? (
               <div className="relative">
@@ -284,13 +286,13 @@ function App() {
                         onClick={() => { setIsAccountMenuOpen(false); setAccountSettingsModalOpen(true); }}
                         className="w-full text-left px-4 py-2 text-sm text-text hover:bg-border transition-colors font-medium border-b border-border/50"
                       >
-                        Account Settings
+                        {t('nav.accountSettings')}
                       </button>
                       <button 
                         onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); setIsAccountMenuOpen(false); signOut(); }}
                         className="w-full text-left px-4 py-2 text-sm text-text hover:bg-border transition-colors hover:text-red-500 font-medium"
                       >
-                        Sign out
+                        {t('nav.signOut')}
                       </button>
                     </div>
                   </>
@@ -298,7 +300,7 @@ function App() {
               </div>
             ) : (
               <button onClick={() => setAuthModalOpen(true)} className="auth-nav-btn sign-in-btn">
-                Sign in / Register
+                {t('nav.signInRegister')}
               </button>
             )}
           </div>
@@ -341,35 +343,35 @@ function App() {
                     onClick={() => { setIsMobileMenuOpen(false); setAccountSettingsModalOpen(true); }}
                     className="text-sm font-medium text-text-secondary hover:text-text transition-colors"
                   >
-                    Settings
+                    {t('nav.settings')}
                   </button>
                   <div className="w-px h-4 bg-border"></div>
                   <button 
                     onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); signOut(); setIsMobileMenuOpen(false); }} 
                     className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors"
                   >
-                    Sign out
+                    {t('nav.signOut')}
                   </button>
                 </div>
               </div>
             ) : (
               <div className="pb-2 border-b border-border">
                 <button onClick={() => { setAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="auth-nav-btn sign-in-btn w-full flex justify-center py-2.5">
-                  Sign in / Register
+                  {t('nav.signInRegister')}
                 </button>
               </div>
             )}
             
             <div className="flex items-center justify-between">
-              <span className="text-sm text-text-secondary font-medium">Theme</span>
+              <span className="text-sm text-text-secondary font-medium">{t('nav.theme')}</span>
               <ThemeToggle />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-text-secondary font-medium">Language</span>
+              <span className="text-sm text-text-secondary font-medium">{t('nav.language')}</span>
               <LanguageSelector />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-text-secondary font-medium">Currency</span>
+              <span className="text-sm text-text-secondary font-medium">{t('nav.currency')}</span>
               <CurrencySelector />
             </div>
           </div>
@@ -382,10 +384,14 @@ function App() {
           {!searched && (
             <div className="text-center mb-8">
               <h2 className="text-4xl sm:text-5xl font-extrabold text-text mb-3 tracking-tight animate-hero-slide-up delay-100">
-                Find the <span className="text-primary">best price</span> instantly
+                {t('hero.title', { interpolation: { escapeValue: false } }).split('<1>').map((part, i) => {
+                  if (i === 0) return part;
+                  const [highlight, rest] = part.split('</1>');
+                  return <span key={i}><span className="text-primary">{highlight}</span>{rest}</span>;
+                })}
               </h2>
               <p className="text-text-secondary text-lg max-w-xl mx-auto animate-hero-slide-up delay-200">
-                Compare prices for game keys, in-game currency, accounts & digital services across 7 marketplaces in real time.
+                {t('hero.subtitle')}
               </p>
             </div>
           )}
@@ -416,7 +422,7 @@ function App() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
-              Filters{hasActiveFilters ? ' (active)' : ''}
+              {t('filter.filters')}{hasActiveFilters ? ` (${t('filter.active')})` : ''}
             </button>
           </div>
         )}
@@ -425,18 +431,18 @@ function App() {
         {searched && !loading && results.length > 0 && (
           <div className="flex items-center justify-between mb-4 px-1 fade-in-up">
             <p className="text-sm text-text-secondary">
-              Showing <span className="font-semibold text-text">{filteredResults.length}</span>
+              {t('results.showing')} <span className="font-semibold text-text">{filteredResults.length}</span>
               {filteredResults.length !== results.length && (
-                <span> of <span className="font-semibold text-text">{results.length}</span></span>
+                <span> {t('results.of')} <span className="font-semibold text-text">{results.length}</span></span>
               )}
-              {' '}results for "<span className="font-medium text-text">{query}</span>"
-              {elapsed && <span className="ml-1">in {elapsed}s</span>}
+              {' '}{t('results.resultsFor')} "<span className="font-medium text-text">{query}</span>"
+              {elapsed && <span className="ml-1">{t('results.in')} {elapsed}s</span>}
             </p>
             <p className="text-xs text-text-secondary hidden sm:block">
-              {sortMode === 'price-asc' && 'Sorted by price: low → high'}
-              {sortMode === 'price-desc' && 'Sorted by price: high → low'}
-              {sortMode === 'platform-az' && 'Sorted by platform: A → Z'}
-              {sortMode === 'relevant' && 'Sorted by relevance'}
+              {sortMode === 'price-asc' && t('results.sortedPriceAsc')}
+              {sortMode === 'price-desc' && t('results.sortedPriceDesc')}
+              {sortMode === 'platform-az' && t('results.sortedPlatformAz')}
+              {sortMode === 'relevant' && t('results.sortedRelevant')}
             </p>
           </div>
         )}
@@ -447,7 +453,7 @@ function App() {
         {/* Platform badges when idle */}
         {!searched && (
           <div className="text-center mt-8 animate-hero-slide-up delay-400">
-            <p className="text-xs text-text-secondary mb-3 uppercase tracking-wider font-medium">Searching across</p>
+            <p className="text-xs text-text-secondary mb-3 uppercase tracking-wider font-medium">{t('hero.searchingAcross')}</p>
             <div className="flex flex-wrap justify-center gap-2">
               {['G2G', 'FunPay', 'Eldorado.gg', 'PlayerAuctions', 'Z2U', 'Gameflip', 'Plati.market'].map((p, i) => (
                 <span 
@@ -469,7 +475,7 @@ function App() {
       {/* Footer */}
       <footer className="border-t border-border mt-16">
         <div className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-text-secondary">
-          LootReef compares prices across third-party marketplaces. We are not affiliated with any platform listed.
+          {t('footer.disclaimer')}
         </div>
       </footer>
 

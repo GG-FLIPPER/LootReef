@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { supabase } from './supabase';
 import { useAuth } from './AuthContext';
+import i18n from './i18n';
 
 const LanguageContext = createContext(null);
 
@@ -31,6 +32,8 @@ export function LanguageProvider({ children }) {
       if (data && data.language_pref) {
         setTargetLanguage(data.language_pref);
         localStorage.setItem('pricescout_language', data.language_pref);
+        // Sync i18n UI locale
+        i18n.changeLanguage(data.language_pref);
       }
     }
     loadUserLanguage();
@@ -39,6 +42,8 @@ export function LanguageProvider({ children }) {
   const updateLanguage = useCallback(async (lang) => {
     setTargetLanguage(lang);
     localStorage.setItem('pricescout_language', lang);
+    // Sync i18n UI locale
+    i18n.changeLanguage(lang);
     if (user && !isSyncing) {
       setIsSyncing(true);
       await supabase.from('profiles').update({ language_pref: lang }).eq('id', user.id);

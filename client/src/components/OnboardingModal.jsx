@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 import { useLanguage } from '../LanguageContext';
 import { useCurrency } from '../CurrencyContext';
@@ -6,6 +7,7 @@ import { LANGUAGES } from './LanguageSelector';
 import { supabase } from '../supabase';
 
 function OnboardingModal() {
+  const { t } = useTranslation();
   const { user, profile } = useAuth();
   const { targetLanguage, updateLanguage } = useLanguage();
   const { currency, setCurrency, currencies } = useCurrency();
@@ -86,14 +88,14 @@ function OnboardingModal() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <h2 className="text-xl font-bold text-text">Welcome to LootReef</h2>
+              <h2 className="text-xl font-bold text-text">{t('onboarding.welcome')}</h2>
             </div>
             {/* Skip Button */}
             <button
               onClick={handleSkip}
               className="text-sm text-text-secondary hover:text-text transition-colors border border-border px-3 py-1.5 rounded-lg hover:border-primary/50"
             >
-              Skip
+              {t('onboarding.skip')}
             </button>
           </div>
 
@@ -101,14 +103,14 @@ function OnboardingModal() {
             {step === 1 && (
               <div className="space-y-4 animate-fade-in">
                 <p className="text-text-secondary">
-                  Compare prices across the top gaming marketplaces instantly. Let's set up your preferences for the best experience.
+                  {t('onboarding.step1Desc')}
                 </p>
                 <div className="pt-4">
                   <button
                     onClick={() => setStep(2)}
                     className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 rounded-xl transition-colors"
                   >
-                    Get Started
+                    {t('onboarding.getStarted')}
                   </button>
                 </div>
               </div>
@@ -116,8 +118,8 @@ function OnboardingModal() {
 
             {step === 2 && (
               <div className="space-y-4 animate-fade-in">
-                <h3 className="text-lg font-semibold text-text">Select your Language</h3>
-                <p className="text-sm text-text-secondary">We'll automatically translate deal titles to match.</p>
+                <h3 className="text-lg font-semibold text-text">{t('onboarding.selectLanguage')}</h3>
+                <p className="text-sm text-text-secondary">{t('onboarding.languageDesc')}</p>
                 
                 <div className="grid grid-cols-2 gap-2 mt-4">
                   {LANGUAGES.map((l) => (
@@ -135,16 +137,16 @@ function OnboardingModal() {
                 </div>
 
                 <div className="pt-4 flex gap-3">
-                  <button onClick={() => setStep(1)} className="flex-1 bg-surface-alt hover:bg-border text-text py-3 rounded-xl transition-colors">Back</button>
-                  <button onClick={() => setStep(3)} className="flex-1 bg-primary hover:bg-primary-dark text-white font-medium py-3 rounded-xl transition-colors">Next</button>
+                  <button onClick={() => setStep(1)} className="flex-1 bg-surface-alt hover:bg-border text-text py-3 rounded-xl transition-colors">{t('onboarding.back')}</button>
+                  <button onClick={() => setStep(3)} className="flex-1 bg-primary hover:bg-primary-dark text-white font-medium py-3 rounded-xl transition-colors">{t('onboarding.next')}</button>
                 </div>
               </div>
             )}
 
             {step === 3 && (
               <div className="space-y-4 animate-fade-in">
-                <h3 className="text-lg font-semibold text-text">Select your Currency</h3>
-                <p className="text-sm text-text-secondary">We'll convert all prices using live exchange rates.</p>
+                <h3 className="text-lg font-semibold text-text">{t('onboarding.selectCurrency')}</h3>
+                <p className="text-sm text-text-secondary">{t('onboarding.currencyDesc')}</p>
                 
                 <div className="grid grid-cols-2 gap-2 mt-4 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
                   {currencies.map((c) => (
@@ -165,8 +167,8 @@ function OnboardingModal() {
                 </div>
 
                 <div className="pt-4 flex gap-3">
-                  <button onClick={() => setStep(2)} className="flex-1 bg-surface-alt hover:bg-border text-text py-3 rounded-xl transition-colors">Back</button>
-                  <button onClick={handleFinish} className="flex-1 bg-accent-green hover:bg-green-600 text-white font-medium py-3 rounded-xl transition-colors">Finish Setup</button>
+                  <button onClick={() => setStep(2)} className="flex-1 bg-surface-alt hover:bg-border text-text py-3 rounded-xl transition-colors">{t('onboarding.back')}</button>
+                  <button onClick={handleFinish} className="flex-1 bg-accent-green hover:bg-green-600 text-white font-medium py-3 rounded-xl transition-colors">{t('onboarding.finishSetup')}</button>
                 </div>
               </div>
             )}

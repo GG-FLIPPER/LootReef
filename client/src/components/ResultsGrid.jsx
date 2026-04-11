@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import ResultCard from './ResultCard';
 
 function SkeletonCard() {
@@ -22,6 +23,8 @@ function SkeletonCard() {
 }
 
 function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
+  const { t } = useTranslation();
+
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-12">
@@ -40,9 +43,9 @@ function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-text mb-1">No results found</h3>
+        <h3 className="text-lg font-semibold text-text mb-1">{t('results.noResults')}</h3>
         <p className="text-sm text-text-secondary max-w-sm mx-auto">
-          Try a different search term or check if the product exists on supported platforms.
+          {t('results.noResultsHint')}
         </p>
       </div>
     );

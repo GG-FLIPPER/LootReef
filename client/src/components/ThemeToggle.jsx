@@ -1,16 +1,18 @@
 import { useState, useCallback } from 'react';
-
-const THEMES = [
-  { key: 'legacy', label: 'Legacy', icon: null },
-  { key: 'dark', label: 'Dark', icon: '🌙' },
-  { key: 'light', label: 'Light', icon: '☀️' },
-  { key: 'glass', label: 'Glass', icon: '💧' },
-];
+import { useTranslation } from 'react-i18next';
 
 function ThemeToggle() {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState(
     () => document.documentElement.getAttribute('data-theme') || 'legacy'
   );
+
+  const THEMES = [
+    { key: 'legacy', label: t('theme.legacy'), icon: null },
+    { key: 'dark', label: t('theme.dark'), icon: '🌙' },
+    { key: 'light', label: t('theme.light'), icon: '☀️' },
+    { key: 'glass', label: t('theme.glass'), icon: '💧' },
+  ];
 
   const handleSwitch = useCallback((key) => {
     document.documentElement.setAttribute('data-theme', key);
@@ -19,17 +21,17 @@ function ThemeToggle() {
   }, []);
 
   return (
-    <div className="theme-toggle" role="radiogroup" aria-label="Theme selector">
-      {THEMES.map((t) => (
+    <div className="theme-toggle" role="radiogroup" aria-label={t('nav.theme')}>
+      {THEMES.map((th) => (
         <button
-          key={t.key}
+          key={th.key}
           role="radio"
-          aria-checked={theme === t.key}
-          className={`theme-toggle-option ${theme === t.key ? 'theme-toggle-active' : ''}`}
-          onClick={() => handleSwitch(t.key)}
+          aria-checked={theme === th.key}
+          className={`theme-toggle-option ${theme === th.key ? 'theme-toggle-active' : ''}`}
+          onClick={() => handleSwitch(th.key)}
         >
-          {t.icon && <span className="theme-toggle-icon">{t.icon}</span>}
-          <span>{t.label}</span>
+          {th.icon && <span className="theme-toggle-icon">{th.icon}</span>}
+          <span>{th.label}</span>
         </button>
       ))}
     </div>

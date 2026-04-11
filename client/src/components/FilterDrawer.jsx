@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const PLATFORM_CHIP_COLORS = {
   'G2G': { on: 'bg-[#ff6b00] text-white border-[#ff6b00]', off: 'bg-surface text-[#ff6b00] border-[#ff6b00]/40' },
@@ -11,13 +12,6 @@ const PLATFORM_CHIP_COLORS = {
 };
 
 const FALLBACK_CHIP = { on: 'bg-gray-500 text-white border-gray-500', off: 'bg-surface text-gray-500 border-gray-500/40' };
-
-const SORT_OPTIONS = [
-  { value: 'price-asc', label: 'Price: Low → High' },
-  { value: 'price-desc', label: 'Price: High → Low' },
-  { value: 'platform-az', label: 'Platform: A → Z' },
-  { value: 'relevant', label: 'Most Relevant' },
-];
 
 function FilterDrawer({
   isOpen,
@@ -34,6 +28,15 @@ function FilterDrawer({
   hideNullPrices,
   onHideNullToggle,
 }) {
+  const { t } = useTranslation();
+
+  const SORT_OPTIONS = [
+    { value: 'price-asc', label: t('sort.priceAsc') },
+    { value: 'price-desc', label: t('sort.priceDesc') },
+    { value: 'platform-az', label: t('sort.platformAz') },
+    { value: 'relevant', label: t('sort.relevant') },
+  ];
+
   // Prevent body scroll when drawer is open
   useEffect(() => {
     if (isOpen) {
@@ -64,7 +67,7 @@ function FilterDrawer({
         <div className="px-5 pb-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-lg font-bold text-text">Filters & Sort</h3>
+            <h3 className="text-lg font-bold text-text">{t('filter.filtersAndSort')}</h3>
             <button
               onClick={onClose}
               className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-alt text-text-secondary hover:bg-border transition-colors"
@@ -78,7 +81,7 @@ function FilterDrawer({
           {/* Sort */}
           <div className="mb-5">
             <label htmlFor="mobile-sort-select" className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 block">
-              Sort by
+              {t('filter.sortBy')}
             </label>
             <select
               id="mobile-sort-select"
@@ -94,7 +97,7 @@ function FilterDrawer({
 
           {/* Platforms */}
           <div className="mb-5">
-            <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 block">Platforms</span>
+            <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 block">{t('filter.platforms')}</span>
             <div className="flex flex-wrap gap-2">
               {platforms.map((p) => {
                 const colors = PLATFORM_CHIP_COLORS[p] || FALLBACK_CHIP;
@@ -116,7 +119,7 @@ function FilterDrawer({
 
           {/* Price range */}
           <div className="mb-5">
-            <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 block">Price Range</span>
+            <span className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 block">{t('filter.priceRange')}</span>
             <div className="flex items-center gap-3">
               <div className="flex-1 flex items-center gap-1.5 border border-border rounded-lg px-3 py-2">
                 <span className="text-sm text-text-secondary">$</span>
@@ -124,7 +127,7 @@ function FilterDrawer({
                   type="number"
                   min="0"
                   step="0.01"
-                  placeholder="Min"
+                  placeholder={t('filter.min')}
                   value={priceMin}
                   onChange={(e) => onPriceMinChange(e.target.value)}
                   className="w-full text-sm bg-transparent text-text outline-none"
@@ -137,7 +140,7 @@ function FilterDrawer({
                   type="number"
                   min="0"
                   step="0.01"
-                  placeholder="Max"
+                  placeholder={t('filter.max')}
                   value={priceMax}
                   onChange={(e) => onPriceMaxChange(e.target.value)}
                   className="w-full text-sm bg-transparent text-text outline-none"
@@ -149,7 +152,7 @@ function FilterDrawer({
           {/* Hide null prices */}
           <div className="mb-6">
             <label className="flex items-center justify-between cursor-pointer select-none">
-              <span className="text-sm text-text">Hide results without price</span>
+              <span className="text-sm text-text">{t('filter.hideWithoutPrice')}</span>
               <div className={`toggle-switch ${hideNullPrices ? 'active' : ''}`} onClick={onHideNullToggle}>
                 <div className="toggle-knob" />
               </div>
@@ -161,7 +164,7 @@ function FilterDrawer({
             onClick={onClose}
             className="w-full py-3 bg-primary text-white font-semibold rounded-xl text-sm hover:bg-primary-dark active:scale-[0.98] transition-all"
           >
-            Apply Filters
+            {t('filter.applyFilters')}
           </button>
         </div>
       </div>
