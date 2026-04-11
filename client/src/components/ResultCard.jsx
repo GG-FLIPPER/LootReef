@@ -82,22 +82,34 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
     window.dispatchEvent(new Event('bookmarksUpdated'));
   };
 
+  const shortenUrl = async (url) => {
+    const apiKey = import.meta.env.VITE_OUO_API_KEY;
+    if (!apiKey) return url;
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+
+    try {
+      const res = await fetch(
+        `https://ouo.io/api/${apiKey}?s=${encodeURIComponent(url)}`,
+        { signal: controller.signal }
+      );
+      const text = (await res.text()).trim();
+      clearTimeout(timeout);
+      return text.startsWith('http') ? text : url;
+    } catch {
+      clearTimeout(timeout);
+      return url;
+    }
+  };
+
   const handleShare = async (e) => {
     e.stopPropagation();
     e.preventDefault();
     if (isSharing || !result.url) return;
     setIsSharing(true);
     
-    let shortUrl = result.url;
-    try {
-      const res = await fetch(`/api/shorten?url=${encodeURIComponent(result.url)}`);
-      const data = await res.json();
-      if (data.short) {
-        shortUrl = data.short;
-      }
-    } catch (err) {
-      console.error("Shortening failed, using original url", err);
-    }
+    const shortUrl = await shortenUrl(result.url);
     
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -127,11 +139,10 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
     }
 
     try {
-      const res = await fetch(`/api/shorten?url=${encodeURIComponent(result.url)}`);
-      const data = await res.json();
-      if (newWindow) newWindow.location.href = data.short || result.url;
-      else window.open(data.short || result.url, '_blank', 'noopener,noreferrer');
-    } catch (err) {
+      const shortUrl = await shortenUrl(result.url);
+      if (newWindow) newWindow.location.href = shortUrl;
+      else window.open(shortUrl, '_blank', 'noopener,noreferrer');
+    } catch {
       if (newWindow) newWindow.location.href = result.url;
       else window.open(result.url, '_blank', 'noopener,noreferrer');
     } finally {
