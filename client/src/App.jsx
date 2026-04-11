@@ -17,12 +17,14 @@ import BookmarksSection from './components/BookmarksSection';
 import { useAuth } from './AuthContext';
 import { saveSearch } from './searchHistory';
 import { loadBookmarks } from './bookmarks';
+import { useLanguage } from './LanguageContext';
 
 
 function App() {
   const location = useLocation();
   const { t } = useTranslation();
   const { user, profile, signOut } = useAuth();
+  const { targetLanguage, translate } = useLanguage();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
@@ -154,7 +156,19 @@ function App() {
     });
 
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(trimmed)}`);
+      let searchTerm = trimmed;
+      if (targetLanguage !== 'en') {
+        try {
+          const translated = await translate(trimmed, 'en');
+          if (translated) {
+            searchTerm = translated;
+          }
+        } catch (translateErr) {
+          console.error('Translation of search query failed:', translateErr);
+        }
+      }
+
+      const res = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
       const data = await res.json();
       setResults(data.results || []);
       setElapsed(data.elapsed || null);
@@ -164,7 +178,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user, targetLanguage, translate]);
 
   // Search triggered by clicking a recent-search chip — skips saveSearch()
   const handleChipSearch = useCallback(async (searchQuery) => {
@@ -185,7 +199,19 @@ function App() {
     setFiltersOpen(false);
 
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(trimmed)}`);
+      let searchTerm = trimmed;
+      if (targetLanguage !== 'en') {
+        try {
+          const translated = await translate(trimmed, 'en');
+          if (translated) {
+            searchTerm = translated;
+          }
+        } catch (translateErr) {
+          console.error('Translation of search query failed:', translateErr);
+        }
+      }
+
+      const res = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
       const data = await res.json();
       setResults(data.results || []);
       setElapsed(data.elapsed || null);
@@ -195,7 +221,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [targetLanguage, translate]);
 
 
   const handlePlatformToggle = useCallback((platform) => {
