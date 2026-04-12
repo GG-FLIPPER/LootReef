@@ -297,7 +297,7 @@ function App() {
                     </svg>
                   </div>
                   <span className="text-sm font-medium text-text">
-                    {profile?.username}
+                    {profile?.username || user?.user_metadata?.username || user?.email}
                   </span>
                   <svg className={`w-4 h-4 text-text-secondary transition-transform ${isAccountMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -315,7 +315,7 @@ function App() {
                         {t('nav.accountSettings')}
                       </button>
                       <button 
-                        onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); setIsAccountMenuOpen(false); signOut(); }}
+                        onClick={async (e) => { e.preventDefault(); e.stopPropagation(); setIsAccountMenuOpen(false); await signOut(); }}
                         className="w-full text-left px-4 py-2 text-sm text-text hover:bg-border transition-colors hover:text-red-500 font-medium"
                       >
                         {t('nav.signOut')}
@@ -361,7 +361,7 @@ function App() {
                     </svg>
                   </div>
                   <span className="text-sm font-medium text-text max-w-[120px] truncate">
-                    {profile?.username}
+                    {profile?.username || user?.user_metadata?.username || user?.email}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -373,7 +373,7 @@ function App() {
                   </button>
                   <div className="w-px h-4 bg-border"></div>
                   <button 
-                    onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); signOut(); setIsMobileMenuOpen(false); }} 
+                    onClick={async (e) => { e.preventDefault(); e.stopPropagation(); setIsMobileMenuOpen(false); await signOut(); }} 
                     className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors"
                   >
                     {t('nav.signOut')}

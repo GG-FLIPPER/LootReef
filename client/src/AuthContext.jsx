@@ -165,7 +165,7 @@ export function AuthProvider({ children }) {
     } finally {
       setUser(null);
       setProfile(null);
-      navigate('/');
+      window.location.href = '/';
     }
   }
 

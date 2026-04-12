@@ -27,7 +27,26 @@ app.get('/api/search', async (req, res) => {
 
   res.json({ results, elapsed: parseFloat(elapsed) });
 });
+app.get('/api/shorten', async (req, res) => {
+  const { url } = req.query;
+  if (!url) return res.json({ shortUrl: '' });
 
+  const apiKey = process.env.OUO_API_KEY;
+  if (!apiKey) return res.json({ shortUrl: url });
+
+  try {
+    const ouoUrl = `https://ouo.io/api/${apiKey}?s=${encodeURIComponent(url)}`;
+    const response = await axios.get(ouoUrl, { timeout: 5000 });
+    const text = response.data;
+    if (typeof text === 'string' && text.startsWith('http')) {
+      return res.json({ shortUrl: text });
+    }
+    return res.json({ shortUrl: url });
+  } catch (error) {
+    console.error('[Shorten] Error:', error.message);
+    return res.json({ shortUrl: url });
+  }
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`LootReef API running on port ${PORT}`));

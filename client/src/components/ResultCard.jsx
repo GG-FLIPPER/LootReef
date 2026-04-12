@@ -85,20 +85,16 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
   };
 
   const shortenUrl = async (url) => {
-    const apiKey = import.meta.env.VITE_OUO_API_KEY;
-    if (!apiKey) return url;
-
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 5000);
 
     try {
-      const res = await fetch(
-        `https://ouo.io/api/${apiKey}?s=${encodeURIComponent(url)}`,
-        { signal: controller.signal }
-      );
-      const text = (await res.text()).trim();
+      const res = await fetch(`/api/shorten?url=${encodeURIComponent(url)}`, { 
+        signal: controller.signal 
+      });
+      const data = await res.json();
       clearTimeout(timeout);
-      return text.startsWith('http') ? text : url;
+      return data.shortUrl || url;
     } catch {
       clearTimeout(timeout);
       return url;

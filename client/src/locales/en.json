@@ -102,9 +102,14 @@
     "currencyHint": "We'll convert all prices using live exchange rates.",
     "back": "Back",
     "next": "Next",
-    "finishSetup": "Finish Setup"
+    "finishSetup": "Finish Setup",
+    "step1Desc": "Compare prices across the top gaming marketplaces instantly. Let's set up your preferences for the best experience.",
+    "languageDesc": "We'll automatically translate deal titles to match.",
+    "currencyDesc": "We'll convert all prices using live exchange rates."
   },
   "account": {
+    "passwordTab": "Password",
+    "dangerZoneTab": "Danger Zone",
     "password": "Password",
     "dangerZone": "Danger Zone",
     "currentPassword": "Current Password",
@@ -114,12 +119,17 @@
     "updatePassword": "Update Password",
     "passwordChanged": "Password changed successfully",
     "passwordsNoMatch": "New passwords do not match",
+    "passwordsDoNotMatch": "New passwords do not match",
     "passwordTooShort": "Password must be at least 6 characters",
     "failedChangePassword": "Failed to change password",
+    "passwordChangeFailed": "Failed to change password",
+    "deactivateFailed": "Failed to delete account",
     "deleteWarning": "Your account will be deactivated immediately and permanently deleted after 30 days. You will be signed out.",
+    "warningDelete": "Your account will be deactivated immediately and permanently deleted after 30 days. You will be signed out.",
     "warning": "Warning:",
     "deactivating": "Deactivating…",
-    "deactivateAccount": "I understand, deactivate my account"
+    "deactivateAccount": "I understand, deactivate my account",
+    "deactivateBtn": "I understand, deactivate my account"
   },
   "reset": {
     "title": "Reset Your Password",
