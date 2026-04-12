@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} alustaa aktiivisena", "platformsLive": "7 alustaa livenä", "accountSettings": "Tilin asetukset", "signOut": "Kirjaudu ulos", "signInRegister": "Kirjaudu / Rekisteröidy", "theme": "Teema", "language": "Kieli", "currency": "Valuutta", "settings": "Asetukset" },
-  "hero": { "title": "Löydä <1>paras hinta</1> heti", "subtitle": "Vertaa peliavainten, pelivaluutan, tilien ja digitaalisten palvelujen hintoja 7 markkinapaikalla reaaliajassa.", "searchingAcross": "Haetaan" },
-  "search": { "placeholder": "Hae \"wow gold eu\", \"valorant tili\", \"game key\"...", "button": "Hae", "searching": "Haetaan...", "tip": "Kokeile: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Näytetään", "of": "/", "resultsFor": "tulosta haulle", "in": "ajassa", "noResults": "Ei tuloksia", "noResultsHint": "Kokeile eri hakusanaa tai tarkista, onko tuote olemassa tuetuilla alustoilla.", "sortedPriceAsc": "Lajiteltu hinnan mukaan: halvin ensin", "sortedPriceDesc": "Lajiteltu hinnan mukaan: kallein ensin", "sortedPlatformAz": "Lajiteltu alustan mukaan: A → Ö", "sortedRelevant": "Lajiteltu osuvuuden mukaan" },
-  "sort": { "priceAsc": "Hinta: Halvin ensin", "priceDesc": "Hinta: Kallein ensin", "platformAz": "Alusta: A → Ö", "relevant": "Osuvin" },
-  "filter": { "sortBy": "Lajittele", "price": "Hinta", "min": "Min", "max": "Max", "platforms": "Alustat", "hideNoPrice": "Piilota hinnaton", "filters": "Suodattimet", "active": "aktiivinen", "filtersAndSort": "Suodattimet ja lajittelu", "priceRange": "Hintahaarukka", "hideWithoutPrice": "Piilota tulokset ilman hintaa", "applyFilters": "Käytä suodattimia" },
-  "card": { "bestPrice": "Paras hinta", "priceNotAvailable": "Hinta ei saatavilla", "viewDeal": "Näytä tarjous", "copied": "Kopioitu!" },
-  "bookmarks": { "savedDeals": "Tallennetut tarjoukset", "removeSavedDeal": "Poista tallennettu tarjous", "viewDeal": "Näytä tarjous" },
-  "recent": { "recentSearches": "Viimeisimmät haut" },
-  "auth": { "signIn": "Kirjaudu sisään", "signUp": "Rekisteröidy", "email": "Sähköposti", "password": "Salasana", "username": "Käyttäjänimi", "forgotPassword": "Unohditko salasanan?", "backToSignIn": "Takaisin kirjautumiseen", "signingIn": "Kirjaudutaan…", "sendResetLink": "Lähetä palautuslinkki", "sending": "Lähetetään…", "createAccount": "Luo tili", "creatingAccount": "Luodaan tiliä…", "signInFailed": "Kirjautuminen epäonnistui", "signUpFailed": "Rekisteröinti epäonnistui", "resetLinkSent": "Palautuslinkki lähetetty! Tarkista sähköpostisi.", "failedResetLink": "Linkin lähetys epäonnistui", "usernameRequired": "Käyttäjänimi vaaditaan", "accountCreated": "Tili luotu! Vahvista sähköpostistasi, kirjaudu sitten sisään.", "emailPlaceholder": "sinä@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "Vähintään 6 merkkiä" },
-  "onboarding": { "welcome": "Tervetuloa LootReefiin", "skip": "Ohita", "description": "Vertaa hintoja parhailla pelimarkkinapaikoilla heti. Asetetaan mieltymyksesi.", "getStarted": "Aloita", "selectLanguage": "Valitse kielesi", "languageHint": "Käännämme tarjousotsikot automaattisesti.", "selectCurrency": "Valitse valuuttasi", "currencyHint": "Muunnamme kaikki hinnat reaaliaikaisilla valuuttakursseilla.", "back": "Takaisin", "next": "Seuraava", "finishSetup": "Viimeistele asetukset" },
-  "account": { "password": "Salasana", "dangerZone": "Vaaravyöhyke", "currentPassword": "Nykyinen salasana", "newPassword": "Uusi salasana", "confirmNewPassword": "Vahvista uusi salasana", "updating": "Päivitetään…", "updatePassword": "Päivitä salasana", "passwordChanged": "Salasana vaihdettu", "passwordsNoMatch": "Salasanat eivät täsmää", "passwordTooShort": "Salasanan tulee olla vähintään 6 merkkiä", "failedChangePassword": "Salasanan vaihto epäonnistui", "deleteWarning": "Tilisi deaktivoidaan heti ja poistetaan pysyvästi 30 päivän kuluttua. Sinut kirjataan ulos.", "warning": "Varoitus:", "deactivating": "Deaktivoidaan…", "deactivateAccount": "Ymmärrän, deaktivoi tilini" },
-  "reset": { "title": "Palauta salasanasi", "newPassword": "Uusi salasana", "confirmNewPassword": "Vahvista uusi salasana", "resetting": "Palautetaan…", "resetPassword": "Palauta salasana", "passwordsNoMatch": "Salasanat eivät täsmää", "resetSuccess": "Salasana palautettu. Sinut ohjataan uudelleen.", "resetFailed": "Salasanan palautus epäonnistui" },
-  "footer": { "disclaimer": "LootReef vertailee hintoja kolmannen osapuolen markkinapaikoilla. Emme ole yhteydessä mihinkään listattuun alustaan." },
-  "theme": { "legacy": "Klassinen", "dark": "Tumma", "light": "Vaalea", "glass": "Lasi" }
+  "nav": {
+    "platformsActive": "{{count}} alustaa aktiivisena",
+    "platformsLive": "7 alustaa livenä",
+    "accountSettings": "Tilin asetukset",
+    "signOut": "Kirjaudu ulos",
+    "signInRegister": "Kirjaudu / Rekisteröidy",
+    "theme": "Teema",
+    "language": "Kieli",
+    "currency": "Valuutta",
+    "settings": "Asetukset"
+  },
+  "hero": {
+    "title": "Löydä <1>paras hinta</1> heti",
+    "subtitle": "Vertaa peliavainten, pelivaluutan, tilien ja digitaalisten palvelujen hintoja 7 markkinapaikalla reaaliajassa.",
+    "searchingAcross": "Haetaan"
+  },
+  "search": {
+    "placeholder": "Hae \"wow gold eu\", \"valorant tili\", \"game key\"...",
+    "button": "Hae",
+    "searching": "Haetaan...",
+    "tip": "Kokeile: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Näytetään",
+    "of": "/",
+    "resultsFor": "tulosta haulle",
+    "in": "ajassa",
+    "noResults": "Ei tuloksia",
+    "noResultsHint": "Kokeile eri hakusanaa tai tarkista, onko tuote olemassa tuetuilla alustoilla.",
+    "sortedPriceAsc": "Lajiteltu hinnan mukaan: halvin ensin",
+    "sortedPriceDesc": "Lajiteltu hinnan mukaan: kallein ensin",
+    "sortedPlatformAz": "Lajiteltu alustan mukaan: A → Ö",
+    "sortedRelevant": "Lajiteltu osuvuuden mukaan"
+  },
+  "sort": {
+    "priceAsc": "Hinta: Halvin ensin",
+    "priceDesc": "Hinta: Kallein ensin",
+    "platformAz": "Alusta: A → Ö",
+    "relevant": "Osuvin"
+  },
+  "filter": {
+    "sortBy": "Lajittele",
+    "price": "Hinta",
+    "min": "Min",
+    "max": "Max",
+    "platforms": "Alustat",
+    "hideNoPrice": "Piilota hinnaton",
+    "filters": "Suodattimet",
+    "active": "aktiivinen",
+    "filtersAndSort": "Suodattimet ja lajittelu",
+    "priceRange": "Hintahaarukka",
+    "hideWithoutPrice": "Piilota tulokset ilman hintaa",
+    "applyFilters": "Käytä suodattimia"
+  },
+  "card": {
+    "bestPrice": "Paras hinta",
+    "priceNotAvailable": "Hinta ei saatavilla",
+    "viewDeal": "Näytä tarjous",
+    "copied": "Kopioitu!"
+  },
+  "bookmarks": {
+    "savedDeals": "Tallennetut tarjoukset",
+    "removeSavedDeal": "Poista tallennettu tarjous",
+    "viewDeal": "Näytä tarjous"
+  },
+  "recent": {
+    "recentSearches": "Viimeisimmät haut"
+  },
+  "auth": {
+    "signIn": "Kirjaudu sisään",
+    "signUp": "Rekisteröidy",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "username": "Käyttäjänimi",
+    "forgotPassword": "Unohditko salasanan?",
+    "backToSignIn": "Takaisin kirjautumiseen",
+    "signingIn": "Kirjaudutaan…",
+    "sendResetLink": "Lähetä palautuslinkki",
+    "sending": "Lähetetään…",
+    "createAccount": "Luo tili",
+    "creatingAccount": "Luodaan tiliä…",
+    "signInFailed": "Kirjautuminen epäonnistui",
+    "signUpFailed": "Rekisteröinti epäonnistui",
+    "resetLinkSent": "Palautuslinkki lähetetty! Tarkista sähköpostisi.",
+    "failedResetLink": "Linkin lähetys epäonnistui",
+    "usernameRequired": "Käyttäjänimi vaaditaan",
+    "accountCreated": "Tili luotu! Vahvista sähköpostistasi, kirjaudu sitten sisään.",
+    "emailPlaceholder": "sinä@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Vähintään 6 merkkiä"
+  },
+  "onboarding": {
+    "welcome": "Tervetuloa LootReefiin",
+    "skip": "Ohita",
+    "description": "Vertaa hintoja parhailla pelimarkkinapaikoilla heti. Asetetaan mieltymyksesi.",
+    "getStarted": "Aloita",
+    "selectLanguage": "Valitse kielesi",
+    "languageHint": "Käännämme tarjousotsikot automaattisesti.",
+    "selectCurrency": "Valitse valuuttasi",
+    "currencyHint": "Muunnamme kaikki hinnat reaaliaikaisilla valuuttakursseilla.",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "finishSetup": "Viimeistele asetukset",
+    "step1Desc": "Vertaa hintoja parhailla pelimarkkinapaikoilla heti. Asetetaan mieltymyksesi.",
+    "languageDesc": "Käännämme tarjousotsikot automaattisesti.",
+    "currencyDesc": "Muunnamme kaikki hinnat reaaliaikaisilla valuuttakursseilla."
+  },
+  "account": {
+    "password": "Salasana",
+    "dangerZone": "Vaaravyöhyke",
+    "currentPassword": "Nykyinen salasana",
+    "newPassword": "Uusi salasana",
+    "confirmNewPassword": "Vahvista uusi salasana",
+    "updating": "Päivitetään…",
+    "updatePassword": "Päivitä salasana",
+    "passwordChanged": "Salasana vaihdettu",
+    "passwordsNoMatch": "Salasanat eivät täsmää",
+    "passwordTooShort": "Salasanan tulee olla vähintään 6 merkkiä",
+    "failedChangePassword": "Salasanan vaihto epäonnistui",
+    "deleteWarning": "Tilisi deaktivoidaan heti ja poistetaan pysyvästi 30 päivän kuluttua. Sinut kirjataan ulos.",
+    "warning": "Varoitus:",
+    "deactivating": "Deaktivoidaan…",
+    "deactivateAccount": "Ymmärrän, deaktivoi tilini",
+    "passwordTab": "Salasana",
+    "dangerZoneTab": "Vaaravyöhyke",
+    "passwordsDoNotMatch": "Salasanat eivät täsmää",
+    "passwordChangeFailed": "Salasanan vaihto epäonnistui",
+    "warningDelete": "Tilisi deaktivoidaan heti ja poistetaan pysyvästi 30 päivän kuluttua. Sinut kirjataan ulos.",
+    "deactivateBtn": "Ymmärrän, deaktivoi tilini"
+  },
+  "reset": {
+    "title": "Palauta salasanasi",
+    "newPassword": "Uusi salasana",
+    "confirmNewPassword": "Vahvista uusi salasana",
+    "resetting": "Palautetaan…",
+    "resetPassword": "Palauta salasana",
+    "passwordsNoMatch": "Salasanat eivät täsmää",
+    "resetSuccess": "Salasana palautettu. Sinut ohjataan uudelleen.",
+    "resetFailed": "Salasanan palautus epäonnistui"
+  },
+  "footer": {
+    "disclaimer": "LootReef vertailee hintoja kolmannen osapuolen markkinapaikoilla. Emme ole yhteydessä mihinkään listattuun alustaan."
+  },
+  "theme": {
+    "legacy": "Klassinen",
+    "dark": "Tumma",
+    "light": "Vaalea",
+    "glass": "Lasi"
+  }
 }

@@ -102,7 +102,10 @@
     "currencyHint": "Wir rechnen alle Preise mit aktuellen Wechselkursen um.",
     "back": "Zurück",
     "next": "Weiter",
-    "finishSetup": "Einrichtung abschließen"
+    "finishSetup": "Einrichtung abschließen",
+    "step1Desc": "Vergleiche Preise auf den besten Gaming-Marktplätzen sofort. Lass uns deine Einstellungen konfigurieren.",
+    "languageDesc": "Wir übersetzen Angebots-Titel automatisch.",
+    "currencyDesc": "Wir rechnen alle Preise mit aktuellen Wechselkursen um."
   },
   "account": {
     "password": "Passwort",
@@ -119,7 +122,13 @@
     "deleteWarning": "Dein Konto wird sofort deaktiviert und nach 30 Tagen endgültig gelöscht. Du wirst abgemeldet.",
     "warning": "Warnung:",
     "deactivating": "Deaktiviere…",
-    "deactivateAccount": "Verstanden, Konto deaktivieren"
+    "deactivateAccount": "Verstanden, Konto deaktivieren",
+    "passwordTab": "Passwort",
+    "dangerZoneTab": "Gefahrenzone",
+    "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+    "passwordChangeFailed": "Passwort konnte nicht geändert werden",
+    "warningDelete": "Dein Konto wird sofort deaktiviert und nach 30 Tagen endgültig gelöscht. Du wirst abgemeldet.",
+    "deactivateBtn": "Verstanden, Konto deaktivieren"
   },
   "reset": {
     "title": "Passwort zurücksetzen",

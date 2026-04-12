@@ -23,6 +23,12 @@ function OnboardingModal() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+      // Sync Supabase state into local storage so returning users bypass this silently 
+      if (profile && profile.has_onboarded) {
+        localStorage.setItem('pricescout_onboarded', 'true');
+        return;
+      }
+
       // Check localStorage as the ultimate source of truth, independent of auth state
       const hasOnboarded = localStorage.getItem('pricescout_onboarded');
       if (!hasOnboarded) {

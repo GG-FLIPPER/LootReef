@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} piattaforme attive", "platformsLive": "7 piattaforme online", "accountSettings": "Impostazioni account", "signOut": "Esci", "signInRegister": "Accedi / Registrati", "theme": "Tema", "language": "Lingua", "currency": "Valuta", "settings": "Impostazioni" },
-  "hero": { "title": "Trova il <1>miglior prezzo</1> istantaneamente", "subtitle": "Confronta prezzi per chiavi di gioco, valuta in-game, account e servizi digitali su 7 marketplace in tempo reale.", "searchingAcross": "Ricerca su" },
-  "search": { "placeholder": "Cerca \"wow gold eu\", \"account valorant\", \"game key\"...", "button": "Cerca", "searching": "Ricerca...", "tip": "Prova: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Mostrando", "of": "di", "resultsFor": "risultati per", "in": "in", "noResults": "Nessun risultato trovato", "noResultsHint": "Prova un termine diverso o verifica se il prodotto esiste sulle piattaforme supportate.", "sortedPriceAsc": "Ordinato per prezzo: basso → alto", "sortedPriceDesc": "Ordinato per prezzo: alto → basso", "sortedPlatformAz": "Ordinato per piattaforma: A → Z", "sortedRelevant": "Ordinato per rilevanza" },
-  "sort": { "priceAsc": "Prezzo: Basso → Alto", "priceDesc": "Prezzo: Alto → Basso", "platformAz": "Piattaforma: A → Z", "relevant": "Più rilevante" },
-  "filter": { "sortBy": "Ordina per", "price": "Prezzo", "min": "Min", "max": "Max", "platforms": "Piattaforme", "hideNoPrice": "Nascondi senza prezzo", "filters": "Filtri", "active": "attivo", "filtersAndSort": "Filtri e ordinamento", "priceRange": "Fascia di prezzo", "hideWithoutPrice": "Nascondi risultati senza prezzo", "applyFilters": "Applica filtri" },
-  "card": { "bestPrice": "Miglior prezzo", "priceNotAvailable": "Prezzo non disponibile", "viewDeal": "Vedi offerta", "copied": "Copiato!" },
-  "bookmarks": { "savedDeals": "Offerte salvate", "removeSavedDeal": "Rimuovi offerta salvata", "viewDeal": "Vedi offerta" },
-  "recent": { "recentSearches": "Ricerche recenti" },
-  "auth": { "signIn": "Accedi", "signUp": "Registrati", "email": "E-mail", "password": "Password", "username": "Nome utente", "forgotPassword": "Password dimenticata?", "backToSignIn": "Torna all'accesso", "signingIn": "Accesso…", "sendResetLink": "Invia link di ripristino", "sending": "Invio…", "createAccount": "Crea account", "creatingAccount": "Creazione account…", "signInFailed": "Accesso fallito", "signUpFailed": "Registrazione fallita", "resetLinkSent": "Link di ripristino inviato! Controlla la tua email.", "failedResetLink": "Impossibile inviare il link", "usernameRequired": "Il nome utente è obbligatorio", "accountCreated": "Account creato! Controlla la tua email per confermare, poi accedi.", "emailPlaceholder": "tu@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "Almeno 6 caratteri" },
-  "onboarding": { "welcome": "Benvenuto su LootReef", "skip": "Salta", "description": "Confronta i prezzi sui migliori marketplace di gaming istantaneamente. Configuriamo le tue preferenze.", "getStarted": "Inizia", "selectLanguage": "Seleziona la tua lingua", "languageHint": "Tradurremo automaticamente i titoli delle offerte.", "selectCurrency": "Seleziona la tua valuta", "currencyHint": "Convertiremo tutti i prezzi con tassi di cambio in tempo reale.", "back": "Indietro", "next": "Avanti", "finishSetup": "Completa configurazione" },
-  "account": { "password": "Password", "dangerZone": "Zona pericolosa", "currentPassword": "Password attuale", "newPassword": "Nuova password", "confirmNewPassword": "Conferma nuova password", "updating": "Aggiornamento…", "updatePassword": "Aggiorna password", "passwordChanged": "Password modificata con successo", "passwordsNoMatch": "Le password non corrispondono", "passwordTooShort": "La password deve avere almeno 6 caratteri", "failedChangePassword": "Impossibile modificare la password", "deleteWarning": "Il tuo account sarà disattivato immediatamente e cancellato permanentemente dopo 30 giorni. Verrai disconnesso.", "warning": "Attenzione:", "deactivating": "Disattivazione…", "deactivateAccount": "Capisco, disattiva il mio account" },
-  "reset": { "title": "Reimposta la tua password", "newPassword": "Nuova password", "confirmNewPassword": "Conferma nuova password", "resetting": "Reimpostazione…", "resetPassword": "Reimposta password", "passwordsNoMatch": "Le password non corrispondono", "resetSuccess": "Password reimpostata con successo. Verrai reindirizzato.", "resetFailed": "Impossibile reimpostare la password" },
-  "footer": { "disclaimer": "LootReef confronta i prezzi su marketplace di terze parti. Non siamo affiliati a nessuna piattaforma elencata." },
-  "theme": { "legacy": "Classico", "dark": "Scuro", "light": "Chiaro", "glass": "Vetro" }
+  "nav": {
+    "platformsActive": "{{count}} piattaforme attive",
+    "platformsLive": "7 piattaforme online",
+    "accountSettings": "Impostazioni account",
+    "signOut": "Esci",
+    "signInRegister": "Accedi / Registrati",
+    "theme": "Tema",
+    "language": "Lingua",
+    "currency": "Valuta",
+    "settings": "Impostazioni"
+  },
+  "hero": {
+    "title": "Trova il <1>miglior prezzo</1> istantaneamente",
+    "subtitle": "Confronta prezzi per chiavi di gioco, valuta in-game, account e servizi digitali su 7 marketplace in tempo reale.",
+    "searchingAcross": "Ricerca su"
+  },
+  "search": {
+    "placeholder": "Cerca \"wow gold eu\", \"account valorant\", \"game key\"...",
+    "button": "Cerca",
+    "searching": "Ricerca...",
+    "tip": "Prova: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Mostrando",
+    "of": "di",
+    "resultsFor": "risultati per",
+    "in": "in",
+    "noResults": "Nessun risultato trovato",
+    "noResultsHint": "Prova un termine diverso o verifica se il prodotto esiste sulle piattaforme supportate.",
+    "sortedPriceAsc": "Ordinato per prezzo: basso → alto",
+    "sortedPriceDesc": "Ordinato per prezzo: alto → basso",
+    "sortedPlatformAz": "Ordinato per piattaforma: A → Z",
+    "sortedRelevant": "Ordinato per rilevanza"
+  },
+  "sort": {
+    "priceAsc": "Prezzo: Basso → Alto",
+    "priceDesc": "Prezzo: Alto → Basso",
+    "platformAz": "Piattaforma: A → Z",
+    "relevant": "Più rilevante"
+  },
+  "filter": {
+    "sortBy": "Ordina per",
+    "price": "Prezzo",
+    "min": "Min",
+    "max": "Max",
+    "platforms": "Piattaforme",
+    "hideNoPrice": "Nascondi senza prezzo",
+    "filters": "Filtri",
+    "active": "attivo",
+    "filtersAndSort": "Filtri e ordinamento",
+    "priceRange": "Fascia di prezzo",
+    "hideWithoutPrice": "Nascondi risultati senza prezzo",
+    "applyFilters": "Applica filtri"
+  },
+  "card": {
+    "bestPrice": "Miglior prezzo",
+    "priceNotAvailable": "Prezzo non disponibile",
+    "viewDeal": "Vedi offerta",
+    "copied": "Copiato!"
+  },
+  "bookmarks": {
+    "savedDeals": "Offerte salvate",
+    "removeSavedDeal": "Rimuovi offerta salvata",
+    "viewDeal": "Vedi offerta"
+  },
+  "recent": {
+    "recentSearches": "Ricerche recenti"
+  },
+  "auth": {
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "email": "E-mail",
+    "password": "Password",
+    "username": "Nome utente",
+    "forgotPassword": "Password dimenticata?",
+    "backToSignIn": "Torna all'accesso",
+    "signingIn": "Accesso…",
+    "sendResetLink": "Invia link di ripristino",
+    "sending": "Invio…",
+    "createAccount": "Crea account",
+    "creatingAccount": "Creazione account…",
+    "signInFailed": "Accesso fallito",
+    "signUpFailed": "Registrazione fallita",
+    "resetLinkSent": "Link di ripristino inviato! Controlla la tua email.",
+    "failedResetLink": "Impossibile inviare il link",
+    "usernameRequired": "Il nome utente è obbligatorio",
+    "accountCreated": "Account creato! Controlla la tua email per confermare, poi accedi.",
+    "emailPlaceholder": "tu@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Almeno 6 caratteri"
+  },
+  "onboarding": {
+    "welcome": "Benvenuto su LootReef",
+    "skip": "Salta",
+    "description": "Confronta i prezzi sui migliori marketplace di gaming istantaneamente. Configuriamo le tue preferenze.",
+    "getStarted": "Inizia",
+    "selectLanguage": "Seleziona la tua lingua",
+    "languageHint": "Tradurremo automaticamente i titoli delle offerte.",
+    "selectCurrency": "Seleziona la tua valuta",
+    "currencyHint": "Convertiremo tutti i prezzi con tassi di cambio in tempo reale.",
+    "back": "Indietro",
+    "next": "Avanti",
+    "finishSetup": "Completa configurazione",
+    "step1Desc": "Confronta i prezzi sui migliori marketplace di gaming istantaneamente. Configuriamo le tue preferenze.",
+    "languageDesc": "Tradurremo automaticamente i titoli delle offerte.",
+    "currencyDesc": "Convertiremo tutti i prezzi con tassi di cambio in tempo reale."
+  },
+  "account": {
+    "password": "Password",
+    "dangerZone": "Zona pericolosa",
+    "currentPassword": "Password attuale",
+    "newPassword": "Nuova password",
+    "confirmNewPassword": "Conferma nuova password",
+    "updating": "Aggiornamento…",
+    "updatePassword": "Aggiorna password",
+    "passwordChanged": "Password modificata con successo",
+    "passwordsNoMatch": "Le password non corrispondono",
+    "passwordTooShort": "La password deve avere almeno 6 caratteri",
+    "failedChangePassword": "Impossibile modificare la password",
+    "deleteWarning": "Il tuo account sarà disattivato immediatamente e cancellato permanentemente dopo 30 giorni. Verrai disconnesso.",
+    "warning": "Attenzione:",
+    "deactivating": "Disattivazione…",
+    "deactivateAccount": "Capisco, disattiva il mio account",
+    "passwordTab": "Password",
+    "dangerZoneTab": "Zona pericolosa",
+    "passwordsDoNotMatch": "Le password non corrispondono",
+    "passwordChangeFailed": "Impossibile modificare la password",
+    "warningDelete": "Il tuo account sarà disattivato immediatamente e cancellato permanentemente dopo 30 giorni. Verrai disconnesso.",
+    "deactivateBtn": "Capisco, disattiva il mio account"
+  },
+  "reset": {
+    "title": "Reimposta la tua password",
+    "newPassword": "Nuova password",
+    "confirmNewPassword": "Conferma nuova password",
+    "resetting": "Reimpostazione…",
+    "resetPassword": "Reimposta password",
+    "passwordsNoMatch": "Le password non corrispondono",
+    "resetSuccess": "Password reimpostata con successo. Verrai reindirizzato.",
+    "resetFailed": "Impossibile reimpostare la password"
+  },
+  "footer": {
+    "disclaimer": "LootReef confronta i prezzi su marketplace di terze parti. Non siamo affiliati a nessuna piattaforma elencata."
+  },
+  "theme": {
+    "legacy": "Classico",
+    "dark": "Scuro",
+    "light": "Chiaro",
+    "glass": "Vetro"
+  }
 }

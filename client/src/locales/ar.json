@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} منصات نشطة", "platformsLive": "7 منصات مباشرة", "accountSettings": "إعدادات الحساب", "signOut": "تسجيل الخروج", "signInRegister": "تسجيل الدخول / التسجيل", "theme": "السمة", "language": "اللغة", "currency": "العملة", "settings": "الإعدادات" },
-  "hero": { "title": "اعثر على <1>أفضل سعر</1> فوراً", "subtitle": "قارن أسعار مفاتيح الألعاب والعملات داخل اللعبة والحسابات والخدمات الرقمية عبر 7 أسواق في الوقت الفعلي.", "searchingAcross": "البحث في" },
-  "search": { "placeholder": "ابحث عن \"wow gold eu\"، \"حساب valorant\"، \"game key\"...", "button": "بحث", "searching": "جارٍ البحث...", "tip": "جرّب: \"csgo skins\"، \"fifa coins\"، \"steam wallet code\"، \"roblox robux\"" },
-  "results": { "showing": "عرض", "of": "من", "resultsFor": "نتائج لـ", "in": "في", "noResults": "لم يتم العثور على نتائج", "noResultsHint": "جرّب مصطلح بحث مختلف أو تحقق مما إذا كان المنتج موجوداً على المنصات المدعومة.", "sortedPriceAsc": "مرتب حسب السعر: من الأقل إلى الأعلى", "sortedPriceDesc": "مرتب حسب السعر: من الأعلى إلى الأقل", "sortedPlatformAz": "مرتب حسب المنصة: أ → ي", "sortedRelevant": "مرتب حسب الصلة" },
-  "sort": { "priceAsc": "السعر: من الأقل إلى الأعلى", "priceDesc": "السعر: من الأعلى إلى الأقل", "platformAz": "المنصة: أ → ي", "relevant": "الأكثر صلة" },
-  "filter": { "sortBy": "ترتيب حسب", "price": "السعر", "min": "الحد الأدنى", "max": "الحد الأقصى", "platforms": "المنصات", "hideNoPrice": "إخفاء بدون سعر", "filters": "التصفية", "active": "نشط", "filtersAndSort": "التصفية والترتيب", "priceRange": "نطاق السعر", "hideWithoutPrice": "إخفاء النتائج بدون سعر", "applyFilters": "تطبيق التصفية" },
-  "card": { "bestPrice": "أفضل سعر", "priceNotAvailable": "السعر غير متاح", "viewDeal": "عرض الصفقة", "copied": "تم النسخ!" },
-  "bookmarks": { "savedDeals": "الصفقات المحفوظة", "removeSavedDeal": "إزالة الصفقة المحفوظة", "viewDeal": "عرض الصفقة" },
-  "recent": { "recentSearches": "عمليات البحث الأخيرة" },
-  "auth": { "signIn": "تسجيل الدخول", "signUp": "التسجيل", "email": "البريد الإلكتروني", "password": "كلمة المرور", "username": "اسم المستخدم", "forgotPassword": "نسيت كلمة المرور؟", "backToSignIn": "العودة لتسجيل الدخول", "signingIn": "جارٍ تسجيل الدخول…", "sendResetLink": "إرسال رابط إعادة التعيين", "sending": "جارٍ الإرسال…", "createAccount": "إنشاء حساب", "creatingAccount": "جارٍ إنشاء الحساب…", "signInFailed": "فشل تسجيل الدخول", "signUpFailed": "فشل التسجيل", "resetLinkSent": "تم إرسال رابط إعادة التعيين! تحقق من بريدك الإلكتروني.", "failedResetLink": "فشل إرسال الرابط", "usernameRequired": "اسم المستخدم مطلوب", "accountCreated": "تم إنشاء الحساب! تحقق من بريدك الإلكتروني للتأكيد، ثم سجل الدخول.", "emailPlaceholder": "أنت@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "6 أحرف على الأقل" },
-  "onboarding": { "welcome": "مرحباً بك في LootReef", "skip": "تخطي", "description": "قارن الأسعار عبر أفضل أسواق الألعاب فوراً. لنقم بإعداد تفضيلاتك.", "getStarted": "ابدأ", "selectLanguage": "اختر لغتك", "languageHint": "سنترجم عناوين الصفقات تلقائياً.", "selectCurrency": "اختر عملتك", "currencyHint": "سنحول جميع الأسعار بأسعار صرف حية.", "back": "رجوع", "next": "التالي", "finishSetup": "إنهاء الإعداد" },
-  "account": { "password": "كلمة المرور", "dangerZone": "منطقة الخطر", "currentPassword": "كلمة المرور الحالية", "newPassword": "كلمة المرور الجديدة", "confirmNewPassword": "تأكيد كلمة المرور الجديدة", "updating": "جارٍ التحديث…", "updatePassword": "تحديث كلمة المرور", "passwordChanged": "تم تغيير كلمة المرور بنجاح", "passwordsNoMatch": "كلمات المرور غير متطابقة", "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل", "failedChangePassword": "فشل تغيير كلمة المرور", "deleteWarning": "سيتم إلغاء تنشيط حسابك فوراً وحذفه نهائياً بعد 30 يوماً. سيتم تسجيل خروجك.", "warning": "تحذير:", "deactivating": "جارٍ إلغاء التنشيط…", "deactivateAccount": "أفهم، قم بإلغاء تنشيط حسابي" },
-  "reset": { "title": "إعادة تعيين كلمة المرور", "newPassword": "كلمة المرور الجديدة", "confirmNewPassword": "تأكيد كلمة المرور الجديدة", "resetting": "جارٍ إعادة التعيين…", "resetPassword": "إعادة تعيين كلمة المرور", "passwordsNoMatch": "كلمات المرور غير متطابقة", "resetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح. سيتم إعادة التوجيه.", "resetFailed": "فشل إعادة تعيين كلمة المرور" },
-  "footer": { "disclaimer": "يقارن LootReef الأسعار عبر أسواق الطرف الثالث. نحن غير مرتبطين بأي منصة مدرجة." },
-  "theme": { "legacy": "كلاسيكي", "dark": "داكن", "light": "فاتح", "glass": "زجاجي" }
+  "nav": {
+    "platformsActive": "{{count}} منصات نشطة",
+    "platformsLive": "7 منصات مباشرة",
+    "accountSettings": "إعدادات الحساب",
+    "signOut": "تسجيل الخروج",
+    "signInRegister": "تسجيل الدخول / التسجيل",
+    "theme": "السمة",
+    "language": "اللغة",
+    "currency": "العملة",
+    "settings": "الإعدادات"
+  },
+  "hero": {
+    "title": "اعثر على <1>أفضل سعر</1> فوراً",
+    "subtitle": "قارن أسعار مفاتيح الألعاب والعملات داخل اللعبة والحسابات والخدمات الرقمية عبر 7 أسواق في الوقت الفعلي.",
+    "searchingAcross": "البحث في"
+  },
+  "search": {
+    "placeholder": "ابحث عن \"wow gold eu\"، \"حساب valorant\"، \"game key\"...",
+    "button": "بحث",
+    "searching": "جارٍ البحث...",
+    "tip": "جرّب: \"csgo skins\"، \"fifa coins\"، \"steam wallet code\"، \"roblox robux\""
+  },
+  "results": {
+    "showing": "عرض",
+    "of": "من",
+    "resultsFor": "نتائج لـ",
+    "in": "في",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsHint": "جرّب مصطلح بحث مختلف أو تحقق مما إذا كان المنتج موجوداً على المنصات المدعومة.",
+    "sortedPriceAsc": "مرتب حسب السعر: من الأقل إلى الأعلى",
+    "sortedPriceDesc": "مرتب حسب السعر: من الأعلى إلى الأقل",
+    "sortedPlatformAz": "مرتب حسب المنصة: أ → ي",
+    "sortedRelevant": "مرتب حسب الصلة"
+  },
+  "sort": {
+    "priceAsc": "السعر: من الأقل إلى الأعلى",
+    "priceDesc": "السعر: من الأعلى إلى الأقل",
+    "platformAz": "المنصة: أ → ي",
+    "relevant": "الأكثر صلة"
+  },
+  "filter": {
+    "sortBy": "ترتيب حسب",
+    "price": "السعر",
+    "min": "الحد الأدنى",
+    "max": "الحد الأقصى",
+    "platforms": "المنصات",
+    "hideNoPrice": "إخفاء بدون سعر",
+    "filters": "التصفية",
+    "active": "نشط",
+    "filtersAndSort": "التصفية والترتيب",
+    "priceRange": "نطاق السعر",
+    "hideWithoutPrice": "إخفاء النتائج بدون سعر",
+    "applyFilters": "تطبيق التصفية"
+  },
+  "card": {
+    "bestPrice": "أفضل سعر",
+    "priceNotAvailable": "السعر غير متاح",
+    "viewDeal": "عرض الصفقة",
+    "copied": "تم النسخ!"
+  },
+  "bookmarks": {
+    "savedDeals": "الصفقات المحفوظة",
+    "removeSavedDeal": "إزالة الصفقة المحفوظة",
+    "viewDeal": "عرض الصفقة"
+  },
+  "recent": {
+    "recentSearches": "عمليات البحث الأخيرة"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "التسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "username": "اسم المستخدم",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "backToSignIn": "العودة لتسجيل الدخول",
+    "signingIn": "جارٍ تسجيل الدخول…",
+    "sendResetLink": "إرسال رابط إعادة التعيين",
+    "sending": "جارٍ الإرسال…",
+    "createAccount": "إنشاء حساب",
+    "creatingAccount": "جارٍ إنشاء الحساب…",
+    "signInFailed": "فشل تسجيل الدخول",
+    "signUpFailed": "فشل التسجيل",
+    "resetLinkSent": "تم إرسال رابط إعادة التعيين! تحقق من بريدك الإلكتروني.",
+    "failedResetLink": "فشل إرسال الرابط",
+    "usernameRequired": "اسم المستخدم مطلوب",
+    "accountCreated": "تم إنشاء الحساب! تحقق من بريدك الإلكتروني للتأكيد، ثم سجل الدخول.",
+    "emailPlaceholder": "أنت@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "6 أحرف على الأقل"
+  },
+  "onboarding": {
+    "welcome": "مرحباً بك في LootReef",
+    "skip": "تخطي",
+    "description": "قارن الأسعار عبر أفضل أسواق الألعاب فوراً. لنقم بإعداد تفضيلاتك.",
+    "getStarted": "ابدأ",
+    "selectLanguage": "اختر لغتك",
+    "languageHint": "سنترجم عناوين الصفقات تلقائياً.",
+    "selectCurrency": "اختر عملتك",
+    "currencyHint": "سنحول جميع الأسعار بأسعار صرف حية.",
+    "back": "رجوع",
+    "next": "التالي",
+    "finishSetup": "إنهاء الإعداد",
+    "step1Desc": "قارن الأسعار عبر أفضل أسواق الألعاب فوراً. لنقم بإعداد تفضيلاتك.",
+    "languageDesc": "سنترجم عناوين الصفقات تلقائياً.",
+    "currencyDesc": "سنحول جميع الأسعار بأسعار صرف حية."
+  },
+  "account": {
+    "password": "كلمة المرور",
+    "dangerZone": "منطقة الخطر",
+    "currentPassword": "كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "updating": "جارٍ التحديث…",
+    "updatePassword": "تحديث كلمة المرور",
+    "passwordChanged": "تم تغيير كلمة المرور بنجاح",
+    "passwordsNoMatch": "كلمات المرور غير متطابقة",
+    "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+    "failedChangePassword": "فشل تغيير كلمة المرور",
+    "deleteWarning": "سيتم إلغاء تنشيط حسابك فوراً وحذفه نهائياً بعد 30 يوماً. سيتم تسجيل خروجك.",
+    "warning": "تحذير:",
+    "deactivating": "جارٍ إلغاء التنشيط…",
+    "deactivateAccount": "أفهم، قم بإلغاء تنشيط حسابي",
+    "passwordTab": "كلمة المرور",
+    "dangerZoneTab": "منطقة الخطر",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "passwordChangeFailed": "فشل تغيير كلمة المرور",
+    "warningDelete": "سيتم إلغاء تنشيط حسابك فوراً وحذفه نهائياً بعد 30 يوماً. سيتم تسجيل خروجك.",
+    "deactivateBtn": "أفهم، قم بإلغاء تنشيط حسابي"
+  },
+  "reset": {
+    "title": "إعادة تعيين كلمة المرور",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "resetting": "جارٍ إعادة التعيين…",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "passwordsNoMatch": "كلمات المرور غير متطابقة",
+    "resetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح. سيتم إعادة التوجيه.",
+    "resetFailed": "فشل إعادة تعيين كلمة المرور"
+  },
+  "footer": {
+    "disclaimer": "يقارن LootReef الأسعار عبر أسواق الطرف الثالث. نحن غير مرتبطين بأي منصة مدرجة."
+  },
+  "theme": {
+    "legacy": "كلاسيكي",
+    "dark": "داكن",
+    "light": "فاتح",
+    "glass": "زجاجي"
+  }
 }

@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} platform aktív", "platformsLive": "7 platform él", "accountSettings": "Fiókbeállítások", "signOut": "Kijelentkezés", "signInRegister": "Bejelentkezés / Regisztráció", "theme": "Téma", "language": "Nyelv", "currency": "Pénznem", "settings": "Beállítások" },
-  "hero": { "title": "Találd meg a <1>legjobb árat</1> azonnal", "subtitle": "Hasonlítsd össze a játékkulcsok, játékvaluta, fiókok és digitális szolgáltatások árait 7 piactéren valós időben.", "searchingAcross": "Keresés itt:" },
-  "search": { "placeholder": "Keresés: \"wow gold eu\", \"valorant fiók\", \"game key\"...", "button": "Keresés", "searching": "Keresés...", "tip": "Próbáld: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Megjelenítve", "of": "/", "resultsFor": "találat erre:", "in": "idő:", "noResults": "Nincs találat", "noResultsHint": "Próbálj más keresési kifejezést, vagy ellenőrizd, hogy a termék létezik-e a támogatott platformokon.", "sortedPriceAsc": "Ár szerint: növekvő", "sortedPriceDesc": "Ár szerint: csökkenő", "sortedPlatformAz": "Platform szerint: A → Z", "sortedRelevant": "Relevancia szerint" },
-  "sort": { "priceAsc": "Ár: Növekvő", "priceDesc": "Ár: Csökkenő", "platformAz": "Platform: A → Z", "relevant": "Legrelevánsabb" },
-  "filter": { "sortBy": "Rendezés", "price": "Ár", "min": "Min", "max": "Max", "platforms": "Platformok", "hideNoPrice": "Ár nélküli elrejtése", "filters": "Szűrők", "active": "aktív", "filtersAndSort": "Szűrők és rendezés", "priceRange": "Ártartomány", "hideWithoutPrice": "Ár nélküli eredmények elrejtése", "applyFilters": "Szűrők alkalmazása" },
-  "card": { "bestPrice": "Legjobb ár", "priceNotAvailable": "Ár nem elérhető", "viewDeal": "Ajánlat megtekintése", "copied": "Másolva!" },
-  "bookmarks": { "savedDeals": "Mentett ajánlatok", "removeSavedDeal": "Mentett ajánlat eltávolítása", "viewDeal": "Ajánlat megtekintése" },
-  "recent": { "recentSearches": "Legutóbbi keresések" },
-  "auth": { "signIn": "Bejelentkezés", "signUp": "Regisztráció", "email": "E-mail", "password": "Jelszó", "username": "Felhasználónév", "forgotPassword": "Elfelejtett jelszó?", "backToSignIn": "Vissza a bejelentkezéshez", "signingIn": "Bejelentkezés…", "sendResetLink": "Visszaállítási link küldése", "sending": "Küldés…", "createAccount": "Fiók létrehozása", "creatingAccount": "Fiók létrehozása…", "signInFailed": "Bejelentkezés sikertelen", "signUpFailed": "Regisztráció sikertelen", "resetLinkSent": "Visszaállítási link elküldve! Ellenőrizd az e-mail fiókodat.", "failedResetLink": "A link küldése sikertelen", "usernameRequired": "Felhasználónév kötelező", "accountCreated": "Fiók létrehozva! Erősítd meg az e-mail címedet, majd jelentkezz be.", "emailPlaceholder": "te@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "Legalább 6 karakter" },
-  "onboarding": { "welcome": "Üdvözlünk a LootReef-en", "skip": "Kihagyás", "description": "Hasonlítsd össze az árakat a legjobb gaming piactereken azonnal. Állítsuk be a beállításaidat.", "getStarted": "Kezdjük", "selectLanguage": "Válaszd ki a nyelvedet", "languageHint": "Automatikusan lefordítjuk az ajánlatok címeit.", "selectCurrency": "Válaszd ki a pénznemet", "currencyHint": "Az összes árat átváltjuk élő árfolyamokkal.", "back": "Vissza", "next": "Következő", "finishSetup": "Beállítás befejezése" },
-  "account": { "password": "Jelszó", "dangerZone": "Veszélyes zóna", "currentPassword": "Jelenlegi jelszó", "newPassword": "Új jelszó", "confirmNewPassword": "Új jelszó megerősítése", "updating": "Frissítés…", "updatePassword": "Jelszó frissítése", "passwordChanged": "Jelszó sikeresen megváltoztatva", "passwordsNoMatch": "A jelszavak nem egyeznek", "passwordTooShort": "A jelszónak legalább 6 karakternek kell lennie", "failedChangePassword": "Nem sikerült megváltoztatni a jelszót", "deleteWarning": "Fiókod azonnal deaktiválódik és 30 nap után véglegesen törlődik. Kijelentkezteted.", "warning": "Figyelem:", "deactivating": "Deaktiválás…", "deactivateAccount": "Megértettem, fiók deaktiválása" },
-  "reset": { "title": "Jelszó visszaállítása", "newPassword": "Új jelszó", "confirmNewPassword": "Új jelszó megerősítése", "resetting": "Visszaállítás…", "resetPassword": "Jelszó visszaállítása", "passwordsNoMatch": "A jelszavak nem egyeznek", "resetSuccess": "Jelszó sikeresen visszaállítva. Átirányítás.", "resetFailed": "Nem sikerült visszaállítani a jelszót" },
-  "footer": { "disclaimer": "A LootReef harmadik fél piacterein hasonlítja össze az árakat. Nem vagyunk kapcsolatban egyetlen felsorolt platformmal sem." },
-  "theme": { "legacy": "Klasszikus", "dark": "Sötét", "light": "Világos", "glass": "Üveg" }
+  "nav": {
+    "platformsActive": "{{count}} platform aktív",
+    "platformsLive": "7 platform él",
+    "accountSettings": "Fiókbeállítások",
+    "signOut": "Kijelentkezés",
+    "signInRegister": "Bejelentkezés / Regisztráció",
+    "theme": "Téma",
+    "language": "Nyelv",
+    "currency": "Pénznem",
+    "settings": "Beállítások"
+  },
+  "hero": {
+    "title": "Találd meg a <1>legjobb árat</1> azonnal",
+    "subtitle": "Hasonlítsd össze a játékkulcsok, játékvaluta, fiókok és digitális szolgáltatások árait 7 piactéren valós időben.",
+    "searchingAcross": "Keresés itt:"
+  },
+  "search": {
+    "placeholder": "Keresés: \"wow gold eu\", \"valorant fiók\", \"game key\"...",
+    "button": "Keresés",
+    "searching": "Keresés...",
+    "tip": "Próbáld: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Megjelenítve",
+    "of": "/",
+    "resultsFor": "találat erre:",
+    "in": "idő:",
+    "noResults": "Nincs találat",
+    "noResultsHint": "Próbálj más keresési kifejezést, vagy ellenőrizd, hogy a termék létezik-e a támogatott platformokon.",
+    "sortedPriceAsc": "Ár szerint: növekvő",
+    "sortedPriceDesc": "Ár szerint: csökkenő",
+    "sortedPlatformAz": "Platform szerint: A → Z",
+    "sortedRelevant": "Relevancia szerint"
+  },
+  "sort": {
+    "priceAsc": "Ár: Növekvő",
+    "priceDesc": "Ár: Csökkenő",
+    "platformAz": "Platform: A → Z",
+    "relevant": "Legrelevánsabb"
+  },
+  "filter": {
+    "sortBy": "Rendezés",
+    "price": "Ár",
+    "min": "Min",
+    "max": "Max",
+    "platforms": "Platformok",
+    "hideNoPrice": "Ár nélküli elrejtése",
+    "filters": "Szűrők",
+    "active": "aktív",
+    "filtersAndSort": "Szűrők és rendezés",
+    "priceRange": "Ártartomány",
+    "hideWithoutPrice": "Ár nélküli eredmények elrejtése",
+    "applyFilters": "Szűrők alkalmazása"
+  },
+  "card": {
+    "bestPrice": "Legjobb ár",
+    "priceNotAvailable": "Ár nem elérhető",
+    "viewDeal": "Ajánlat megtekintése",
+    "copied": "Másolva!"
+  },
+  "bookmarks": {
+    "savedDeals": "Mentett ajánlatok",
+    "removeSavedDeal": "Mentett ajánlat eltávolítása",
+    "viewDeal": "Ajánlat megtekintése"
+  },
+  "recent": {
+    "recentSearches": "Legutóbbi keresések"
+  },
+  "auth": {
+    "signIn": "Bejelentkezés",
+    "signUp": "Regisztráció",
+    "email": "E-mail",
+    "password": "Jelszó",
+    "username": "Felhasználónév",
+    "forgotPassword": "Elfelejtett jelszó?",
+    "backToSignIn": "Vissza a bejelentkezéshez",
+    "signingIn": "Bejelentkezés…",
+    "sendResetLink": "Visszaállítási link küldése",
+    "sending": "Küldés…",
+    "createAccount": "Fiók létrehozása",
+    "creatingAccount": "Fiók létrehozása…",
+    "signInFailed": "Bejelentkezés sikertelen",
+    "signUpFailed": "Regisztráció sikertelen",
+    "resetLinkSent": "Visszaállítási link elküldve! Ellenőrizd az e-mail fiókodat.",
+    "failedResetLink": "A link küldése sikertelen",
+    "usernameRequired": "Felhasználónév kötelező",
+    "accountCreated": "Fiók létrehozva! Erősítd meg az e-mail címedet, majd jelentkezz be.",
+    "emailPlaceholder": "te@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Legalább 6 karakter"
+  },
+  "onboarding": {
+    "welcome": "Üdvözlünk a LootReef-en",
+    "skip": "Kihagyás",
+    "description": "Hasonlítsd össze az árakat a legjobb gaming piactereken azonnal. Állítsuk be a beállításaidat.",
+    "getStarted": "Kezdjük",
+    "selectLanguage": "Válaszd ki a nyelvedet",
+    "languageHint": "Automatikusan lefordítjuk az ajánlatok címeit.",
+    "selectCurrency": "Válaszd ki a pénznemet",
+    "currencyHint": "Az összes árat átváltjuk élő árfolyamokkal.",
+    "back": "Vissza",
+    "next": "Következő",
+    "finishSetup": "Beállítás befejezése",
+    "step1Desc": "Hasonlítsd össze az árakat a legjobb gaming piactereken azonnal. Állítsuk be a beállításaidat.",
+    "languageDesc": "Automatikusan lefordítjuk az ajánlatok címeit.",
+    "currencyDesc": "Az összes árat átváltjuk élő árfolyamokkal."
+  },
+  "account": {
+    "password": "Jelszó",
+    "dangerZone": "Veszélyes zóna",
+    "currentPassword": "Jelenlegi jelszó",
+    "newPassword": "Új jelszó",
+    "confirmNewPassword": "Új jelszó megerősítése",
+    "updating": "Frissítés…",
+    "updatePassword": "Jelszó frissítése",
+    "passwordChanged": "Jelszó sikeresen megváltoztatva",
+    "passwordsNoMatch": "A jelszavak nem egyeznek",
+    "passwordTooShort": "A jelszónak legalább 6 karakternek kell lennie",
+    "failedChangePassword": "Nem sikerült megváltoztatni a jelszót",
+    "deleteWarning": "Fiókod azonnal deaktiválódik és 30 nap után véglegesen törlődik. Kijelentkezteted.",
+    "warning": "Figyelem:",
+    "deactivating": "Deaktiválás…",
+    "deactivateAccount": "Megértettem, fiók deaktiválása",
+    "passwordTab": "Jelszó",
+    "dangerZoneTab": "Veszélyes zóna",
+    "passwordsDoNotMatch": "A jelszavak nem egyeznek",
+    "passwordChangeFailed": "Nem sikerült megváltoztatni a jelszót",
+    "warningDelete": "Fiókod azonnal deaktiválódik és 30 nap után véglegesen törlődik. Kijelentkezteted.",
+    "deactivateBtn": "Megértettem, fiók deaktiválása"
+  },
+  "reset": {
+    "title": "Jelszó visszaállítása",
+    "newPassword": "Új jelszó",
+    "confirmNewPassword": "Új jelszó megerősítése",
+    "resetting": "Visszaállítás…",
+    "resetPassword": "Jelszó visszaállítása",
+    "passwordsNoMatch": "A jelszavak nem egyeznek",
+    "resetSuccess": "Jelszó sikeresen visszaállítva. Átirányítás.",
+    "resetFailed": "Nem sikerült visszaállítani a jelszót"
+  },
+  "footer": {
+    "disclaimer": "A LootReef harmadik fél piacterein hasonlítja össze az árakat. Nem vagyunk kapcsolatban egyetlen felsorolt platformmal sem."
+  },
+  "theme": {
+    "legacy": "Klasszikus",
+    "dark": "Sötét",
+    "light": "Világos",
+    "glass": "Üveg"
+  }
 }

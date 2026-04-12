@@ -102,7 +102,10 @@
     "currencyHint": "Nous convertirons tous les prix avec des taux de change en direct.",
     "back": "Retour",
     "next": "Suivant",
-    "finishSetup": "Terminer la configuration"
+    "finishSetup": "Terminer la configuration",
+    "step1Desc": "Comparez les prix sur les meilleures places de marché gaming instantanément. Configurons vos préférences.",
+    "languageDesc": "Nous traduirons automatiquement les titres des offres.",
+    "currencyDesc": "Nous convertirons tous les prix avec des taux de change en direct."
   },
   "account": {
     "password": "Mot de passe",
@@ -119,7 +122,13 @@
     "deleteWarning": "Votre compte sera désactivé immédiatement et supprimé définitivement après 30 jours. Vous serez déconnecté.",
     "warning": "Avertissement :",
     "deactivating": "Désactivation…",
-    "deactivateAccount": "Je comprends, désactiver mon compte"
+    "deactivateAccount": "Je comprends, désactiver mon compte",
+    "passwordTab": "Mot de passe",
+    "dangerZoneTab": "Zone de danger",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+    "passwordChangeFailed": "Impossible de modifier le mot de passe",
+    "warningDelete": "Votre compte sera désactivé immédiatement et supprimé définitivement après 30 jours. Vous serez déconnecté.",
+    "deactivateBtn": "Je comprends, désactiver mon compte"
   },
   "reset": {
     "title": "Réinitialiser votre mot de passe",

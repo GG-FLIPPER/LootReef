@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} platforme aktive", "platformsLive": "7 platforme live", "accountSettings": "Kontoindstillinger", "signOut": "Log ud", "signInRegister": "Log ind / Registrer", "theme": "Tema", "language": "Sprog", "currency": "Valuta", "settings": "Indstillinger" },
-  "hero": { "title": "Find den <1>bedste pris</1> med det samme", "subtitle": "Sammenlign priser på spilnøgler, in-game valuta, konti og digitale tjenester på 7 markedspladser i realtid.", "searchingAcross": "Søger på" },
-  "search": { "placeholder": "Søg \"wow gold eu\", \"valorant konto\", \"game key\"...", "button": "Søg", "searching": "Søger...", "tip": "Prøv: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Viser", "of": "af", "resultsFor": "resultater for", "in": "på", "noResults": "Ingen resultater fundet", "noResultsHint": "Prøv et andet søgeord eller tjek om produktet findes på understøttede platforme.", "sortedPriceAsc": "Sorteret efter pris: lav → høj", "sortedPriceDesc": "Sorteret efter pris: høj → lav", "sortedPlatformAz": "Sorteret efter platform: A → Å", "sortedRelevant": "Sorteret efter relevans" },
-  "sort": { "priceAsc": "Pris: Lav → Høj", "priceDesc": "Pris: Høj → Lav", "platformAz": "Platform: A → Å", "relevant": "Mest relevant" },
-  "filter": { "sortBy": "Sortér efter", "price": "Pris", "min": "Min", "max": "Maks", "platforms": "Platforme", "hideNoPrice": "Skjul uden pris", "filters": "Filtre", "active": "aktiv", "filtersAndSort": "Filtre og sortering", "priceRange": "Prisinterval", "hideWithoutPrice": "Skjul resultater uden pris", "applyFilters": "Anvend filtre" },
-  "card": { "bestPrice": "Bedste pris", "priceNotAvailable": "Pris ikke tilgængelig", "viewDeal": "Se tilbud", "copied": "Kopieret!" },
-  "bookmarks": { "savedDeals": "Gemte tilbud", "removeSavedDeal": "Fjern gemt tilbud", "viewDeal": "Se tilbud" },
-  "recent": { "recentSearches": "Seneste søgninger" },
-  "auth": { "signIn": "Log ind", "signUp": "Registrer", "email": "E-mail", "password": "Adgangskode", "username": "Brugernavn", "forgotPassword": "Glemt adgangskode?", "backToSignIn": "Tilbage til login", "signingIn": "Logger ind…", "sendResetLink": "Send nulstillingslink", "sending": "Sender…", "createAccount": "Opret konto", "creatingAccount": "Opretter konto…", "signInFailed": "Login mislykkedes", "signUpFailed": "Registrering mislykkedes", "resetLinkSent": "Nulstillingslink sendt! Tjek din e-mail.", "failedResetLink": "Kunne ikke sende link", "usernameRequired": "Brugernavn er påkrævet", "accountCreated": "Konto oprettet! Tjek din e-mail for at bekræfte, log derefter ind.", "emailPlaceholder": "dig@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "Mindst 6 tegn" },
-  "onboarding": { "welcome": "Velkommen til LootReef", "skip": "Spring over", "description": "Sammenlign priser på de bedste spilmarkedspladser med det samme. Lad os indstille dine præferencer.", "getStarted": "Kom i gang", "selectLanguage": "Vælg dit sprog", "languageHint": "Vi oversætter tilbudstitler automatisk.", "selectCurrency": "Vælg din valuta", "currencyHint": "Vi konverterer alle priser med aktuelle valutakurser.", "back": "Tilbage", "next": "Næste", "finishSetup": "Afslut opsætning" },
-  "account": { "password": "Adgangskode", "dangerZone": "Farezone", "currentPassword": "Nuværende adgangskode", "newPassword": "Ny adgangskode", "confirmNewPassword": "Bekræft ny adgangskode", "updating": "Opdaterer…", "updatePassword": "Opdater adgangskode", "passwordChanged": "Adgangskode ændret", "passwordsNoMatch": "Adgangskoderne matcher ikke", "passwordTooShort": "Adgangskode skal være mindst 6 tegn", "failedChangePassword": "Kunne ikke ændre adgangskode", "deleteWarning": "Din konto deaktiveres øjeblikkeligt og slettes permanent efter 30 dage. Du logges ud.", "warning": "Advarsel:", "deactivating": "Deaktiverer…", "deactivateAccount": "Jeg forstår, deaktiver min konto" },
-  "reset": { "title": "Nulstil din adgangskode", "newPassword": "Ny adgangskode", "confirmNewPassword": "Bekræft ny adgangskode", "resetting": "Nulstiller…", "resetPassword": "Nulstil adgangskode", "passwordsNoMatch": "Adgangskoderne matcher ikke", "resetSuccess": "Adgangskode nulstillet. Du omdirigeres.", "resetFailed": "Kunne ikke nulstille adgangskode" },
-  "footer": { "disclaimer": "LootReef sammenligner priser på tredjepartsmarkedspladser. Vi er ikke tilknyttet nogen af de anførte platforme." },
-  "theme": { "legacy": "Klassisk", "dark": "Mørk", "light": "Lys", "glass": "Glas" }
+  "nav": {
+    "platformsActive": "{{count}} platforme aktive",
+    "platformsLive": "7 platforme live",
+    "accountSettings": "Kontoindstillinger",
+    "signOut": "Log ud",
+    "signInRegister": "Log ind / Registrer",
+    "theme": "Tema",
+    "language": "Sprog",
+    "currency": "Valuta",
+    "settings": "Indstillinger"
+  },
+  "hero": {
+    "title": "Find den <1>bedste pris</1> med det samme",
+    "subtitle": "Sammenlign priser på spilnøgler, in-game valuta, konti og digitale tjenester på 7 markedspladser i realtid.",
+    "searchingAcross": "Søger på"
+  },
+  "search": {
+    "placeholder": "Søg \"wow gold eu\", \"valorant konto\", \"game key\"...",
+    "button": "Søg",
+    "searching": "Søger...",
+    "tip": "Prøv: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Viser",
+    "of": "af",
+    "resultsFor": "resultater for",
+    "in": "på",
+    "noResults": "Ingen resultater fundet",
+    "noResultsHint": "Prøv et andet søgeord eller tjek om produktet findes på understøttede platforme.",
+    "sortedPriceAsc": "Sorteret efter pris: lav → høj",
+    "sortedPriceDesc": "Sorteret efter pris: høj → lav",
+    "sortedPlatformAz": "Sorteret efter platform: A → Å",
+    "sortedRelevant": "Sorteret efter relevans"
+  },
+  "sort": {
+    "priceAsc": "Pris: Lav → Høj",
+    "priceDesc": "Pris: Høj → Lav",
+    "platformAz": "Platform: A → Å",
+    "relevant": "Mest relevant"
+  },
+  "filter": {
+    "sortBy": "Sortér efter",
+    "price": "Pris",
+    "min": "Min",
+    "max": "Maks",
+    "platforms": "Platforme",
+    "hideNoPrice": "Skjul uden pris",
+    "filters": "Filtre",
+    "active": "aktiv",
+    "filtersAndSort": "Filtre og sortering",
+    "priceRange": "Prisinterval",
+    "hideWithoutPrice": "Skjul resultater uden pris",
+    "applyFilters": "Anvend filtre"
+  },
+  "card": {
+    "bestPrice": "Bedste pris",
+    "priceNotAvailable": "Pris ikke tilgængelig",
+    "viewDeal": "Se tilbud",
+    "copied": "Kopieret!"
+  },
+  "bookmarks": {
+    "savedDeals": "Gemte tilbud",
+    "removeSavedDeal": "Fjern gemt tilbud",
+    "viewDeal": "Se tilbud"
+  },
+  "recent": {
+    "recentSearches": "Seneste søgninger"
+  },
+  "auth": {
+    "signIn": "Log ind",
+    "signUp": "Registrer",
+    "email": "E-mail",
+    "password": "Adgangskode",
+    "username": "Brugernavn",
+    "forgotPassword": "Glemt adgangskode?",
+    "backToSignIn": "Tilbage til login",
+    "signingIn": "Logger ind…",
+    "sendResetLink": "Send nulstillingslink",
+    "sending": "Sender…",
+    "createAccount": "Opret konto",
+    "creatingAccount": "Opretter konto…",
+    "signInFailed": "Login mislykkedes",
+    "signUpFailed": "Registrering mislykkedes",
+    "resetLinkSent": "Nulstillingslink sendt! Tjek din e-mail.",
+    "failedResetLink": "Kunne ikke sende link",
+    "usernameRequired": "Brugernavn er påkrævet",
+    "accountCreated": "Konto oprettet! Tjek din e-mail for at bekræfte, log derefter ind.",
+    "emailPlaceholder": "dig@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Mindst 6 tegn"
+  },
+  "onboarding": {
+    "welcome": "Velkommen til LootReef",
+    "skip": "Spring over",
+    "description": "Sammenlign priser på de bedste spilmarkedspladser med det samme. Lad os indstille dine præferencer.",
+    "getStarted": "Kom i gang",
+    "selectLanguage": "Vælg dit sprog",
+    "languageHint": "Vi oversætter tilbudstitler automatisk.",
+    "selectCurrency": "Vælg din valuta",
+    "currencyHint": "Vi konverterer alle priser med aktuelle valutakurser.",
+    "back": "Tilbage",
+    "next": "Næste",
+    "finishSetup": "Afslut opsætning",
+    "step1Desc": "Sammenlign priser på de bedste spilmarkedspladser med det samme. Lad os indstille dine præferencer.",
+    "languageDesc": "Vi oversætter tilbudstitler automatisk.",
+    "currencyDesc": "Vi konverterer alle priser med aktuelle valutakurser."
+  },
+  "account": {
+    "password": "Adgangskode",
+    "dangerZone": "Farezone",
+    "currentPassword": "Nuværende adgangskode",
+    "newPassword": "Ny adgangskode",
+    "confirmNewPassword": "Bekræft ny adgangskode",
+    "updating": "Opdaterer…",
+    "updatePassword": "Opdater adgangskode",
+    "passwordChanged": "Adgangskode ændret",
+    "passwordsNoMatch": "Adgangskoderne matcher ikke",
+    "passwordTooShort": "Adgangskode skal være mindst 6 tegn",
+    "failedChangePassword": "Kunne ikke ændre adgangskode",
+    "deleteWarning": "Din konto deaktiveres øjeblikkeligt og slettes permanent efter 30 dage. Du logges ud.",
+    "warning": "Advarsel:",
+    "deactivating": "Deaktiverer…",
+    "deactivateAccount": "Jeg forstår, deaktiver min konto",
+    "passwordTab": "Adgangskode",
+    "dangerZoneTab": "Farezone",
+    "passwordsDoNotMatch": "Adgangskoderne matcher ikke",
+    "passwordChangeFailed": "Kunne ikke ændre adgangskode",
+    "warningDelete": "Din konto deaktiveres øjeblikkeligt og slettes permanent efter 30 dage. Du logges ud.",
+    "deactivateBtn": "Jeg forstår, deaktiver min konto"
+  },
+  "reset": {
+    "title": "Nulstil din adgangskode",
+    "newPassword": "Ny adgangskode",
+    "confirmNewPassword": "Bekræft ny adgangskode",
+    "resetting": "Nulstiller…",
+    "resetPassword": "Nulstil adgangskode",
+    "passwordsNoMatch": "Adgangskoderne matcher ikke",
+    "resetSuccess": "Adgangskode nulstillet. Du omdirigeres.",
+    "resetFailed": "Kunne ikke nulstille adgangskode"
+  },
+  "footer": {
+    "disclaimer": "LootReef sammenligner priser på tredjepartsmarkedspladser. Vi er ikke tilknyttet nogen af de anførte platforme."
+  },
+  "theme": {
+    "legacy": "Klassisk",
+    "dark": "Mørk",
+    "light": "Lys",
+    "glass": "Glas"
+  }
 }

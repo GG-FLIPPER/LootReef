@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} platform aktif", "platformsLive": "7 platform canlı", "accountSettings": "Hesap Ayarları", "signOut": "Çıkış yap", "signInRegister": "Giriş / Kayıt", "theme": "Tema", "language": "Dil", "currency": "Para birimi", "settings": "Ayarlar" },
-  "hero": { "title": "<1>En iyi fiyatı</1> anında bulun", "subtitle": "Oyun anahtarları, oyun içi para birimi, hesaplar ve dijital hizmetler için 7 pazaryerinde fiyatları gerçek zamanlı karşılaştırın.", "searchingAcross": "Arama yapılıyor" },
-  "search": { "placeholder": "\"wow gold eu\", \"valorant hesap\", \"game key\" ara...", "button": "Ara", "searching": "Aranıyor...", "tip": "Deneyin: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Gösterilen", "of": "/", "resultsFor": "sonuç:", "in": "süre:", "noResults": "Sonuç bulunamadı", "noResultsHint": "Farklı bir arama terimi deneyin veya ürünün desteklenen platformlarda var olup olmadığını kontrol edin.", "sortedPriceAsc": "Fiyata göre: düşükten yükseğe", "sortedPriceDesc": "Fiyata göre: yüksekten düşüğe", "sortedPlatformAz": "Platforma göre: A → Z", "sortedRelevant": "Alaka düzeyine göre" },
-  "sort": { "priceAsc": "Fiyat: Düşük → Yüksek", "priceDesc": "Fiyat: Yüksek → Düşük", "platformAz": "Platform: A → Z", "relevant": "En Alakalı" },
-  "filter": { "sortBy": "Sırala", "price": "Fiyat", "min": "Min", "max": "Maks", "platforms": "Platformlar", "hideNoPrice": "Fiyatsızları gizle", "filters": "Filtreler", "active": "aktif", "filtersAndSort": "Filtreler ve Sıralama", "priceRange": "Fiyat Aralığı", "hideWithoutPrice": "Fiyatsız sonuçları gizle", "applyFilters": "Filtreleri uygula" },
-  "card": { "bestPrice": "En İyi Fiyat", "priceNotAvailable": "Fiyat mevcut değil", "viewDeal": "Teklifi Gör", "copied": "Kopyalandı!" },
-  "bookmarks": { "savedDeals": "Kayıtlı teklifler", "removeSavedDeal": "Kayıtlı teklifi kaldır", "viewDeal": "Teklifi Gör" },
-  "recent": { "recentSearches": "Son aramalar" },
-  "auth": { "signIn": "Giriş Yap", "signUp": "Kayıt Ol", "email": "E-posta", "password": "Şifre", "username": "Kullanıcı adı", "forgotPassword": "Şifremi unuttum?", "backToSignIn": "Girişe dön", "signingIn": "Giriş yapılıyor…", "sendResetLink": "Sıfırlama bağlantısı gönder", "sending": "Gönderiliyor…", "createAccount": "Hesap Oluştur", "creatingAccount": "Hesap oluşturuluyor…", "signInFailed": "Giriş başarısız", "signUpFailed": "Kayıt başarısız", "resetLinkSent": "Sıfırlama bağlantısı gönderildi! E-postanızı kontrol edin.", "failedResetLink": "Bağlantı gönderilemedi", "usernameRequired": "Kullanıcı adı gereklidir", "accountCreated": "Hesap oluşturuldu! Onaylamak için e-postanızı kontrol edin, sonra giriş yapın.", "emailPlaceholder": "siz@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "En az 6 karakter" },
-  "onboarding": { "welcome": "LootReef'e Hoş Geldiniz", "skip": "Atla", "description": "En iyi oyun pazaryerlerinde fiyatları anında karşılaştırın. Tercihlerinizi ayarlayalım.", "getStarted": "Başla", "selectLanguage": "Dilinizi seçin", "languageHint": "Teklif başlıklarını otomatik olarak çevireceğiz.", "selectCurrency": "Para biriminizi seçin", "currencyHint": "Tüm fiyatları canlı döviz kurlarıyla çevireceğiz.", "back": "Geri", "next": "İleri", "finishSetup": "Kurulumu Tamamla" },
-  "account": { "password": "Şifre", "dangerZone": "Tehlikeli Bölge", "currentPassword": "Mevcut Şifre", "newPassword": "Yeni Şifre", "confirmNewPassword": "Yeni Şifreyi Onayla", "updating": "Güncelleniyor…", "updatePassword": "Şifreyi Güncelle", "passwordChanged": "Şifre başarıyla değiştirildi", "passwordsNoMatch": "Şifreler eşleşmiyor", "passwordTooShort": "Şifre en az 6 karakter olmalıdır", "failedChangePassword": "Şifre değiştirilemedi", "deleteWarning": "Hesabınız hemen devre dışı bırakılacak ve 30 gün sonra kalıcı olarak silinecektir. Oturumunuz kapatılacaktır.", "warning": "Uyarı:", "deactivating": "Devre dışı bırakılıyor…", "deactivateAccount": "Anlıyorum, hesabımı devre dışı bırak" },
-  "reset": { "title": "Şifrenizi Sıfırlayın", "newPassword": "Yeni Şifre", "confirmNewPassword": "Yeni Şifreyi Onayla", "resetting": "Sıfırlanıyor…", "resetPassword": "Şifreyi Sıfırla", "passwordsNoMatch": "Şifreler eşleşmiyor", "resetSuccess": "Şifre başarıyla sıfırlandı. Yönlendirileceksiniz.", "resetFailed": "Şifre sıfırlanamadı" },
-  "footer": { "disclaimer": "LootReef üçüncü taraf pazaryerlerinde fiyatları karşılaştırır. Listelenen hiçbir platformla bağlantımız yoktur." },
-  "theme": { "legacy": "Klasik", "dark": "Koyu", "light": "Açık", "glass": "Cam" }
+  "nav": {
+    "platformsActive": "{{count}} platform aktif",
+    "platformsLive": "7 platform canlı",
+    "accountSettings": "Hesap Ayarları",
+    "signOut": "Çıkış yap",
+    "signInRegister": "Giriş / Kayıt",
+    "theme": "Tema",
+    "language": "Dil",
+    "currency": "Para birimi",
+    "settings": "Ayarlar"
+  },
+  "hero": {
+    "title": "<1>En iyi fiyatı</1> anında bulun",
+    "subtitle": "Oyun anahtarları, oyun içi para birimi, hesaplar ve dijital hizmetler için 7 pazaryerinde fiyatları gerçek zamanlı karşılaştırın.",
+    "searchingAcross": "Arama yapılıyor"
+  },
+  "search": {
+    "placeholder": "\"wow gold eu\", \"valorant hesap\", \"game key\" ara...",
+    "button": "Ara",
+    "searching": "Aranıyor...",
+    "tip": "Deneyin: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Gösterilen",
+    "of": "/",
+    "resultsFor": "sonuç:",
+    "in": "süre:",
+    "noResults": "Sonuç bulunamadı",
+    "noResultsHint": "Farklı bir arama terimi deneyin veya ürünün desteklenen platformlarda var olup olmadığını kontrol edin.",
+    "sortedPriceAsc": "Fiyata göre: düşükten yükseğe",
+    "sortedPriceDesc": "Fiyata göre: yüksekten düşüğe",
+    "sortedPlatformAz": "Platforma göre: A → Z",
+    "sortedRelevant": "Alaka düzeyine göre"
+  },
+  "sort": {
+    "priceAsc": "Fiyat: Düşük → Yüksek",
+    "priceDesc": "Fiyat: Yüksek → Düşük",
+    "platformAz": "Platform: A → Z",
+    "relevant": "En Alakalı"
+  },
+  "filter": {
+    "sortBy": "Sırala",
+    "price": "Fiyat",
+    "min": "Min",
+    "max": "Maks",
+    "platforms": "Platformlar",
+    "hideNoPrice": "Fiyatsızları gizle",
+    "filters": "Filtreler",
+    "active": "aktif",
+    "filtersAndSort": "Filtreler ve Sıralama",
+    "priceRange": "Fiyat Aralığı",
+    "hideWithoutPrice": "Fiyatsız sonuçları gizle",
+    "applyFilters": "Filtreleri uygula"
+  },
+  "card": {
+    "bestPrice": "En İyi Fiyat",
+    "priceNotAvailable": "Fiyat mevcut değil",
+    "viewDeal": "Teklifi Gör",
+    "copied": "Kopyalandı!"
+  },
+  "bookmarks": {
+    "savedDeals": "Kayıtlı teklifler",
+    "removeSavedDeal": "Kayıtlı teklifi kaldır",
+    "viewDeal": "Teklifi Gör"
+  },
+  "recent": {
+    "recentSearches": "Son aramalar"
+  },
+  "auth": {
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol",
+    "email": "E-posta",
+    "password": "Şifre",
+    "username": "Kullanıcı adı",
+    "forgotPassword": "Şifremi unuttum?",
+    "backToSignIn": "Girişe dön",
+    "signingIn": "Giriş yapılıyor…",
+    "sendResetLink": "Sıfırlama bağlantısı gönder",
+    "sending": "Gönderiliyor…",
+    "createAccount": "Hesap Oluştur",
+    "creatingAccount": "Hesap oluşturuluyor…",
+    "signInFailed": "Giriş başarısız",
+    "signUpFailed": "Kayıt başarısız",
+    "resetLinkSent": "Sıfırlama bağlantısı gönderildi! E-postanızı kontrol edin.",
+    "failedResetLink": "Bağlantı gönderilemedi",
+    "usernameRequired": "Kullanıcı adı gereklidir",
+    "accountCreated": "Hesap oluşturuldu! Onaylamak için e-postanızı kontrol edin, sonra giriş yapın.",
+    "emailPlaceholder": "siz@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "En az 6 karakter"
+  },
+  "onboarding": {
+    "welcome": "LootReef'e Hoş Geldiniz",
+    "skip": "Atla",
+    "description": "En iyi oyun pazaryerlerinde fiyatları anında karşılaştırın. Tercihlerinizi ayarlayalım.",
+    "getStarted": "Başla",
+    "selectLanguage": "Dilinizi seçin",
+    "languageHint": "Teklif başlıklarını otomatik olarak çevireceğiz.",
+    "selectCurrency": "Para biriminizi seçin",
+    "currencyHint": "Tüm fiyatları canlı döviz kurlarıyla çevireceğiz.",
+    "back": "Geri",
+    "next": "İleri",
+    "finishSetup": "Kurulumu Tamamla",
+    "step1Desc": "En iyi oyun pazaryerlerinde fiyatları anında karşılaştırın. Tercihlerinizi ayarlayalım.",
+    "languageDesc": "Teklif başlıklarını otomatik olarak çevireceğiz.",
+    "currencyDesc": "Tüm fiyatları canlı döviz kurlarıyla çevireceğiz."
+  },
+  "account": {
+    "password": "Şifre",
+    "dangerZone": "Tehlikeli Bölge",
+    "currentPassword": "Mevcut Şifre",
+    "newPassword": "Yeni Şifre",
+    "confirmNewPassword": "Yeni Şifreyi Onayla",
+    "updating": "Güncelleniyor…",
+    "updatePassword": "Şifreyi Güncelle",
+    "passwordChanged": "Şifre başarıyla değiştirildi",
+    "passwordsNoMatch": "Şifreler eşleşmiyor",
+    "passwordTooShort": "Şifre en az 6 karakter olmalıdır",
+    "failedChangePassword": "Şifre değiştirilemedi",
+    "deleteWarning": "Hesabınız hemen devre dışı bırakılacak ve 30 gün sonra kalıcı olarak silinecektir. Oturumunuz kapatılacaktır.",
+    "warning": "Uyarı:",
+    "deactivating": "Devre dışı bırakılıyor…",
+    "deactivateAccount": "Anlıyorum, hesabımı devre dışı bırak",
+    "passwordTab": "Şifre",
+    "dangerZoneTab": "Tehlikeli Bölge",
+    "passwordsDoNotMatch": "Şifreler eşleşmiyor",
+    "passwordChangeFailed": "Şifre değiştirilemedi",
+    "warningDelete": "Hesabınız hemen devre dışı bırakılacak ve 30 gün sonra kalıcı olarak silinecektir. Oturumunuz kapatılacaktır.",
+    "deactivateBtn": "Anlıyorum, hesabımı devre dışı bırak"
+  },
+  "reset": {
+    "title": "Şifrenizi Sıfırlayın",
+    "newPassword": "Yeni Şifre",
+    "confirmNewPassword": "Yeni Şifreyi Onayla",
+    "resetting": "Sıfırlanıyor…",
+    "resetPassword": "Şifreyi Sıfırla",
+    "passwordsNoMatch": "Şifreler eşleşmiyor",
+    "resetSuccess": "Şifre başarıyla sıfırlandı. Yönlendirileceksiniz.",
+    "resetFailed": "Şifre sıfırlanamadı"
+  },
+  "footer": {
+    "disclaimer": "LootReef üçüncü taraf pazaryerlerinde fiyatları karşılaştırır. Listelenen hiçbir platformla bağlantımız yoktur."
+  },
+  "theme": {
+    "legacy": "Klasik",
+    "dark": "Koyu",
+    "light": "Açık",
+    "glass": "Cam"
+  }
 }

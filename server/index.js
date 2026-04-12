@@ -37,8 +37,8 @@ app.get('/api/shorten', async (req, res) => {
   try {
     const ouoUrl = `https://ouo.io/api/${apiKey}?s=${encodeURIComponent(url)}`;
     const response = await axios.get(ouoUrl, { timeout: 5000 });
-    const text = response.data;
-    if (typeof text === 'string' && text.startsWith('http')) {
+    const text = typeof response.data === 'string' ? response.data.trim() : '';
+    if (text.startsWith('http')) {
       return res.json({ shortUrl: text });
     }
     return res.json({ shortUrl: url });

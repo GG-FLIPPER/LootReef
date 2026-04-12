@@ -1,17 +1,152 @@
 {
-  "nav": { "platformsActive": "{{count}} plattformer aktive", "platformsLive": "7 plattformer live", "accountSettings": "Kontoinnstillinger", "signOut": "Logg ut", "signInRegister": "Logg inn / Registrer", "theme": "Tema", "language": "Språk", "currency": "Valuta", "settings": "Innstillinger" },
-  "hero": { "title": "Finn <1>beste pris</1> umiddelbart", "subtitle": "Sammenlign priser på spillnøkler, spillvaluta, kontoer og digitale tjenester på 7 markedsplasser i sanntid.", "searchingAcross": "Søker på" },
-  "search": { "placeholder": "Søk \"wow gold eu\", \"valorant konto\", \"game key\"...", "button": "Søk", "searching": "Søker...", "tip": "Prøv: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\"" },
-  "results": { "showing": "Viser", "of": "av", "resultsFor": "resultater for", "in": "på", "noResults": "Ingen resultater funnet", "noResultsHint": "Prøv et annet søkeord eller sjekk om produktet finnes på støttede plattformer.", "sortedPriceAsc": "Sortert etter pris: lav → høy", "sortedPriceDesc": "Sortert etter pris: høy → lav", "sortedPlatformAz": "Sortert etter plattform: A → Å", "sortedRelevant": "Sortert etter relevans" },
-  "sort": { "priceAsc": "Pris: Lav → Høy", "priceDesc": "Pris: Høy → Lav", "platformAz": "Plattform: A → Å", "relevant": "Mest relevant" },
-  "filter": { "sortBy": "Sorter etter", "price": "Pris", "min": "Min", "max": "Maks", "platforms": "Plattformer", "hideNoPrice": "Skjul uten pris", "filters": "Filtre", "active": "aktiv", "filtersAndSort": "Filtre og sortering", "priceRange": "Prisområde", "hideWithoutPrice": "Skjul resultater uten pris", "applyFilters": "Bruk filtre" },
-  "card": { "bestPrice": "Beste pris", "priceNotAvailable": "Pris ikke tilgjengelig", "viewDeal": "Se tilbud", "copied": "Kopiert!" },
-  "bookmarks": { "savedDeals": "Lagrede tilbud", "removeSavedDeal": "Fjern lagret tilbud", "viewDeal": "Se tilbud" },
-  "recent": { "recentSearches": "Nylige søk" },
-  "auth": { "signIn": "Logg inn", "signUp": "Registrer", "email": "E-post", "password": "Passord", "username": "Brukernavn", "forgotPassword": "Glemt passord?", "backToSignIn": "Tilbake til innlogging", "signingIn": "Logger inn…", "sendResetLink": "Send tilbakestillingslenke", "sending": "Sender…", "createAccount": "Opprett konto", "creatingAccount": "Oppretter konto…", "signInFailed": "Innlogging mislyktes", "signUpFailed": "Registrering mislyktes", "resetLinkSent": "Tilbakestillingslenke sendt! Sjekk e-posten din.", "failedResetLink": "Kunne ikke sende lenke", "usernameRequired": "Brukernavn er påkrevd", "accountCreated": "Konto opprettet! Sjekk e-posten for å bekrefte, logg så inn.", "emailPlaceholder": "deg@example.com", "passwordPlaceholder": "••••••••", "usernamePlaceholder": "cooluser123", "passwordHint": "Minst 6 tegn" },
-  "onboarding": { "welcome": "Velkommen til LootReef", "skip": "Hopp over", "description": "Sammenlign priser på de beste spillmarkedsplassene umiddelbart. La oss sette opp dine preferanser.", "getStarted": "Kom i gang", "selectLanguage": "Velg ditt språk", "languageHint": "Vi oversetter tilbudstitler automatisk.", "selectCurrency": "Velg din valuta", "currencyHint": "Vi konverterer alle priser med sanntids valutakurser.", "back": "Tilbake", "next": "Neste", "finishSetup": "Fullfør oppsett" },
-  "account": { "password": "Passord", "dangerZone": "Faresone", "currentPassword": "Nåværende passord", "newPassword": "Nytt passord", "confirmNewPassword": "Bekreft nytt passord", "updating": "Oppdaterer…", "updatePassword": "Oppdater passord", "passwordChanged": "Passord endret", "passwordsNoMatch": "Passordene samsvarer ikke", "passwordTooShort": "Passord må være minst 6 tegn", "failedChangePassword": "Kunne ikke endre passord", "deleteWarning": "Kontoen din deaktiveres umiddelbart og slettes permanent etter 30 dager. Du logges ut.", "warning": "Advarsel:", "deactivating": "Deaktiverer…", "deactivateAccount": "Jeg forstår, deaktiver kontoen min" },
-  "reset": { "title": "Tilbakestill passordet ditt", "newPassword": "Nytt passord", "confirmNewPassword": "Bekreft nytt passord", "resetting": "Tilbakestiller…", "resetPassword": "Tilbakestill passord", "passwordsNoMatch": "Passordene samsvarer ikke", "resetSuccess": "Passord tilbakestilt. Du omdirigeres.", "resetFailed": "Kunne ikke tilbakestille passord" },
-  "footer": { "disclaimer": "LootReef sammenligner priser på tredjepartsmarkedsplasser. Vi er ikke tilknyttet noen av de oppførte plattformene." },
-  "theme": { "legacy": "Klassisk", "dark": "Mørk", "light": "Lys", "glass": "Glass" }
+  "nav": {
+    "platformsActive": "{{count}} plattformer aktive",
+    "platformsLive": "7 plattformer live",
+    "accountSettings": "Kontoinnstillinger",
+    "signOut": "Logg ut",
+    "signInRegister": "Logg inn / Registrer",
+    "theme": "Tema",
+    "language": "Språk",
+    "currency": "Valuta",
+    "settings": "Innstillinger"
+  },
+  "hero": {
+    "title": "Finn <1>beste pris</1> umiddelbart",
+    "subtitle": "Sammenlign priser på spillnøkler, spillvaluta, kontoer og digitale tjenester på 7 markedsplasser i sanntid.",
+    "searchingAcross": "Søker på"
+  },
+  "search": {
+    "placeholder": "Søk \"wow gold eu\", \"valorant konto\", \"game key\"...",
+    "button": "Søk",
+    "searching": "Søker...",
+    "tip": "Prøv: \"csgo skins\", \"fifa coins\", \"steam wallet code\", \"roblox robux\""
+  },
+  "results": {
+    "showing": "Viser",
+    "of": "av",
+    "resultsFor": "resultater for",
+    "in": "på",
+    "noResults": "Ingen resultater funnet",
+    "noResultsHint": "Prøv et annet søkeord eller sjekk om produktet finnes på støttede plattformer.",
+    "sortedPriceAsc": "Sortert etter pris: lav → høy",
+    "sortedPriceDesc": "Sortert etter pris: høy → lav",
+    "sortedPlatformAz": "Sortert etter plattform: A → Å",
+    "sortedRelevant": "Sortert etter relevans"
+  },
+  "sort": {
+    "priceAsc": "Pris: Lav → Høy",
+    "priceDesc": "Pris: Høy → Lav",
+    "platformAz": "Plattform: A → Å",
+    "relevant": "Mest relevant"
+  },
+  "filter": {
+    "sortBy": "Sorter etter",
+    "price": "Pris",
+    "min": "Min",
+    "max": "Maks",
+    "platforms": "Plattformer",
+    "hideNoPrice": "Skjul uten pris",
+    "filters": "Filtre",
+    "active": "aktiv",
+    "filtersAndSort": "Filtre og sortering",
+    "priceRange": "Prisområde",
+    "hideWithoutPrice": "Skjul resultater uten pris",
+    "applyFilters": "Bruk filtre"
+  },
+  "card": {
+    "bestPrice": "Beste pris",
+    "priceNotAvailable": "Pris ikke tilgjengelig",
+    "viewDeal": "Se tilbud",
+    "copied": "Kopiert!"
+  },
+  "bookmarks": {
+    "savedDeals": "Lagrede tilbud",
+    "removeSavedDeal": "Fjern lagret tilbud",
+    "viewDeal": "Se tilbud"
+  },
+  "recent": {
+    "recentSearches": "Nylige søk"
+  },
+  "auth": {
+    "signIn": "Logg inn",
+    "signUp": "Registrer",
+    "email": "E-post",
+    "password": "Passord",
+    "username": "Brukernavn",
+    "forgotPassword": "Glemt passord?",
+    "backToSignIn": "Tilbake til innlogging",
+    "signingIn": "Logger inn…",
+    "sendResetLink": "Send tilbakestillingslenke",
+    "sending": "Sender…",
+    "createAccount": "Opprett konto",
+    "creatingAccount": "Oppretter konto…",
+    "signInFailed": "Innlogging mislyktes",
+    "signUpFailed": "Registrering mislyktes",
+    "resetLinkSent": "Tilbakestillingslenke sendt! Sjekk e-posten din.",
+    "failedResetLink": "Kunne ikke sende lenke",
+    "usernameRequired": "Brukernavn er påkrevd",
+    "accountCreated": "Konto opprettet! Sjekk e-posten for å bekrefte, logg så inn.",
+    "emailPlaceholder": "deg@example.com",
+    "passwordPlaceholder": "••••••••",
+    "usernamePlaceholder": "cooluser123",
+    "passwordHint": "Minst 6 tegn"
+  },
+  "onboarding": {
+    "welcome": "Velkommen til LootReef",
+    "skip": "Hopp over",
+    "description": "Sammenlign priser på de beste spillmarkedsplassene umiddelbart. La oss sette opp dine preferanser.",
+    "getStarted": "Kom i gang",
+    "selectLanguage": "Velg ditt språk",
+    "languageHint": "Vi oversetter tilbudstitler automatisk.",
+    "selectCurrency": "Velg din valuta",
+    "currencyHint": "Vi konverterer alle priser med sanntids valutakurser.",
+    "back": "Tilbake",
+    "next": "Neste",
+    "finishSetup": "Fullfør oppsett",
+    "step1Desc": "Sammenlign priser på de beste spillmarkedsplassene umiddelbart. La oss sette opp dine preferanser.",
+    "languageDesc": "Vi oversetter tilbudstitler automatisk.",
+    "currencyDesc": "Vi konverterer alle priser med sanntids valutakurser."
+  },
+  "account": {
+    "password": "Passord",
+    "dangerZone": "Faresone",
+    "currentPassword": "Nåværende passord",
+    "newPassword": "Nytt passord",
+    "confirmNewPassword": "Bekreft nytt passord",
+    "updating": "Oppdaterer…",
+    "updatePassword": "Oppdater passord",
+    "passwordChanged": "Passord endret",
+    "passwordsNoMatch": "Passordene samsvarer ikke",
+    "passwordTooShort": "Passord må være minst 6 tegn",
+    "failedChangePassword": "Kunne ikke endre passord",
+    "deleteWarning": "Kontoen din deaktiveres umiddelbart og slettes permanent etter 30 dager. Du logges ut.",
+    "warning": "Advarsel:",
+    "deactivating": "Deaktiverer…",
+    "deactivateAccount": "Jeg forstår, deaktiver kontoen min",
+    "passwordTab": "Passord",
+    "dangerZoneTab": "Faresone",
+    "passwordsDoNotMatch": "Passordene samsvarer ikke",
+    "passwordChangeFailed": "Kunne ikke endre passord",
+    "warningDelete": "Kontoen din deaktiveres umiddelbart og slettes permanent etter 30 dager. Du logges ut.",
+    "deactivateBtn": "Jeg forstår, deaktiver kontoen min"
+  },
+  "reset": {
+    "title": "Tilbakestill passordet ditt",
+    "newPassword": "Nytt passord",
+    "confirmNewPassword": "Bekreft nytt passord",
+    "resetting": "Tilbakestiller…",
+    "resetPassword": "Tilbakestill passord",
+    "passwordsNoMatch": "Passordene samsvarer ikke",
+    "resetSuccess": "Passord tilbakestilt. Du omdirigeres.",
+    "resetFailed": "Kunne ikke tilbakestille passord"
+  },
+  "footer": {
+    "disclaimer": "LootReef sammenligner priser på tredjepartsmarkedsplasser. Vi er ikke tilknyttet noen av de oppførte plattformene."
+  },
+  "theme": {
+    "legacy": "Klassisk",
+    "dark": "Mørk",
+    "light": "Lys",
+    "glass": "Glass"
+  }
 }

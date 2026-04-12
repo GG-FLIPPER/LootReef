@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     try {
       const { data, error } = await supabase
         .from('profiles')
-        .select('username')
+        .select('*')
         .eq('id', userId)
         .single();
         
@@ -132,7 +132,7 @@ export function AuthProvider({ children }) {
     if (data.user) {
       const { data: prof } = await supabase
         .from('profiles')
-        .select('is_deleted')
+        .select('*')
         .eq('id', data.user.id)
         .single();
         
@@ -163,9 +163,10 @@ export function AuthProvider({ children }) {
     } catch (e) {
       console.error('Sign out error:', e);
     } finally {
+      localStorage.removeItem('pricescout_onboarded');
       setUser(null);
       setProfile(null);
-      window.location.href = '/';
+      navigate('/', { replace: true });
     }
   }
 
