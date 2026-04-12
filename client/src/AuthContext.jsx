@@ -96,7 +96,7 @@ export function AuthProvider({ children }) {
           if (event === 'SIGNED_IN') {
             const { data: existingProfile } = await supabase
               .from('profiles')
-              .select('username')
+              .select('*')
               .eq('id', u.id)
               .single();
               
@@ -159,14 +159,14 @@ export function AuthProvider({ children }) {
 
   async function signOut() {
     try {
-      await supabase.auth.signOut();
-    } catch (e) {
-      console.error('Sign out error:', e);
-    } finally {
       localStorage.removeItem('pricescout_onboarded');
       setUser(null);
       setProfile(null);
       navigate('/', { replace: true });
+      
+      await supabase.auth.signOut();
+    } catch (e) {
+      console.error('Sign out error:', e);
     }
   }
 
