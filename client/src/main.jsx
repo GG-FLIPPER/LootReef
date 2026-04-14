@@ -6,6 +6,7 @@ import { CurrencyProvider } from './CurrencyContext'
 import { LanguageProvider } from './LanguageContext'
 import { AuthProvider } from './AuthContext'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 import App from './App.jsx'
 
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
           <LanguageProvider>
             <App />
             <Analytics />
+            <SpeedInsights />
           </LanguageProvider>
         </CurrencyProvider>
       </AuthProvider>
