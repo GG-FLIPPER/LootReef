@@ -24,18 +24,18 @@ export function AuthProvider({ children }) {
         .eq('id', userId)
         .single();
         
-      if (error && error.code !== 'PGRST116') {
-         console.error('fetchProfile error:', error);
-      }
-      
-      if (data) {
-        setProfile(data);
-      } else {
+      if (error) {
+        if (error.code !== 'PGRST116') {
+          console.error('fetchProfile error:', error);
+          return; // Do not wipe profile state on fetch/lock collisions
+        }
         setProfile(null);
+      } else if (data) {
+        setProfile(data);
       }
     } catch (err) {
       console.error('fetchProfile exception:', err);
-      setProfile(null);
+      // Suppressed setProfile(null) to prevent ghost onboarding sweeps on abort errors!
     }
   }
 
@@ -82,7 +82,6 @@ export function AuthProvider({ children }) {
     supabase.auth.getSession().then(({ data: { session } }) => {
       const u = session?.user ?? null;
       setUser(u);
-      if (u) fetchProfile(u.id);
       setLoading(false);
     });
 
@@ -160,6 +159,12 @@ export function AuthProvider({ children }) {
   async function signOut() {
     try {
       localStorage.removeItem('pricescout_onboarded');
+      // Wipe any leftover Supabase auth cache keys immediately to prevent session ghosting from failed promises.
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('sb-')) {
+          localStorage.removeItem(key);
+        }
+      });
       setUser(null);
       setProfile(null);
       navigate('/', { replace: true });

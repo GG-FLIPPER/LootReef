@@ -25,6 +25,7 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
 
 
   const handleDelete = async (entry, e) => {
+    e.preventDefault();
     e.stopPropagation();
     await deleteSearch(entry, user);
     await refresh();
@@ -39,10 +40,13 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
       <div className="recent-searches-chips">
         {history.map((entry, i) => (
           <button
-            key={entry.id || `${entry.query}-${entry.timestamp}-${i}`}
+            key={entry.id || `${entry.query}-${entry.timestamp}`}
             className="search-chip animate-spring-pop"
             style={{ animationDelay: `${i * 50}ms` }}
-            onClick={() => onSearch(entry.query)}
+            onClick={(e) => {
+              e.preventDefault();
+              onSearch(entry.query);
+            }}
             title={entry.query}
           >
             <span className="search-chip-text">{entry.query}</span>
