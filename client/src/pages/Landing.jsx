@@ -196,6 +196,87 @@ const INJECTED_CSS = `
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,95,153,0.3); border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,95,153,0.5); }
+
+/* ═══════════ MOBILE OPTIMIZATION OVERRIDES ═══════════ */
+@media (max-width: 768px) {
+  /* Prevent horizontal scrolling from animations */
+  body, html {
+    overflow-x: hidden !important;
+  }
+
+  /* Reduce heavy GPU blur effects on mobile */
+  div[style*="backdropFilter"],
+  div[style*="backdrop-filter"] {
+    backdrop-filter: blur(8px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(120%) !important;
+  }
+
+  /* Kill the moving background gradient animation which lags mobile */
+  div[style*="animation: 'movingBackground"],
+  div[style*="animation: movingBackground"] {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+
+  /* Hide the 25 fixed floating bubbles that destroy mobile frame rates */
+  div[style*="floatBubble"],
+  div[style*="floatBubble"] * {
+    display: none !important;
+    animation: none !important;
+  }
+
+  /* Force wrapping on previously forced-nowrap text so it doesn't get cut off */
+  div[style*="whiteSpace: 'nowrap'"], 
+  div[style*="white-space: nowrap"] {
+    white-space: normal !important;
+  }
+
+  /* Shrink overly massive fonts for small screens */
+  h1 {
+    font-size: clamp(2.5rem, 11vw, 4rem) !important;
+  }
+  h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+  }
+  div[style*="clamp(3.5rem"] {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+  div[style*="clamp(2.8rem"] {
+    font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  div[style*="clamp(1.5rem"] {
+    font-size: clamp(1.2rem, 6vw, 2rem) !important;
+  }
+  div[style*="clamp(3rem, 7vw, 6rem)"] {
+     font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+  div[style*="clamp(5rem, 13vw, 11rem)"] {
+     font-size: clamp(3rem, 10vw, 5rem) !important;
+  }
+
+  /* ✅ FIX: Stack Comparison Grid ('1fr auto 1fr') and Feature Grid */
+  div[style*="1fr auto 1fr"],
+  div[style*="minmax(280px"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Prevent stick-hover on mobile links & buttons */
+  a[style*="hover"], .bookmark-card, .platform-chip {
+    transition-duration: 0s !important;
+  }
+  
+  /* Fix nav padding */
+  nav {
+    padding: 1rem !important;
+  }
+  nav .nav-link {
+    display: none !important; /* Hide individual links on mobile to save space */
+  }
+}
 `;
 
 // ─── PARTICLES DATA (AERO BUBBLES) ───
