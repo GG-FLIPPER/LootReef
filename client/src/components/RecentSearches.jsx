@@ -36,7 +36,7 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
 
   return (
     <div className="recent-searches fade-in-up">
-      <p className="recent-searches-label">{t('search.recentSearches')}</p>
+      <p className="recent-searches-label">{t('recent.recentSearches')}</p>
       <div className="recent-searches-chips">
         {history.map((entry, i) => (
           <button
