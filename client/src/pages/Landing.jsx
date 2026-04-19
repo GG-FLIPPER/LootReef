@@ -210,13 +210,13 @@ const BUBBLES = Array.from({ length: 25 }, (_, i) => ({
 
 // ─── MARKETPLACE DATA ───
 const MARKETPLACES = [
-  { name: 'G2G', logo: '/logos/g2g.png' },
-  { name: 'FunPay', logo: '/logos/funpay.png' },
-  { name: 'Eldorado', logo: '/logos/eldorado.png' },
-  { name: 'PlayerAuctions', logo: '/logos/playerauctions.png' },
-  { name: 'Z2U', logo: '/logos/z2u.png' },
-  { name: 'Gameflip', logo: '/logos/gameflip.png' },
-  { name: 'Plati.market', logo: '/logos/plati.png' }
+  { name: 'G2G', logo: '/logos/g2g.png', height: 28 },
+  { name: 'FunPay', logo: '/logos/funpay.png', height: 24 },
+  { name: 'Eldorado', logo: '/logos/eldorado.png', height: 32 },
+  { name: 'PlayerAuctions', logo: '/logos/playerauctions.png', height: 48 },
+  { name: 'Z2U', logo: '/logos/z2u.png', height: 48 },
+  { name: 'Gameflip', logo: '/logos/gameflip.png', height: 32 },
+  { name: 'Plati.market', logo: '/logos/plati.png', height: 28 }
 ];
 
 // ─── COMPARISON DATA ───
@@ -533,23 +533,28 @@ export default function LandingPage() {
       <section id="marketplaces" style={{ ...sectionPadding, textAlign: 'center' }}>
         <div style={{
           ...displayFont,
-          fontSize: 'clamp(2rem, 5.5vw, 4.5rem)',
+          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
           lineHeight: 1.1,
           marginBottom: '3.5rem',
           textShadow: '0 2px 10px rgba(255,255,255,0.8)'
         }}>
-          <div data-reveal="slideInLeft">
+          <div data-reveal="slideInLeft" style={{ whiteSpace: 'nowrap' }}>
             Find deals from{' '}
             <span style={{ color: 'white', fontSize: '1.2em', textShadow: '0 4px 20px rgba(0,95,153,0.3)' }}>7</span> marketplaces
           </div>
           <div data-reveal="slideInRight" data-delay="200">
-            in a single click
+            in a <span style={{
+              color: 'white',
+              fontWeight: 900,
+              textShadow: '0 2px 5px rgba(0,0,0,0.1)'
+            }}>single click</span>
           </div>
         </div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: 16,
           maxWidth: 900,
           margin: '0 auto',
@@ -564,10 +569,8 @@ export default function LandingPage() {
               justifyContent: 'center',
               gap: '0.8rem',
               color: TEXT_PRIMARY,
-              fontSize: '1rem',
-              fontWeight: 800,
-              cursor: 'default',
-              minHeight: 64, // to ensure consistent shape when replacing text with images
+              minWidth: 160,
+              minHeight: 64,
             }}>
               <GlassShine />
               {market.logo ? (
@@ -575,8 +578,8 @@ export default function LandingPage() {
                   src={market.logo} 
                   alt={market.name} 
                   style={{ 
-                    height: 28, 
-                    maxWidth: 120, 
+                    height: market.height || 28, 
+                    maxWidth: 140, 
                     objectFit: 'contain', 
                     position: 'relative', 
                     zIndex: 2,
