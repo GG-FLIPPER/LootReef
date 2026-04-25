@@ -1,14 +1,9 @@
 const axios = require('axios');
 
+const SCRAPERAPI_KEY = '3db90afce2774e79a53dc2e5f176c674';
+
 async function scrapeG2G(query) {
   try {
-    const headers = {
-      'accept': 'application/json, text/plain, */*',
-      'origin': 'https://www.g2g.com',
-      'referer': 'https://www.g2g.com/',
-      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    };
-    
     // 1. Determine service modifier matching user request vs G2G taxonomy
     const qLower = query.toLowerCase();
     let serviceSuffix = '-items-for-sale'; 
@@ -22,36 +17,76 @@ async function scrapeG2G(query) {
     if (!baseGameQuery) return [];
 
     // 3. Fetch Category seo_term
-    const kwRes = await axios.get('https://sls.g2g.com/offer/keyword/search', {
-      params: { q: baseGameQuery, root_id: 'all', include_cat: 1 },
-      headers,
-      timeout: 10000
-    });
-    
-    const results = kwRes.data?.payload?.results;
-    if (!results || results.length === 0) return [];
-    
-    // Find an exact match for the base game name, otherwise fallback to the highest scored first element
-    const exactMatch = results.find(r => r.default_name.toLowerCase() === baseGameQuery.toLowerCase() || r.seo_term.toLowerCase() === baseGameQuery.toLowerCase());
-    const baseSeoTerm = exactMatch ? exactMatch.seo_term : results[0].seo_term;
+    let baseSeoTerm;
+    try {
+      const targetUrl = `https://sls.g2g.com/offer/keyword/search?q=${encodeURIComponent(baseGameQuery)}&root_id=all&include_cat=1`;
+      const kwRes = await axios.get('http://api.scraperapi.com', {
+        headers: {
+          'accept': 'application/json, text/plain, */*',
+          'origin': 'https://www.g2g.com',
+          'referer': 'https://www.g2g.com/',
+          'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        },
+        params: {
+          api_key: SCRAPERAPI_KEY,
+          url: targetUrl,
+          premium: 'true',
+          keep_headers: 'true'
+        },
+        timeout: 10000
+      });
+      
+      const results = kwRes.data?.payload?.results;
+      if (!results || results.length === 0) {
+        throw new Error('No results found');
+      }
+      
+      // Find an exact match for the base game name, otherwise fallback to the highest scored first element
+      const exactMatch = results.find(r => r.default_name.toLowerCase() === baseGameQuery.toLowerCase() || r.seo_term.toLowerCase() === baseGameQuery.toLowerCase());
+      baseSeoTerm = exactMatch ? exactMatch.seo_term : results[0].seo_term;
+    } catch (e) {
+      baseSeoTerm = baseGameQuery.trim().replace(/\s+/g, '-').toLowerCase();
+    }
     let finalSeoTerm = baseSeoTerm + serviceSuffix;
 
 
     // 4. Fetch the listings - Try with suffix first, then without
     let items = [];
     try {
-      const sRes = await axios.get('https://sls.g2g.com/offer/search', {
-        params: { seo_term: finalSeoTerm, sort: 'lowest_price', page_size: 48, currency: 'USD', country: 'US', include_localization: 0, v: 'v2' },
-        headers,
+      const targetUrl = `https://sls.g2g.com/offer/search?seo_term=${encodeURIComponent(finalSeoTerm)}&sort=lowest_price&page_size=48&currency=USD&country=US&include_localization=0&v=v2`;
+      const sRes = await axios.get('http://api.scraperapi.com', {
+        headers: {
+          'accept': 'application/json, text/plain, */*',
+          'origin': 'https://www.g2g.com',
+          'referer': 'https://www.g2g.com/',
+          'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        },
+        params: {
+          api_key: SCRAPERAPI_KEY,
+          url: targetUrl,
+          premium: 'true',
+          keep_headers: 'true'
+        },
         timeout: 10000
       });
       items = sRes.data?.payload?.results || [];
     } catch (e) {
       if (e.response && e.response.status === 404) {
         // Fallback to base term
-        const fbRes = await axios.get('https://sls.g2g.com/offer/search', {
-          params: { seo_term: baseSeoTerm, sort: 'lowest_price', page_size: 48, currency: 'USD', country: 'US', include_localization: 0, v: 'v2' },
-          headers,
+        const targetUrl = `https://sls.g2g.com/offer/search?seo_term=${encodeURIComponent(baseSeoTerm)}&sort=lowest_price&page_size=48&currency=USD&country=US&include_localization=0&v=v2`;
+        const fbRes = await axios.get('http://api.scraperapi.com', {
+          headers: {
+            'accept': 'application/json, text/plain, */*',
+            'origin': 'https://www.g2g.com',
+            'referer': 'https://www.g2g.com/',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          },
+          params: {
+            api_key: SCRAPERAPI_KEY,
+            url: targetUrl,
+            premium: 'true',
+            keep_headers: 'true'
+          },
           timeout: 10000
         });
         items = fbRes.data?.payload?.results || [];
@@ -71,7 +106,7 @@ async function scrapeG2G(query) {
     }));
 
   } catch (e) {
-    console.error('G2G scraper error:', e.message);
+    console.error('G2G scraper error:', e.response?.data ? `${e.message} - ${JSON.stringify(e.response.data)}` : e.message);
     // Silent fail returning [] as instructed
     return [];
   }

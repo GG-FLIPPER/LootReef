@@ -22,6 +22,9 @@ async function fetchHtml(targetUrl) {
 
   const response = await axios.get('http://api.scraperapi.com', {
     params,
+    headers: {
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    },
     timeout: 90000 // Increased timeout for JS-rendered and premium ScraperAPI requests
   });
 
