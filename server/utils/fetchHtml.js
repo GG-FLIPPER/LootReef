@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const SCRAPERAPI_KEY = '3db90afce2774e79a53dc2e5f176c674';
+const SCRAPERAPI_KEY = process.env.SCRAPERAPI_KEY;
 
 // Sites that render listings with JS
 const JS_RENDERED = ['g2g.com', 'eldorado.gg', 'z2u.com', 'gameflip.com', 'playerauctions.com'];

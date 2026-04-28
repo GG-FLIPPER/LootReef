@@ -27,6 +27,20 @@ app.get('/api/search', async (req, res) => {
 
   res.json({ results, elapsed: parseFloat(elapsed) });
 });
+
+// Temporary debug endpoint for G2G
+app.get('/api/test-g2g', async (req, res) => {
+  const { scrapeG2G } = require('./scrapers/g2g');
+  const query = req.query.q || 'spotify account';
+  const startTime = Date.now();
+  try {
+    const results = await scrapeG2G(query);
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    res.json({ results, elapsed, count: results.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message, stack: err.stack });
+  }
+});
 app.get('/api/shorten', async (req, res) => {
   const { url } = req.query;
   if (!url) return res.json({ shortUrl: '' });
