@@ -14,6 +14,7 @@ import AccountSettingsModal from './AccountSettingsModal';
 import ResetPassword from './ResetPassword';
 import RecentSearches from './RecentSearches';
 import BookmarksSection from './BookmarksSection';
+import TodaysDeal from './TodaysDeal';
 import { useAuth } from '../AuthContext';
 import { saveSearch } from '../searchHistory';
 import { loadBookmarks } from '../bookmarks';
@@ -419,6 +420,7 @@ function SearchApp() {
               <p className="text-text-secondary text-lg max-w-xl mx-auto animate-hero-slide-up delay-200">
                 {t('hero.subtitle')}
               </p>
+              <TodaysDeal onSearch={handleSearch} />
             </div>
           )}
           <div className={`${!searched ? 'animate-hero-slide-up delay-300' : ''}`}>

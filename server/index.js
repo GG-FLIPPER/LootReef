@@ -5,6 +5,7 @@ const cors = require('cors');
 const axios = require('axios');
 const { scrapeAll } = require('./scrapers');
 const { parseItemName } = require('./utils/parser');
+const { fetchTodaysDeal, clearCache } = require('./utils/dailyDeal');
 
 const app = express();
 app.use(cors());
@@ -28,19 +29,22 @@ app.get('/api/search', async (req, res) => {
   res.json({ results, elapsed: parseFloat(elapsed) });
 });
 
-// Temporary debug endpoint for G2G
-app.get('/api/test-g2g', async (req, res) => {
-  const { scrapeG2G } = require('./scrapers/g2g');
-  const query = req.query.q || 'spotify account';
-  const startTime = Date.now();
+// Daily Deal endpoints
+app.get('/api/todays-deal', async (req, res) => {
   try {
-    const results = await scrapeG2G(query);
-    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    res.json({ results, elapsed, count: results.length });
-  } catch (err) {
-    res.status(500).json({ error: err.message, stack: err.stack });
+    const deal = await fetchTodaysDeal();
+    res.json(deal);
+  } catch (error) {
+    console.error('[API] Error fetching todays deal:', error);
+    res.status(500).json({ error: 'Failed to fetch deal' });
   }
 });
+
+app.delete('/api/todays-deal/cache', (req, res) => {
+  clearCache();
+  res.json({ message: 'Cache cleared successfully' });
+});
+
 app.get('/api/shorten', async (req, res) => {
   const { url } = req.query;
   if (!url) return res.json({ shortUrl: '' });
