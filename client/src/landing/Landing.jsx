@@ -278,11 +278,16 @@ export default function LandingPage() {
 
   // Force page BG
   useEffect(() => {
-    const prev = document.body.style.background;
+    const prevBg = document.body.style.background;
+    const prevOverflow = document.body.style.overflowX;
     document.body.style.background = BG;
     document.body.style.margin = '0';
     document.body.style.padding = '0';
-    return () => { document.body.style.background = prev; };
+    document.body.style.overflowX = 'hidden';
+    return () => { 
+      document.body.style.background = prevBg; 
+      document.body.style.overflowX = prevOverflow;
+    };
   }, []);
 
   // ─── FLOATING DOTS ───
@@ -391,6 +396,8 @@ export default function LandingPage() {
          ═══════════════════════════════════════════ */}
       <section ref={heroRef} style={{
         minHeight: '100vh',
+        width: '100%',
+        containerType: 'inline-size',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -444,7 +451,7 @@ export default function LandingPage() {
         ))}
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: 800 }}>
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: 1200, padding: '0 10px', boxSizing: 'border-box' }}>
           {/* Introducing tag */}
           <div style={{
             display: 'inline-block',
@@ -462,14 +469,14 @@ export default function LandingPage() {
             ✦ Introducing
           </div>
 
-          {/* Title */}
           <h1 style={{
             fontFamily: FONT_DISPLAY,
             fontWeight: 800,
-            fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+            fontSize: 'clamp(2rem, 9cqi, 6rem)',
             lineHeight: 1,
             margin: '0 0 24px 0',
             letterSpacing: '-0.03em',
+            whiteSpace: 'nowrap',
           }}>
             <span style={{
               color: GREEN,
