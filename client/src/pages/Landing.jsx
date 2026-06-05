@@ -507,10 +507,13 @@ export default function LandingPage() {
         {/* Title */}
         <h1 data-reveal="fadeUp" data-delay="100" style={{
           ...displayFont,
-          fontSize: 'clamp(5rem, 16vw, 13rem)',
+          fontSize: 'clamp(3rem, 10vw, 8rem)',
           lineHeight: 0.88,
           letterSpacing: '-0.04em',
           margin: 0,
+          padding: '0 20px',
+          width: '100%',
+          boxSizing: 'border-box',
           position: 'relative',
           color: 'white',
           textShadow: '0 4px 20px rgba(0,95,153,0.3)',
