@@ -480,7 +480,6 @@ export default function LandingPage() {
         justifyContent: 'center',
         textAlign: 'center',
         position: 'relative',
-        overflow: 'hidden',
         zIndex: 1,
       }}>
         {/* Curved light ray overlay */}
