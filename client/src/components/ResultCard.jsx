@@ -5,6 +5,23 @@ import { useLanguage } from '../LanguageContext';
 import { useAuth } from '../AuthContext';
 import { saveBookmark, removeBookmark } from '../bookmarks';
 
+const shortenUrl = async (url) => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const res = await fetch(`/api/shorten?url=${encodeURIComponent(url)}`, { 
+      signal: controller.signal 
+    });
+    const data = await res.json();
+    clearTimeout(timeout);
+    return data.shortUrl || url;
+  } catch {
+    clearTimeout(timeout);
+    return url;
+  }
+};
+
 const PLATFORM_COLORS = {
   'G2G': 'badge-g2g',
   'FunPay': 'badge-funpay',
@@ -82,23 +99,6 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
       await saveBookmark(result, user);
     }
     window.dispatchEvent(new Event('bookmarksUpdated'));
-  };
-
-  const shortenUrl = async (url) => {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-
-    try {
-      const res = await fetch(`/api/shorten?url=${encodeURIComponent(url)}`, { 
-        signal: controller.signal 
-      });
-      const data = await res.json();
-      clearTimeout(timeout);
-      return data.shortUrl || url;
-    } catch {
-      clearTimeout(timeout);
-      return url;
-    }
   };
 
   const handleShare = async (e) => {

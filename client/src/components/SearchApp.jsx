@@ -80,7 +80,7 @@ function SearchApp() {
   // Derive unique platforms from actual results
   const platforms = useMemo(() => {
     const set = new Set(results.map((r) => r.platform));
-    return [...set].sort();
+    return [...set].toSorted();
   }, [results]);
 
   // Defer filters to prevent typing lag

@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
-
+import { createContext, use, useState, useEffect, useCallback, useMemo } from 'react';
+import useSWR from 'swr';
 const CURRENCIES = [
   { code: 'AED', flag: '🇦🇪', symbol: 'د.إ', decimals: 2 },
   { code: 'ARS', flag: '🇦🇷', symbol: 'AR$', decimals: 2 },
@@ -65,6 +65,42 @@ const TIMESTAMP_KEY = 'pricescout_fx_timestamp';
 const PREF_KEY = 'pricescout_currency';
 const MAX_AGE_MS = 60 * 60 * 1000; // 1 hour
 
+const fetcher = async () => {
+  const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
+
+  const frankfurterFetch = fetch('https://api.frankfurter.app/latest?from=USD')
+    .then((res) => res.json())
+    .then((data) => data.rates || {})
+    .catch(() => ({}));
+
+  const exchangeRateFetch = apiKey
+    ? fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
+        .then((res) => res.json())
+        .then((data) => data.conversion_rates || {})
+        .catch(() => ({}))
+    : Promise.resolve({});
+
+  const [frankfurterRates, exchangeApiRates] = await Promise.all([frankfurterFetch, exchangeRateFetch]);
+  const merged = { ...exchangeApiRates, ...frankfurterRates };
+  delete merged.USD;
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(merged));
+    localStorage.setItem(TIMESTAMP_KEY, String(Date.now()));
+  } catch { /* ignore */ }
+  return merged;
+};
+
+const getInitialRates = () => {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    const ts = localStorage.getItem(TIMESTAMP_KEY);
+    if (cached && ts && Date.now() - Number(ts) < MAX_AGE_MS) {
+      return JSON.parse(cached);
+    }
+  } catch { /* ignore */ }
+  return null;
+};
+
 const CurrencyContext = createContext(null);
 
 export function CurrencyProvider({ children }) {
@@ -76,15 +112,11 @@ export function CurrencyProvider({ children }) {
     }
   });
 
-  const [rates, setRates] = useState(() => {
-    try {
-      const cached = localStorage.getItem(CACHE_KEY);
-      const ts = localStorage.getItem(TIMESTAMP_KEY);
-      if (cached && ts && Date.now() - Number(ts) < MAX_AGE_MS) {
-        return JSON.parse(cached);
-      }
-    } catch { /* ignore */ }
-    return null;
+  const { data: rates } = useSWR('exchange-rates', fetcher, {
+    fallbackData: getInitialRates(),
+    revalidateOnFocus: false,
+    refreshInterval: MAX_AGE_MS,
+    dedupingInterval: MAX_AGE_MS,
   });
 
   // Persist currency preference
@@ -93,54 +125,6 @@ export function CurrencyProvider({ children }) {
     try {
       localStorage.setItem(PREF_KEY, code);
     } catch { /* ignore */ }
-  }, []);
-
-  // Fetch rates (only if cache is stale or missing)
-  useEffect(() => {
-    let stale = true;
-    try {
-      const ts = localStorage.getItem(TIMESTAMP_KEY);
-      if (ts && Date.now() - Number(ts) < MAX_AGE_MS && rates) {
-        stale = false;
-      }
-    } catch { /* ignore */ }
-
-    if (!stale) return;
-
-    let cancelled = false;
-
-    const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
-
-    const frankfurterFetch = fetch('https://api.frankfurter.app/latest?from=USD')
-      .then((res) => res.json())
-      .then((data) => data.rates || {})
-      .catch(() => ({}));
-
-    const exchangeRateFetch = apiKey
-      ? fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
-          .then((res) => res.json())
-          .then((data) => data.conversion_rates || {})
-          .catch(() => ({}))
-      : Promise.resolve({});
-
-    Promise.all([frankfurterFetch, exchangeRateFetch])
-      .then(([frankfurterRates, exchangeApiRates]) => {
-        if (cancelled) return;
-        // Merge: ExchangeRate-API as base, Frankfurter as override (higher quality)
-        const merged = { ...exchangeApiRates, ...frankfurterRates };
-        // Remove USD=1 key if present (we handle USD identity in convert)
-        delete merged.USD;
-        setRates(merged);
-        try {
-          localStorage.setItem(CACHE_KEY, JSON.stringify(merged));
-          localStorage.setItem(TIMESTAMP_KEY, String(Date.now()));
-        } catch { /* ignore */ }
-      })
-      .catch((err) => {
-        console.warn('Failed to fetch exchange rates:', err);
-      });
-
-    return () => { cancelled = true; };
   }, []);
 
   // Convert USD amount to selected currency, returns formatted string
@@ -178,7 +162,7 @@ export function CurrencyProvider({ children }) {
 }
 
 export function useCurrency() {
-  const ctx = useContext(CurrencyContext);
+  const ctx = use(CurrencyContext);
   if (!ctx) {
     throw new Error('useCurrency must be used within a CurrencyProvider');
   }

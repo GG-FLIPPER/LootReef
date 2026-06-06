@@ -1,60 +1,63 @@
 import React, { useState, useEffect } from 'react';
+import useSWR from 'swr';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
 import { useCurrency } from '../CurrencyContext';
 import { saveBookmark, removeBookmark, isBookmarked } from '../bookmarks';
 
+const fetcher = (url) => fetch(url).then(res => res.json());
+
+const shortenUrl = async (url) => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    const res = await fetch(`/api/shorten?url=${encodeURIComponent(url)}`, { signal: controller.signal });
+    const data = await res.json();
+    clearTimeout(timeout);
+    return data.shortUrl || url;
+  } catch (err) {
+    clearTimeout(timeout);
+    return url;
+  }
+};
+
 export default function TodaysDeal({ onSearch }) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { convert, currency } = useCurrency();
-  const [deal, setDeal] = useState(null);
-  const [dismissed, setDismissed] = useState(true);
+  
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      const isDismissed = localStorage.getItem('todaysDealDismissed');
+      const dismissedDate = localStorage.getItem('todaysDealDismissedDate');
+      const today = new Date().toLocaleDateString();
+      return dismissedDate === today && isDismissed === 'true';
+    } catch {
+      return false;
+    }
+  });
+
   const [saved, setSaved] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [isUrlLoading, setIsUrlLoading] = useState(false);
 
+  const { data: deal, error, isLoading } = useSWR(
+    dismissed ? null : '/api/todays-deal',
+    fetcher,
+    { revalidateOnFocus: false, shouldRetryOnError: false }
+  );
+
   useEffect(() => {
-    // Check dismissal status for today
-    const isDismissed = localStorage.getItem('todaysDealDismissed');
-    const dismissedDate = localStorage.getItem('todaysDealDismissedDate');
-    const today = new Date().toLocaleDateString();
-    
-    if (dismissedDate === today && isDismissed === 'true') {
-      setDismissed(true);
-      setLoading(false);
-      return;
-    } else {
-      setDismissed(false);
-    }
-    
-    // Fetch dynamic deal from backend
-    fetch('/api/todays-deal')
-      .then(res => res.json())
-      .then(data => {
-        if (!data || !data.id) {
-          setLoading(false);
-          return;
-        }
-        
-        // Check global saved status
-        isBookmarked(data.url, user).then(res => {
-          setSaved(res);
-        });
-        
-        setDeal(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch todays deal:', err);
-        setLoading(false);
+    if (deal && deal.id) {
+      isBookmarked(deal.url, user).then(res => {
+        setSaved(res);
       });
-  }, []);
+    }
+  }, [deal, user]);
 
   if (dismissed) return null;
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="mt-8 mb-4 max-w-2xl mx-auto w-full animate-hero-slide-up" style={{ animationDelay: '250ms' }}>
         <div className="relative overflow-hidden bg-surface-alt border border-border rounded-2xl p-4 shadow-sm text-left flex items-center gap-4 h-24 animate-pulse">
@@ -95,20 +98,6 @@ export default function TodaysDeal({ onSearch }) {
       await saveBookmark(deal, user);
     }
     window.dispatchEvent(new Event('bookmarksUpdated'));
-  };
-
-  const shortenUrl = async (url) => {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-    try {
-      const res = await fetch(`/api/shorten?url=${encodeURIComponent(url)}`, { signal: controller.signal });
-      const data = await res.json();
-      clearTimeout(timeout);
-      return data.shortUrl || url;
-    } catch (err) {
-      clearTimeout(timeout);
-      return url;
-    }
   };
 
   const handleShare = async (e) => {

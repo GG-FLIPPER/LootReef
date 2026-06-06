@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, use, useState, useEffect, useCallback } from 'react';
 import { supabase } from './supabase';
 import { useAuth } from './AuthContext';
 import i18n from './i18n';
@@ -6,7 +6,7 @@ import i18n from './i18n';
 const LanguageContext = createContext(null);
 
 export function useLanguage() {
-  const ctx = useContext(LanguageContext);
+  const ctx = use(LanguageContext);
   if (!ctx) throw new Error('useLanguage must be used within LanguageProvider');
   return ctx;
 }

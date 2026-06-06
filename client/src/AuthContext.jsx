@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, use, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from './supabase';
 
 const AuthContext = createContext(null);
 
 export function useAuth() {
-  const ctx = useContext(AuthContext);
+  const ctx = use(AuthContext);
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }
@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function fetchProfile(userId) {
+  const fetchProfile = useCallback(async (userId) => {
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -37,10 +37,10 @@ export function AuthProvider({ children }) {
       console.error('fetchProfile exception:', err);
       // Suppressed setProfile(null) to prevent ghost onboarding sweeps on abort errors!
     }
-  }
+  }, []);
 
   // Sync localStorage searches to Supabase on sign-in
-  async function syncLocalSearches(userId) {
+  const syncLocalSearches = useCallback(async (userId) => {
     const raw = localStorage.getItem('pricescout_history');
     if (!raw) return;
 
@@ -75,7 +75,7 @@ export function AuthProvider({ children }) {
 
     // Clear localStorage history after merge
     localStorage.removeItem('pricescout_history');
-  }
+  }, []);
 
   useEffect(() => {
     // Get initial session
@@ -144,7 +144,7 @@ export function AuthProvider({ children }) {
     return data;
   }
 
-  async function signUp(email, password, username) {
+  const signUp = useCallback(async (email, password, username) => {
     localStorage.setItem('pricescout_pending_username', username);
     
     const { data, error } = await supabase.auth.signUp({
@@ -154,7 +154,7 @@ export function AuthProvider({ children }) {
     if (error) throw error;
 
     return data;
-  }
+  }, []);
 
   async function signOut() {
     try {
