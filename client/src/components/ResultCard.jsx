@@ -86,6 +86,23 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
     setHasTranslated(false);
   }, [targetLanguage]);
 
+  const handleVisitCategory = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!result.categoryUrl) return;
+
+    const newWindow = window.open('', '_blank');
+    if (newWindow) newWindow.opener = null;
+
+    try {
+      const shortUrl = await shortenUrl(result.categoryUrl);
+      if (newWindow) newWindow.location.href = shortUrl;
+      else window.open(shortUrl, '_blank', 'noopener,noreferrer');
+    } catch {
+      if (newWindow) newWindow.location.href = result.categoryUrl;
+      else window.open(result.categoryUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
 
   const handleBookmarkToggle = async (e) => {
@@ -244,26 +261,40 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
           )}
         </div>
 
-        <a
-          id={`view-deal-${index}`}
-          href={result.url || '#'}
-          onClick={handleViewDeal}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-            isLoading ? 'bg-gray-400 text-white cursor-not-allowed opacity-70' :
-            isCheapest
-              ? 'bg-accent-green text-white hover:bg-green-700 active:scale-95'
-              : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
-          }`}
-        >
-          {isLoading ? '...' : t('card.viewDeal')}
-          {!isLoading && (
-            <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+        <div className="flex flex-col items-end gap-1.5">
+          <a
+            id={`view-deal-${index}`}
+            href={result.url || '#'}
+            onClick={handleViewDeal}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+              isLoading ? 'bg-gray-400 text-white cursor-not-allowed opacity-70' :
+              isCheapest
+                ? 'bg-accent-green text-white hover:bg-green-700 active:scale-95'
+                : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
+            }`}
+          >
+            {isLoading ? '...' : t('card.viewDeal')}
+            {!isLoading && (
+              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            )}
+          </a>
+          {result.categoryUrl && (
+            <button
+              id={`visit-category-${index}`}
+              onClick={handleVisitCategory}
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-[11px] font-semibold transition-all duration-200 border border-[#ff6b00]/40 text-[#ff6b00] bg-[#ff6b00]/5 hover:bg-[#ff6b00]/15 hover:border-[#ff6b00]/70 active:scale-95"
+            >
+              {t('card.visitCategory')}
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+            </button>
           )}
-        </a>
+        </div>
       </div>
     </div>
   );

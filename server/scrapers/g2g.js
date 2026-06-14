@@ -136,6 +136,7 @@ async function scrapeG2G(query) {
     }
 
     // 4. Map results — deep-link each item via the categories map + offer_id
+    const categoryUrl = buildOfferUrl(catMap, items[0]?.service_id, items[0]?.brand_id, baseSeoTerm);
     return items.map(i => {
       const itemUrl = buildOfferUrl(catMap, i.service_id, i.brand_id, baseSeoTerm, i.offer_id);
       return {
@@ -144,6 +145,7 @@ async function scrapeG2G(query) {
         price: parseFloat(i.display_price) || null,
         currency: i.display_currency || 'USD',
         url: itemUrl,
+        categoryUrl,
         seller_rating: i.username || null
       };
     });
