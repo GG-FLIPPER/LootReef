@@ -224,7 +224,6 @@ export default function Advertise() {
     contact_email: '',
     card_title: '',
     card_description: '',
-    image_url: '',
     target_url: '',
     placement: 'deal_card',
     tier: '7day',
@@ -522,13 +521,6 @@ export default function Advertise() {
                   <label style={labelStyle}>Target URL *</label>
                   <input className="advertise-input" type="url" name="target_url" required
                     placeholder="https://yoursite.com/deal" value={form.target_url} onChange={handleChange} />
-                </div>
-
-                {/* Image URL (optional) */}
-                <div style={{ gridColumn: '1 / -1' }}>
-                  <label style={labelStyle}>Image URL <span style={{ opacity: 0.5 }}>(optional)</span></label>
-                  <input className="advertise-input" type="url" name="image_url"
-                    placeholder="https://yoursite.com/promo-image.png" value={form.image_url} onChange={handleChange} />
                 </div>
 
                 {/* Card Description (optional) */}

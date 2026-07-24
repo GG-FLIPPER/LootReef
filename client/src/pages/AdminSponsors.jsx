@@ -290,7 +290,6 @@ export default function AdminSponsors() {
     return {
       card_title: slot.card_title,
       card_description: slot.card_description || '',
-      image_url: slot.image_url || '',
       target_url: slot.target_url,
     };
   };
@@ -700,11 +699,6 @@ export default function AdminSponsors() {
                                     onChange={(e) => handleEditChange(slot.id, 'card_description', e.target.value)} />
                                 </div>
                                 <div>
-                                  <label style={labelStyle}>Image URL</label>
-                                  <input className="admin-input" value={editState.image_url}
-                                    onChange={(e) => handleEditChange(slot.id, 'image_url', e.target.value)} />
-                                </div>
-                                <div>
                                   <label style={labelStyle}>Target URL</label>
                                   <input className="admin-input" value={editState.target_url}
                                     onChange={(e) => handleEditChange(slot.id, 'target_url', e.target.value)} />
@@ -734,7 +728,7 @@ export default function AdminSponsors() {
                                 background: 'rgba(255,255,255,0.5)', borderRadius: 16, padding: '1rem',
                                 border: '1px solid rgba(255,255,255,0.6)',
                               }}>
-                                <SponsorCardPreview slot={previewSlot} />
+                                <SponsorCardPreview slot={previewSlot} showImageWarning={false} />
                               </div>
                             </div>
                           </div>

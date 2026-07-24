@@ -1,5 +1,12 @@
 const express = require('express');
-const { createSlot, updateSlot, getSlotById } = require('../models/sponsorSlots');
+const {
+  createSlot,
+  updateSlot,
+  getSlotById,
+  listActiveServingSlots,
+  incrementImpressions,
+  incrementClicks,
+} = require('../models/sponsorSlots');
 const { supabaseAdmin } = require('../utils/supabaseAdmin');
 
 const router = express.Router();
@@ -16,8 +23,66 @@ const VALID_PLACEMENTS = Object.keys(PRICING);
 const VALID_TIERS = ['3day', '7day', '14day', '30day'];
 
 // ═══════════════════════════════════════════════════════════
+// PUBLIC — Active slots, Impressions & Clicks
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * GET /api/sponsors/active?placement=deal_card
+ * Public endpoint — returns up to 4 active/approved serving sponsor slots for placement.
+ */
+router.get('/active', async (req, res) => {
+  try {
+    const placement = req.query.placement || 'deal_card';
+    const limit = parseInt(req.query.limit, 10) || 4;
+
+    const { data, error } = await listActiveServingSlots(placement, Math.min(limit, 10));
+
+    if (error) {
+      console.error('[sponsors/active] Error fetching active serving slots:', error.message);
+      return res.json({ slots: [] });
+    }
+
+    res.json({ slots: data || [] });
+  } catch (err) {
+    console.error('[sponsors/active] Unexpected error:', err);
+    res.json({ slots: [] });
+  }
+});
+
+/**
+ * POST /api/sponsors/:id/impression
+ * Public endpoint — increments the impression counter for a slot.
+ */
+router.post('/:id/impression', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await incrementImpressions(id);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('[sponsors/impression] Error:', err);
+    res.json({ success: false });
+  }
+});
+
+/**
+ * POST /api/sponsors/:id/click
+ * Public endpoint — increments the click counter for a slot.
+ */
+router.post('/:id/click', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await incrementClicks(id);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('[sponsors/click] Error:', err);
+    res.json({ success: false });
+  }
+});
+
+// ═══════════════════════════════════════════════════════════
 // PUBLIC — Application submission
 // ═══════════════════════════════════════════════════════════
+
 
 /**
  * POST /api/sponsors/apply
@@ -30,7 +95,6 @@ router.post('/apply', async (req, res) => {
       contact_email,
       card_title,
       card_description,
-      image_url,
       target_url,
       placement,
       tier,
@@ -85,7 +149,6 @@ router.post('/apply', async (req, res) => {
       contact_email: contact_email.trim().toLowerCase(),
       card_title: card_title.trim(),
       card_description: card_description ? card_description.trim() : null,
-      image_url: image_url ? image_url.trim() : null,
       target_url: target_url.trim(),
       placement,
       tier,
@@ -214,10 +277,9 @@ router.patch('/admin/:id/approve', requireAdminAuth, async (req, res) => {
 
     // Allow admin to edit these fields before approving
     const editable = {};
-    const { card_title, card_description, image_url, target_url } = req.body;
+    const { card_title, card_description, target_url } = req.body;
     if (card_title !== undefined) editable.card_title = card_title.trim();
     if (card_description !== undefined) editable.card_description = card_description.trim() || null;
-    if (image_url !== undefined) editable.image_url = image_url.trim() || null;
     if (target_url !== undefined) {
       try {
         new URL(target_url);

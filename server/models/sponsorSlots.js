@@ -158,11 +158,89 @@ async function updateSlot(id, updates) {
   return { data, error };
 }
 
+/**
+ * List active serving slots for public display.
+ * (active = true AND status in ('approved', 'active') AND start_date <= today AND end_date >= today)
+ *
+ * @param {string} placement - 'deal_card' | 'todays_deal'
+ * @param {number} [limit=4] - Max slots to return (default 4)
+ * @returns {{ data: Object[]|null, error: Object|null }}
+ */
+async function listActiveServingSlots(placement, limit = 4) {
+  requireClient();
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  let query = supabaseAdmin
+    .from(TABLE)
+    .select('*')
+    .eq('active', true)
+    .in('status', ['approved', 'active'])
+    .lte('start_date', todayStr)
+    .gte('end_date', todayStr)
+    .order('created_at', { ascending: true })
+    .limit(limit);
+
+  if (placement) {
+    query = query.eq('placement', placement);
+  }
+
+  const { data, error } = await query;
+
+  if (error) console.error('[sponsorSlots] listActiveServingSlots error:', error.message);
+  return { data: data || [], error };
+}
+
+/**
+ * Increment impressions counter for a sponsor slot.
+ * @param {string} id
+ */
+async function incrementImpressions(id) {
+  requireClient();
+  const { data: slot, error: getErr } = await getSlotById(id);
+  if (getErr || !slot) return { data: null, error: getErr };
+
+  const newImpressions = (slot.impressions || 0) + 1;
+  const { data, error } = await supabaseAdmin
+    .from(TABLE)
+    .update({ impressions: newImpressions })
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) console.error('[sponsorSlots] incrementImpressions error:', error.message);
+  return { data, error };
+}
+
+/**
+ * Increment clicks counter for a sponsor slot.
+ * @param {string} id
+ */
+async function incrementClicks(id) {
+  requireClient();
+  const { data: slot, error: getErr } = await getSlotById(id);
+  if (getErr || !slot) return { data: null, error: getErr };
+
+  const newClicks = (slot.clicks || 0) + 1;
+  const { data, error } = await supabaseAdmin
+    .from(TABLE)
+    .update({ clicks: newClicks })
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) console.error('[sponsorSlots] incrementClicks error:', error.message);
+  return { data, error };
+}
+
 module.exports = {
   createSlot,
   getSlotById,
   listSlotsByPlacement,
   listActiveSlots,
+  listActiveServingSlots,
   updateSlotStatus,
   updateSlot,
+  incrementImpressions,
+  incrementClicks,
 };
+

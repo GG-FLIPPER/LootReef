@@ -1,6 +1,7 @@
-import { memo } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import ResultCard from './ResultCard';
+import SponsorCardPreview from './SponsorCardPreview';
 
 function SkeletonCard() {
   return (
@@ -24,6 +25,49 @@ function SkeletonCard() {
 
 function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
   const { t } = useTranslation();
+  const [sponsoredSlots, setSponsoredSlots] = useState([]);
+  const recordedImpressionsRef = useRef(new Set());
+
+  // Fetch active sponsored deal cards when search completes
+  useEffect(() => {
+    if (!searched || loading) return;
+
+    let isMounted = true;
+
+    fetch('/api/sponsors/active?placement=deal_card')
+      .then((res) => res.json())
+      .then((data) => {
+        if (!isMounted) return;
+        const slots = data.slots || [];
+        setSponsoredSlots(slots);
+
+        // Record impressions once per search / render for newly fetched slots
+        slots.forEach((slot) => {
+          if (slot.id && !recordedImpressionsRef.current.has(slot.id)) {
+            recordedImpressionsRef.current.add(slot.id);
+            fetch(`/api/sponsors/${slot.id}/impression`, { method: 'POST' }).catch((err) => {
+              console.error('[ResultsGrid] Failed to record impression:', err);
+            });
+          }
+        });
+      })
+      .catch((err) => {
+        console.error('[ResultsGrid] Failed to fetch sponsored cards:', err);
+        if (isMounted) setSponsoredSlots([]);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [searched, loading]);
+
+  // Clear recorded impressions cache when search loading starts
+  useEffect(() => {
+    if (loading) {
+      recordedImpressionsRef.current.clear();
+      setSponsoredSlots([]);
+    }
+  }, [loading]);
 
   if (loading) {
     return (
@@ -35,7 +79,7 @@ function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
     );
   }
 
-  if (searched && results.length === 0) {
+  if (searched && results.length === 0 && sponsoredSlots.length === 0) {
     return (
       <div className="text-center py-20 fade-in-up">
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-surface-alt flex items-center justify-center">
@@ -53,11 +97,23 @@ function ResultsGrid({ results, loading, searched, bookmarkedUrls }) {
 
   if (!searched) return null;
 
-  // Find the cheapest result with a valid price
-  const cheapestPrice = Math.min(...results.filter(r => r.price != null).map(r => r.price));
+  // Find the cheapest result with a valid price among organic results
+  const cheapestPrice = Math.min(...results.filter((r) => r.price != null).map((r) => r.price));
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-12">
+      {/* 1. Sponsored deal cards rendered BEFORE organic cards */}
+      {sponsoredSlots.map((slot) => (
+        <SponsorCardPreview
+          key={`sponsor-${slot.id}`}
+          slot={slot}
+          variant="deal_card"
+          showImageWarning={false}
+          className="fade-in-up"
+        />
+      ))}
+
+      {/* 2. Organic organic cards (best-deal + regular) */}
       {results.map((result, i) => (
         <ResultCard
           key={`${result.platform}-${result.title}-${i}`}
