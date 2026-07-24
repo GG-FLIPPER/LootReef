@@ -22,12 +22,14 @@
     "cheerio": "^1.2.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "framer-motion": "^12.42.2",
+    "motion": "^12.42.2",
     "playwright-chromium": "^1.58.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "react-doctor": "^0.4.0",
-    "supabase": "^2.88.1"
+    "supabase": "^2.109.1"
   }
 }

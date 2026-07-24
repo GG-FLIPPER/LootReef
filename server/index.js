@@ -6,10 +6,14 @@ const axios = require('axios');
 const { scrapeAll } = require('./scrapers');
 const { parseItemName } = require('./utils/parser');
 const { fetchTodaysDeal, clearCache } = require('./utils/dailyDeal');
+const sponsorsRouter = require('./routes/sponsors');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Sponsor application routes
+app.use('/api/sponsors', sponsorsRouter);
 
 // Main search endpoint
 app.get('/api/search', async (req, res) => {
