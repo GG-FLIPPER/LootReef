@@ -14,6 +14,29 @@ function requireClient() {
   }
 }
 
+/**
+ * Expire any slots whose end_date has passed.
+ * Sets status = 'expired' and active = false for rows where
+ * end_date < today AND status is not already 'expired'.
+ *
+ * Designed to be called lazily at the top of read endpoints
+ * so the DB self-corrects without a cron job.
+ */
+async function expireStaleSlots() {
+  requireClient();
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  const { error } = await supabaseAdmin
+    .from(TABLE)
+    .update({ status: 'expired', active: false })
+    .lt('end_date', todayStr)
+    .neq('status', 'expired');
+
+  if (error) {
+    console.error('[sponsorSlots] expireStaleSlots error:', error.message);
+  }
+}
+
 // ─────────────────────────────────────────────────────────
 // CREATE
 // ─────────────────────────────────────────────────────────
@@ -242,5 +265,6 @@ module.exports = {
   updateSlot,
   incrementImpressions,
   incrementClicks,
+  expireStaleSlots,
 };
 

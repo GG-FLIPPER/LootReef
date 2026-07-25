@@ -6,6 +6,7 @@ const {
   listActiveServingSlots,
   incrementImpressions,
   incrementClicks,
+  expireStaleSlots,
 } = require('../models/sponsorSlots');
 const { supabaseAdmin } = require('../utils/supabaseAdmin');
 
@@ -32,6 +33,9 @@ const VALID_TIERS = ['3day', '7day', '14day', '30day'];
  */
 router.get('/active', async (req, res) => {
   try {
+    // Lazy cleanup: expire any slots past their end_date before querying
+    await expireStaleSlots();
+
     const placement = req.query.placement || 'deal_card';
     const limit = parseInt(req.query.limit, 10) || 4;
 
@@ -234,6 +238,9 @@ router.get('/admin/pending', requireAdminAuth, async (req, res) => {
  */
 router.get('/admin/active', requireAdminAuth, async (req, res) => {
   try {
+    // Lazy cleanup: expire any slots past their end_date before querying
+    await expireStaleSlots();
+
     if (!supabaseAdmin) {
       return res.status(503).json({ error: 'Database not configured' });
     }
