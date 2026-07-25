@@ -112,7 +112,7 @@ export default function SponsoredTodaysDealOverlay({ onSearch }) {
           {/* Skip Ad dismiss button */}
           <button
             onClick={handleDismiss}
-            className="absolute top-3 right-3 flex items-center gap-1.5 text-xs font-semibold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 px-2.5 py-1.5 rounded-full transition-colors z-10"
+            className="absolute top-3 right-3 flex items-center gap-1.5 text-xs font-semibold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 active:scale-95 border border-amber-500/30 px-3 py-1.5 rounded-full transition-all focus-visible:ring-2 focus-visible:ring-amber-400/40 focus:outline-none z-10 backdrop-blur-sm shadow-sm"
             aria-label="Skip sponsored deal"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

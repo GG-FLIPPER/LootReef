@@ -170,11 +170,14 @@ const INJECTED_CSS = `
 
 /* Bookmark hover */
 .bookmark-card {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
 }
 .bookmark-card:hover {
   transform: scale(1.04) translateY(-5px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1), inset 0 -5px 15px rgba(255,255,255,0.5) !important;
+}
+.bookmark-card:active {
+  transform: scale(0.98) translateY(0) !important;
 }
 .bookmark-card:hover .bm-icon { 
   fill: ${DEEP_BLUE}; 
@@ -182,13 +185,16 @@ const INJECTED_CSS = `
 
 /* Platform chip hover */
 .platform-chip {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .platform-chip:hover {
   transform: translateY(-4px) scale(1.05);
   border-color: rgba(255,255,255,1) !important;
   color: ${DEEP_BLUE} !important;
   box-shadow: 0 15px 30px rgba(0,95,153,0.2), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+.platform-chip:active {
+  transform: translateY(0) scale(0.96);
 }
 
 /* Scrollbar styling */

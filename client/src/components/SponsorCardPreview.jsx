@@ -20,7 +20,6 @@ export default function SponsorCardPreview({
   const type = variant || slot.placement;
 
   const handleLinkClick = (e) => {
-    // Trigger click tracking if slot has an id
     if (slot.id) {
       fetch(`/api/sponsors/${slot.id}/click`, { method: 'POST' }).catch((err) => {
         console.error('[SponsorCard] Click tracking error:', err);
@@ -35,8 +34,8 @@ export default function SponsorCardPreview({
   // ─── todays_deal variant (matches TodaysDeal.jsx layout) ───
   if (type === 'todays_deal') {
     return (
-      <div className={`relative overflow-hidden bg-gradient-to-br from-surface-alt to-surface border border-amber-500/30 rounded-2xl p-4 shadow-sm text-left ${className}`}>
-        {/* Glossy top edge with amber highlight */}
+      <div className={`relative overflow-hidden bg-gradient-to-br from-surface-alt to-surface border border-amber-500/30 rounded-2xl p-4 sm:p-5 shadow-sm text-left transition-all duration-200 hover:shadow-md hover:border-amber-500/50 active:scale-[0.99] ${className}`}>
+        {/* Glossy specular top edge with amber highlight */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-400 via-accent-green to-amber-500 opacity-80" />
 
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
@@ -56,8 +55,8 @@ export default function SponsorCardPreview({
                 </span>
               )}
             </div>
-            <h3 className="text-lg font-bold text-text leading-tight">
-              <a href={slot.target_url || '#'} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={handleLinkClick}>
+            <h3 className="text-lg font-bold text-text leading-tight tracking-tight">
+              <a href={slot.target_url || '#'} target="_blank" rel="noopener noreferrer" className="hover:underline focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none rounded" onClick={handleLinkClick}>
                 {slot.card_title || 'Untitled'}
               </a>
             </h3>
@@ -73,7 +72,7 @@ export default function SponsorCardPreview({
               href={slot.target_url || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-white hover:bg-primary-dark active:scale-95 transition-all duration-200"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-primary text-white hover:bg-primary-dark active:scale-95 transition-all duration-150 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none"
               onClick={handleLinkClick}
             >
               View Deal
@@ -90,8 +89,11 @@ export default function SponsorCardPreview({
   // ─── deal_card variant (EXACT 1:1 structural match to ResultCard.jsx) ───
   return (
     <div
-      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-surface border-border border-t-2 border-t-amber-400 flex flex-col justify-between ${className}`}
+      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.99] bg-surface border-border border-t-2 border-t-amber-400 flex flex-col justify-between ${className}`}
     >
+      {/* Specular top highlight */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-300/50 to-transparent pointer-events-none rounded-t-xl" />
+
       <div>
         {/* Header: Platform/Sponsor badge, Company name */}
         <div className="flex items-center justify-between mb-3">
@@ -100,7 +102,7 @@ export default function SponsorCardPreview({
               ★ Sponsored
             </span>
             {slot.company_name && (
-              <span className="text-xs text-text-secondary flex items-center gap-1 truncate">
+              <span className="text-xs text-text-secondary flex items-center gap-1 truncate font-medium">
                 <span className="truncate">{slot.company_name}</span>
               </span>
             )}
@@ -108,11 +110,11 @@ export default function SponsorCardPreview({
         </div>
 
         {/* Title */}
-        <h3 className="text-sm font-semibold text-text leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="text-sm font-semibold text-text leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors tracking-tight">
           {slot.card_title || 'Untitled'}
         </h3>
 
-        {/* Description (if present) */}
+        {/* Description */}
         {slot.card_description && (
           <p className="text-xs text-text-secondary mb-3 line-clamp-2">
             {slot.card_description}
@@ -120,18 +122,18 @@ export default function SponsorCardPreview({
         )}
       </div>
 
-      {/* Price + CTA (mt-auto matches ResultCard layout) */}
-      <div className="flex items-end justify-between mt-auto">
+      {/* Price + CTA */}
+      <div className="flex items-end justify-between mt-auto pt-2">
         <div>
           {slot.price_paid != null && slot.price_paid > 0 ? (
             <>
-              <p className="text-2xl font-extrabold tracking-tight text-text">
+              <p className="text-2xl font-black tracking-tight text-text">
                 ${slot.price_paid}
               </p>
-              <p className="text-[10px] text-text-secondary uppercase tracking-wider">{slot.currency || 'USD'}</p>
+              <p className="text-[10px] text-text-secondary uppercase tracking-widest font-bold">{slot.currency || 'USD'}</p>
             </>
           ) : (
-            <p className="text-xs text-text-secondary font-medium uppercase tracking-wider">Promoted</p>
+            <p className="text-xs text-text-secondary font-bold uppercase tracking-wider">Promoted</p>
           )}
         </div>
 
@@ -141,7 +143,7 @@ export default function SponsorCardPreview({
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleLinkClick}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-white hover:bg-primary-dark active:scale-95 transition-all duration-200"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-primary text-white hover:bg-primary-dark active:scale-95 transition-all duration-150 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none"
           >
             View Deal
             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

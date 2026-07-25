@@ -41,7 +41,7 @@ function RecentSearches({ onSearch, refreshRef, hide }) {
         {history.map((entry, i) => (
           <button
             key={entry.id || `${entry.query}-${entry.timestamp}`}
-            className="search-chip animate-spring-pop"
+            className="search-chip animate-spring-pop active:scale-95 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none"
             style={{ animationDelay: `${i * 50}ms` }}
             onClick={(e) => {
               e.preventDefault();

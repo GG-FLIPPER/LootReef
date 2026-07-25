@@ -25,6 +25,19 @@
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Apple Design tactile touch feedback for buttons and interactive controls */
+  button, a, input[type="submit"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Accessible focus ring styling */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary-light);
+    border-radius: 8px;
   }
 }
 

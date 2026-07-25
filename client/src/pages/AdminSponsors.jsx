@@ -97,11 +97,14 @@ textarea.admin-input {
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   border: none;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+.admin-btn:active:not(:disabled) {
+  transform: scale(0.95) translateY(0);
 }
 .admin-btn:disabled {
   opacity: 0.5;
@@ -152,10 +155,13 @@ textarea.admin-input {
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   border: 1px solid rgba(255,255,255,0.5);
   background: rgba(255,255,255,0.25);
   color: ${TEXT_PRIMARY};
+}
+.admin-tab:active {
+  transform: scale(0.96);
 }
 .admin-tab-active {
   background: rgba(255,255,255,0.75);

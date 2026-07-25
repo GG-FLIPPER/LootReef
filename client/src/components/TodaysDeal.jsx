@@ -156,15 +156,15 @@ export default function TodaysDeal({ onSearch }) {
 
   return (
     <div className="mt-8 mb-4 max-w-2xl mx-auto w-full animate-hero-slide-up" style={{ animationDelay: '250ms' }}>
-      <div className="relative overflow-hidden bg-gradient-to-br from-surface-alt to-surface border border-primary/20 rounded-2xl p-4 shadow-sm group hover:shadow-md transition-shadow hover:border-primary/40 cursor-pointer text-left" onClick={handleDealClick}>
+      <div className="relative overflow-hidden bg-gradient-to-br from-surface-alt to-surface border border-primary/20 rounded-2xl p-4 sm:p-5 shadow-sm group hover:shadow-md transition-all duration-200 hover:border-primary/40 active:scale-[0.99] cursor-pointer text-left" onClick={handleDealClick}>
         
-        {/* Glossy top edge */}
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-accent-green to-primary opacity-70"></div>
+        {/* Glossy specular top edge */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-accent-green to-primary opacity-80" />
         
         {/* Dismiss Button */}
         <button 
           onClick={handleDismiss}
-          className="absolute top-3 right-3 text-text-secondary hover:text-red-500 hover:bg-red-500/10 p-1.5 rounded-full transition-colors z-10"
+          className="absolute top-3 right-3 text-text-secondary hover:text-red-500 hover:bg-red-500/10 active:scale-90 p-1.5 rounded-full transition-all focus-visible:ring-2 focus-visible:ring-red-400/40 focus:outline-none z-10"
           aria-label="Dismiss deal"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,8 +184,8 @@ export default function TodaysDeal({ onSearch }) {
               <span className="text-xs text-text-secondary font-medium">{deal.tag}</span>
               <span className="text-xs text-text-secondary font-medium px-2 py-0.5 bg-surface rounded-full border border-border ml-1">{deal.platform}</span>
             </div>
-            <h3 className="text-lg font-bold text-text leading-tight group-hover:text-primary transition-colors">
-              <a href={deal.url} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={handleDealClick}>
+            <h3 className="text-lg font-bold text-text leading-tight group-hover:text-primary transition-colors tracking-tight">
+              <a href={deal.url} target="_blank" rel="noopener noreferrer" className="hover:underline focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none rounded" onClick={handleDealClick}>
                 {deal.title} {isUrlLoading && <span className="inline-block ml-1 w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin"></span>}
               </a>
             </h3>
@@ -199,11 +199,11 @@ export default function TodaysDeal({ onSearch }) {
               <span className="text-sm text-text-secondary line-through opacity-70">{deal.originalPrice}</span>
               {deal.price != null ? (
                 <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-black text-accent-green">
+                  <span className="text-xl font-black text-accent-green tracking-tight">
                     {typeof deal.price === 'number' ? convert(deal.price) : deal.price}
                   </span>
                   {typeof deal.price === 'number' && (
-                    <span className="text-[10px] text-text-secondary uppercase font-bold tracking-wider">{currency}</span>
+                    <span className="text-[10px] text-text-secondary uppercase font-bold tracking-widest">{currency}</span>
                   )}
                 </div>
               ) : (
@@ -215,7 +215,7 @@ export default function TodaysDeal({ onSearch }) {
               {/* Share Button */}
               <button 
                 onClick={handleShare}
-                className="p-2 bg-surface hover:bg-border border border-border rounded-lg text-text-secondary hover:text-text transition-colors relative group/btn"
+                className="p-2 bg-surface hover:bg-border active:scale-90 border border-border rounded-lg text-text-secondary hover:text-text transition-all focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none relative group/btn"
                 aria-label="Share deal"
                 title="Share"
               >
@@ -233,7 +233,7 @@ export default function TodaysDeal({ onSearch }) {
               {/* Save/Favorite Button */}
               <button 
                 onClick={handleSave}
-                className={`p-2 border rounded-lg transition-colors ${
+                className={`p-2 border rounded-lg transition-all active:scale-90 focus-visible:ring-2 focus-visible:ring-red-400/40 focus:outline-none ${
                   saved 
                     ? 'bg-red-500/10 border-red-500/30 text-red-500 hover:bg-red-500/20' 
                     : 'bg-surface hover:bg-border border-border text-text-secondary hover:text-red-500'

@@ -67,10 +67,10 @@ function FilterDrawer({
         <div className="px-5 pb-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-lg font-bold text-text">{t('filter.filtersAndSort')}</h3>
+            <h3 className="text-lg font-bold text-text tracking-tight">{t('filter.filtersAndSort')}</h3>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-alt text-text-secondary hover:bg-border transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-surface-alt text-text-secondary hover:bg-border active:scale-90 transition-all focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -87,7 +87,7 @@ function FilterDrawer({
               id="mobile-sort-select"
               value={sortMode}
               onChange={(e) => onSortChange(e.target.value)}
-              className="w-full text-sm border border-border rounded-lg px-3 py-2.5 bg-surface text-text outline-none focus:border-primary transition-colors"
+              className="w-full text-sm border border-border rounded-lg px-3 py-2.5 bg-surface text-text outline-none focus:border-primary transition-colors cursor-pointer"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -106,7 +106,7 @@ function FilterDrawer({
                   <button
                     key={p}
                     onClick={() => onPlatformToggle(p)}
-                    className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-md border transition-all duration-200 ${
+                    className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-md border transition-all duration-150 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none ${
                       isOn ? colors.on : colors.off
                     }`}
                   >
@@ -152,7 +152,7 @@ function FilterDrawer({
           {/* Hide null prices */}
           <div className="mb-6">
             <label className="flex items-center justify-between cursor-pointer select-none">
-              <span className="text-sm text-text">{t('filter.hideWithoutPrice')}</span>
+              <span className="text-sm text-text font-medium">{t('filter.hideWithoutPrice')}</span>
               <div className={`toggle-switch ${hideNullPrices ? 'active' : ''}`} onClick={onHideNullToggle}>
                 <div className="toggle-knob" />
               </div>
@@ -162,7 +162,7 @@ function FilterDrawer({
           {/* Apply button */}
           <button
             onClick={onClose}
-            className="w-full py-3 bg-primary text-white font-semibold rounded-xl text-sm hover:bg-primary-dark active:scale-[0.98] transition-all"
+            className="w-full py-3 bg-primary text-white font-semibold rounded-xl text-sm hover:bg-primary-dark active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none"
           >
             {t('filter.applyFilters')}
           </button>

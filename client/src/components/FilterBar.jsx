@@ -109,7 +109,7 @@ function FilterBar({
             <button
               key={p}
               onClick={() => onPlatformToggle(p)}
-              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border transition-all duration-200 cursor-pointer ${
+              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border transition-all duration-150 cursor-pointer active:scale-95 focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none ${
                 isOn ? colors.on : colors.off
               }`}
             >

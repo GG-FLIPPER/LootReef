@@ -147,11 +147,14 @@ textarea.advertise-input {
 
 .placement-radio {
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .placement-radio:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 15px 30px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,1), inset 0 -5px 15px rgba(255,255,255,0.4) !important;
+}
+.placement-radio:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .submit-btn {
@@ -168,7 +171,7 @@ textarea.advertise-input {
   cursor: pointer;
   font-size: 1.15rem;
   letter-spacing: 0.02em;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -176,6 +179,9 @@ textarea.advertise-input {
 .submit-btn:hover:not(:disabled) {
   transform: scale(1.03) translateY(-2px);
   box-shadow: 0 15px 30px rgba(0,119,255,0.5), inset 0 25px 25px rgba(255,255,255,0.6), inset 0 -10px 20px rgba(0,0,0,0.1);
+}
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.97) translateY(0);
 }
 .submit-btn:disabled {
   opacity: 0.6;

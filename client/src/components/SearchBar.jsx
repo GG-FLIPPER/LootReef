@@ -53,7 +53,7 @@ function SearchBar({ onSearch, loading, compact }) {
           id="search-button"
           type="submit"
           disabled={loading || !value.trim()}
-          className={`h-full px-5 sm:px-6 font-semibold text-sm transition-all duration-200 ${
+          className={`h-full px-5 sm:px-6 font-semibold text-sm transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none ${
             loading || !value.trim()
               ? 'bg-border-light text-text-secondary cursor-not-allowed'
               : 'bg-primary text-white hover:bg-primary-dark active:scale-95'

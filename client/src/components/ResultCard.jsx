@@ -171,27 +171,30 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
   return (
     <div
       ref={cardRef}
-      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 bg-surface ${
+      className={`fade-in-up group relative border rounded-xl p-4 sm:p-5 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.99] bg-surface ${
         isCheapest ? 'border-l-4 border-l-accent-green border-t border-r border-b border-border' : 'border-border'
       }`}
       style={{ animationDelay: `${delay}ms` }}
     >
+      {/* Glossy specular top highlight */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none rounded-t-xl" />
+
       {/* Cheapest badge */}
       {isCheapest && (
-        <div className="absolute -top-2.5 left-3 px-2 py-0.5 bg-accent-green text-white text-[10px] font-bold uppercase rounded-full tracking-wider">
+        <div className="absolute -top-2.5 left-3 px-2 py-0.5 bg-accent-green text-white text-[10px] font-bold uppercase rounded-full tracking-wider shadow-sm">
           {t('card.bestPrice')}
         </div>
       )}
 
       {/* Header: Platform, Seller, Actions */}
       <div className="flex items-center justify-between mb-3">
-        {/* Left side: platform badge + seller name (flex row, gap-2, items-center) */}
+        {/* Left side: platform badge + seller name */}
         <div className="flex items-center gap-2 max-w-[70%]">
           <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md shrink-0 ${badgeClass}`}>
             {result.platform}
           </span>
           {result.seller_rating && (
-            <span className="text-xs text-text-secondary flex items-center gap-1 truncate">
+            <span className="text-xs text-text-secondary flex items-center gap-1 truncate font-medium">
               <svg className="w-3.5 h-3.5 text-yellow-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
@@ -204,8 +207,9 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
         <div className="flex items-center gap-1 shrink-0">
           <button
             onClick={handleShare}
-            className="text-border hover:text-primary transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-surface-alt relative"
+            className="text-border hover:text-primary active:scale-90 transition-all focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none flex justify-center items-center w-7 h-7 rounded-full hover:bg-surface-alt relative"
             disabled={isSharing}
+            aria-label="Share deal"
           >
             {isSharing ? (
               <svg className="w-4 h-4 animate-spin text-primary" fill="none" viewBox="0 0 24 24">
@@ -213,12 +217,12 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
             ) : (
-              <svg className="w-4 h-4 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transition-transform group-hover:scale-105" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
               </svg>
             )}
             {copied && (
-              <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-medium rounded shadow-sm whitespace-nowrap pointer-events-none z-20">
+              <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-[10px] font-medium rounded shadow-md whitespace-nowrap pointer-events-none z-20 animate-hero-slide-up">
                 {t('card.copied')}
                 <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></span>
               </span>
@@ -227,10 +231,11 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
           
           <button 
             onClick={handleBookmarkToggle}
-            className="text-border hover:text-red-500 transition-colors focus:outline-none flex justify-center items-center w-6 h-6 rounded-full hover:bg-surface-alt relative"
+            className="text-border hover:text-red-500 active:scale-90 transition-all focus-visible:ring-2 focus-visible:ring-red-400/40 focus:outline-none flex justify-center items-center w-7 h-7 rounded-full hover:bg-surface-alt relative"
+            aria-label="Bookmark deal"
           >
             <svg 
-              className={`w-4 h-4 transition-transform ${bookmarked ? 'text-red-500 scale-110' : 'hover:scale-110'}`} 
+              className={`w-4 h-4 transition-transform ${bookmarked ? 'text-red-500 scale-105' : 'group-hover:scale-105'}`} 
               fill={bookmarked ? "currentColor" : "none"} 
               stroke={bookmarked ? "none" : "currentColor"} 
               viewBox="0 0 24 24"
@@ -242,19 +247,19 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
       </div>
 
       {/* Title */}
-      <h3 className="text-sm font-semibold text-text leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+      <h3 className="text-sm font-semibold text-text leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors tracking-tight">
         {displayTitle}
       </h3>
 
       {/* Price + CTA */}
-      <div className="flex items-end justify-between mt-auto">
+      <div className="flex items-end justify-between mt-auto pt-2">
         <div>
           {result.price != null ? (
             <>
-              <p className={`text-2xl font-extrabold tracking-tight ${isCheapest ? 'text-accent-green' : 'text-text'}`}>
+              <p className={`text-2xl font-black tracking-tight ${isCheapest ? 'text-accent-green' : 'text-text'}`}>
                 {convert(result.price)}
               </p>
-              <p className="text-[10px] text-text-secondary uppercase tracking-wider">{currency}</p>
+              <p className="text-[10px] text-text-secondary uppercase tracking-widest font-bold">{currency}</p>
             </>
           ) : (
             <p className="text-sm text-text-secondary italic">{t('card.priceNotAvailable')}</p>
@@ -268,11 +273,11 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
             onClick={handleViewDeal}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none ${
               isLoading ? 'bg-gray-400 text-white cursor-not-allowed opacity-70' :
               isCheapest
-                ? 'bg-accent-green text-white hover:bg-green-700 active:scale-95'
-                : 'bg-primary text-white hover:bg-primary-dark active:scale-95'
+                ? 'bg-accent-green text-white hover:bg-green-700 active:scale-95 shadow-sm hover:shadow-md'
+                : 'bg-primary text-white hover:bg-primary-dark active:scale-95 shadow-sm hover:shadow-md'
             }`}
           >
             {isLoading ? '...' : t('card.viewDeal')}
@@ -286,7 +291,7 @@ function ResultCard({ result, index, isCheapest, initialBookmarked }) {
             <button
               id={`visit-category-${index}`}
               onClick={handleVisitCategory}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-[11px] font-semibold transition-all duration-200 border border-[#ff6b00]/40 text-[#ff6b00] bg-[#ff6b00]/5 hover:bg-[#ff6b00]/15 hover:border-[#ff6b00]/70 active:scale-95"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-[11px] font-semibold transition-all duration-150 border border-[#ff6b00]/40 text-[#ff6b00] bg-[#ff6b00]/5 hover:bg-[#ff6b00]/15 hover:border-[#ff6b00]/70 active:scale-95 focus-visible:ring-2 focus-visible:ring-orange-400/40 focus:outline-none"
             >
               {t('card.visitCategory')}
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

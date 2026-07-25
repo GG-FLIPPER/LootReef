@@ -38,15 +38,19 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
   const badgeClass = PLATFORM_COLORS[offer.platform] || 'bg-gray-500 text-white';
 
   return (
-    <div className="relative bg-surface border border-border rounded-xl p-3 flex flex-col hover:border-primary/30 transition-colors shadow-sm group">
+    <div className="relative bg-surface border border-border rounded-xl p-3.5 flex flex-col hover:border-primary/40 hover:shadow-md active:scale-[0.99] transition-all duration-200 shadow-sm group">
+      {/* Glossy specular top line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none rounded-t-xl" />
+
       <button 
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           handleDelete(offer.url);
         }}
-        className="absolute top-2 right-2 p-1 text-text-secondary hover:text-red-500 rounded-full hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-2 right-2 p-1 text-text-secondary hover:text-red-500 active:scale-90 rounded-full hover:bg-red-50 dark:hover:bg-red-950/30 transition-all opacity-0 group-hover:opacity-100 focus-visible:ring-2 focus-visible:ring-red-400/40 focus:outline-none"
         title={t('bookmarks.remove', 'Remove saved deal')}
+        aria-label="Remove bookmark"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -57,12 +61,12 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
         <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${badgeClass}`}>
           {offer.platform}
         </span>
-        <span className="text-xs font-semibold text-text truncate">
+        <span className="text-xs font-bold text-text truncate tracking-tight">
           {offer.price != null ? convert(offer.price) : t('card.priceNotAvailable', 'N/A')} {offer.price != null ? currency : ''}
         </span>
       </div>
       
-      <h4 className="text-xs text-text-secondary leading-snug line-clamp-2 mb-3">
+      <h4 className="text-xs text-text-secondary leading-snug line-clamp-2 mb-3 tracking-tight">
         {offer.title}
       </h4>
       
@@ -71,8 +75,8 @@ function BookmarkCard({ offer, convert, currency, handleDelete }) {
         onClick={handleViewDeal}
         target="_blank"
         rel="noopener noreferrer"
-        className={`mt-auto inline-flex items-center justify-center w-full py-1.5 text-xs font-medium rounded-lg transition-colors border border-border ${
-          isLoading ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-surface-alt hover:bg-border text-text'
+        className={`mt-auto inline-flex items-center justify-center w-full py-1.5 text-xs font-semibold rounded-lg transition-all duration-150 border border-border focus-visible:ring-2 focus-visible:ring-primary/40 focus:outline-none ${
+          isLoading ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-surface-alt hover:bg-border active:scale-95 text-text'
         }`}
       >
         {isLoading ? '...' : t('card.viewDeal')}
