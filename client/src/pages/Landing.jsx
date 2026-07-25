@@ -1284,6 +1284,17 @@ export default function LandingPage() {
         <div style={{ color: TEXT_PRIMARY, fontSize: '0.9rem', fontWeight: 800 }}>
           {new Date().getFullYear()} LootReef. All rights reserved.
         </div>
+        <a href="/advertise" style={{
+          color: DEEP_BLUE,
+          fontSize: '0.9rem',
+          fontWeight: 800,
+          textDecoration: 'none',
+          textShadow: '0 1px 2px rgba(255,255,255,0.8)',
+          transition: 'opacity 0.2s ease',
+        }}
+        onMouseEnter={(e) => { e.target.style.opacity = '0.7'; }}
+        onMouseLeave={(e) => { e.target.style.opacity = '1'; }}
+        >📢 Advertise</a>
         <div style={{ color: DEEP_BLUE, fontSize: '1rem', fontWeight: 800, textShadow: '0 1px 2px rgba(255,255,255,0.8)' }}>
           ♥ Made for gamers
         </div>

@@ -14,7 +14,7 @@ import AccountSettingsModal from './AccountSettingsModal';
 import ResetPassword from './ResetPassword';
 import RecentSearches from './RecentSearches';
 import BookmarksSection from './BookmarksSection';
-import TodaysDeal from './TodaysDeal';
+import SponsoredTodaysDealOverlay from './SponsoredTodaysDealOverlay';
 import { useAuth } from '../AuthContext';
 import { saveSearch } from '../searchHistory';
 import { loadBookmarks } from '../bookmarks';
@@ -420,7 +420,7 @@ function SearchApp() {
               <p className="text-text-secondary text-lg max-w-xl mx-auto animate-hero-slide-up delay-200">
                 {t('hero.subtitle')}
               </p>
-              <TodaysDeal onSearch={handleSearch} />
+              <SponsoredTodaysDealOverlay onSearch={handleSearch} />
             </div>
           )}
           <div className={`${!searched ? 'animate-hero-slide-up delay-300' : ''}`}>
@@ -502,8 +502,11 @@ function SearchApp() {
 
       {/* Footer */}
       <footer className="border-t border-border mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-text-secondary">
-          {t('footer.disclaimer')}
+        <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-text-secondary">
+          <span>{t('footer.disclaimer')}</span>
+          <Link to="/advertise" className="text-primary hover:underline font-medium whitespace-nowrap">
+            📢 Advertise on LootReef
+          </Link>
         </div>
       </footer>
 
